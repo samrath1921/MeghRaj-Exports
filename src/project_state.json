@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "MeghRaj Exports website project; focus on ensuring the exported/downloaded codebase matches the live preview, including all static assets and styling.",
+  "architectural_notes": [
+    "Ensure all visual assets (images/backgrounds/icons) are stored in-repo (e.g., /public or asset pipeline) and referenced via local paths rather than temporary/external URLs so exports are complete."
+  ],
+  "known_issues": [
+    "MCP-downloaded project is missing all images/static assets; local export does not match live preview visuals."
+  ],
+  "isFixRequest": true,
+  "imageRequirements": "## Required Images\n- Premium equestrian hero background photo (home-hero-saddle-editorial.dim_1600x900.png)\n- Category banner image featuring saddles (cat-saddles.dim_1200x800.png)\n- Category banner image featuring bridles and headgear (cat-bridles-headgear.dim_1200x800.png)\n- Category banner image featuring halters and lead ropes (cat-halters-leads.dim_1200x800.png)\n- Category banner image featuring girths and cinches (cat-girths-cinches.dim_1200x800.png)\n- Category banner image featuring stirrups and equestrian accessories (cat-stirrups-accessories.dim_1200x800.png)\n- Category banner image featuring saddle pads and blankets (cat-saddle-pads-blankets.dim_1200x800.png)\n- Category banner image featuring breastplates and martingales (cat-breastplates-martingales.dim_1200x800.png)\n- Category banner image featuring horse leg protection gear (cat-horse-leg-protection.dim_1200x800.png)\n- Category banner image featuring horse rugs and clothing (cat-horse-rugs-clothing.dim_1200x800.png)\n- Category banner image featuring grooming and stable accessories (cat-horse-care-stable-accessories.dim_1200x800.png)\n- Category banner image featuring bits, spurs, and control gear (cat-bits-spurs-control-gear.dim_1200x800.png)\n- Category banner image featuring harness and driving equipment (cat-harness-driving-equipment.dim_1200x800.png)\n- Category banner image featuring rider equipment (cat-rider-equipment.dim_1200x800.png)\n- Category banner image featuring bags and leather goods (cat-bags-leather-goods.dim_1200x800.png)\n- Product placeholder image featuring a saddle (prod-placeholder-saddle.dim_1200x800.png)\n- Product placeholder image featuring a bridle/headgear (prod-placeholder-bridle.dim_1200x800.png)\n- Product placeholder image featuring leather goods (prod-placeholder-leather.dim_1200x800.png)\n- Product placeholder image featuring grooming tools (prod-placeholder-grooming.dim_1200x800.png)\n- Product placeholder image featuring textiles/pads/blankets (prod-placeholder-textile.dim_1200x800.png)\n- Product placeholder image featuring metal hardware/bits/spurs (prod-placeholder-hardware.dim_1200x800.png)\n- Transparent-background company logo image (Screenshot_2026-02-15_at_3.36.48_AM-removebg-preview.dim_800x800.png)",
+  "existing_features": [
+    {
+      "id": "feature-add-all-missing-static-image-assets-referenced-by-the-frontend-into-the-repository-under-the-frontend-public-assets-folder-structure-including-assets-and-assets-generated-so-that-a-fresh-mcp-download-includes-them-and-the-site-renders-without-broken-images",
+      "title": "Add all missing static image assets referenced by the frontend into the repository under the frontend public assets folder structure (including /assets and /assets/generated) so that a fresh MCP download includes them and the site renders without broken images.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-audit-and-fix-all-frontend-image-references-to-ensure-they-use-correct-absolute-public-paths-e-g-assets-or-assets-generated-and-do-not-depend-on-any-external-temporary-urls-update-any-incorrect-paths-so-images-load-in-both-local-dev-and-production-builds",
+      "title": "Audit and fix all frontend image references to ensure they use correct absolute public paths (e.g., /assets/... or /assets/generated/...) and do not depend on any external/temporary URLs; update any incorrect paths so images load in both local dev and production builds.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-lightweight-frontend-only-validation-check-during-development-documentation-or-a-simple-developer-note-utility-that-lists-the-required-static-asset-paths-used-by-the-app-to-prevent-future-missing-asset-exports",
+      "title": "Add a lightweight frontend-only validation/check during development (documentation or a simple developer note/utility) that lists the required static asset paths used by the app to prevent future missing-asset exports.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Bundle and reference all images/static assets locally (e.g., /public) so MCP export/download includes them and the site renders identically to live preview.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "MeghRaj Exports",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

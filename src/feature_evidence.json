@@ -1,0 +1,60 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-all-missing-static-image-assets-referenced-by-the-frontend-into-the-repository-under-the-frontend-public-assets-folder-structure-including-assets-and-assets-generated-so-that-a-fresh-mcp-download-includes-them-and-the-site-renders-without-broken-images",
+      "featureTitle": "Add all missing static image assets referenced by the frontend into the repository under the frontend public assets folder structure (including /assets and /assets/generated) so that a fresh MCP download includes them and the site renders without broken images.",
+      "files": [],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-audit-and-fix-all-frontend-image-references-to-ensure-they-use-correct-absolute-public-paths-e-g-assets-or-assets-generated-and-do-not-depend-on-any-external-temporary-urls-update-any-incorrect-paths-so-images-load-in-both-local-dev-and-production-builds",
+      "featureTitle": "Audit and fix all frontend image references to ensure they use correct absolute public paths (e.g., /assets/... or /assets/generated/...) and do not depend on any external/temporary URLs; update any incorrect paths so images load in both local dev and production builds.",
+      "files": [
+        "frontend/src/components/SiteFooter.tsx",
+        "frontend/src/components/SiteHeader.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-lightweight-frontend-only-validation-check-during-development-documentation-or-a-simple-developer-note-utility-that-lists-the-required-static-asset-paths-used-by-the-app-to-prevent-future-missing-asset-exports",
+      "featureTitle": "Add a lightweight frontend-only validation/check during development (documentation or a simple developer note/utility) that lists the required static asset paths used by the app to prevent future missing-asset exports.",
+      "files": [
+        "frontend/docs/static-assets-checklist.md",
+        "frontend/scripts/list-required-static-assets.mjs",
+        "frontend/src/utils/requiredStaticAssets.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

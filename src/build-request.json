@@ -1,0 +1,111 @@
+{
+  "kind": "build_request",
+  "title": "Restore all missing static images/assets so MCP download matches live preview",
+  "projectName": "MeghRaj Exports",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Add all missing static image assets referenced by the frontend into the repository under the frontend public assets folder structure (including /assets and /assets/generated) so that a fresh MCP download includes them and the site renders without broken images.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "all images are missing"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All image files referenced by src attributes in the current frontend codebase exist on disk under frontend/public at the expected paths (e.g., /assets/... and /assets/generated/...).",
+        "Running the app locally shows no broken image icons on Home, Products, Category, and Subcategory pages.",
+        "A re-run of the MCP download command produces a folder that includes these image files."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Audit and fix all frontend image references to ensure they use correct absolute public paths (e.g., /assets/... or /assets/generated/...) and do not depend on any external/temporary URLs; update any incorrect paths so images load in both local dev and production builds.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "all images are missing"
+        ]
+      },
+      "acceptanceCriteria": [
+        "No <img src> in the app points to an external URL for core site visuals (hero, logo, category banners, placeholders).",
+        "All pages that render category images (ProductsPage, CategoryPage, SubcategoryPage) successfully load images using the product taxonomy image paths.",
+        "Home page hero image loads from the local public asset path."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add a lightweight frontend-only validation/check during development (documentation or a simple developer note/utility) that lists the required static asset paths used by the app to prevent future missing-asset exports.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "all images are missing"
+        ]
+      },
+      "acceptanceCriteria": [
+        "There is a clear, repo-local way for a developer to see which static asset files are required by the current UI (e.g., a documented checklist or a small utility script/runbook).",
+        "The checklist/utility includes at least the hero image, the logo, category banner images, and product placeholder images."
+      ]
+    }
+  ],
+  "constraints": [
+    "Keep the existing single-actor Motoko backend architecture unchanged.",
+    "Do not modify any files under frontend/src/components/ui or any paths listed as immutable in SYSTEM_CONTEXT.",
+    "Use English for any user-facing text."
+  ],
+  "nonGoals": [
+    "Creating a downloadable ZIP export from within the chat (must be done via MCP CLI after assets are restored).",
+    "Adding new product features or changing site structure/routing beyond what is required to fix missing assets."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Premium equestrian hero background photo (home-hero-saddle-editorial.dim_1600x900.png)",
+      "Category banner image featuring saddles (cat-saddles.dim_1200x800.png)",
+      "Category banner image featuring bridles and headgear (cat-bridles-headgear.dim_1200x800.png)",
+      "Category banner image featuring halters and lead ropes (cat-halters-leads.dim_1200x800.png)",
+      "Category banner image featuring girths and cinches (cat-girths-cinches.dim_1200x800.png)",
+      "Category banner image featuring stirrups and equestrian accessories (cat-stirrups-accessories.dim_1200x800.png)",
+      "Category banner image featuring saddle pads and blankets (cat-saddle-pads-blankets.dim_1200x800.png)",
+      "Category banner image featuring breastplates and martingales (cat-breastplates-martingales.dim_1200x800.png)",
+      "Category banner image featuring horse leg protection gear (cat-horse-leg-protection.dim_1200x800.png)",
+      "Category banner image featuring horse rugs and clothing (cat-horse-rugs-clothing.dim_1200x800.png)",
+      "Category banner image featuring grooming and stable accessories (cat-horse-care-stable-accessories.dim_1200x800.png)",
+      "Category banner image featuring bits, spurs, and control gear (cat-bits-spurs-control-gear.dim_1200x800.png)",
+      "Category banner image featuring harness and driving equipment (cat-harness-driving-equipment.dim_1200x800.png)",
+      "Category banner image featuring rider equipment (cat-rider-equipment.dim_1200x800.png)",
+      "Category banner image featuring bags and leather goods (cat-bags-leather-goods.dim_1200x800.png)",
+      "Product placeholder image featuring a saddle (prod-placeholder-saddle.dim_1200x800.png)",
+      "Product placeholder image featuring a bridle/headgear (prod-placeholder-bridle.dim_1200x800.png)",
+      "Product placeholder image featuring leather goods (prod-placeholder-leather.dim_1200x800.png)",
+      "Product placeholder image featuring grooming tools (prod-placeholder-grooming.dim_1200x800.png)",
+      "Product placeholder image featuring textiles/pads/blankets (prod-placeholder-textile.dim_1200x800.png)",
+      "Product placeholder image featuring metal hardware/bits/spurs (prod-placeholder-hardware.dim_1200x800.png)",
+      "Transparent-background company logo image (Screenshot_2026-02-15_at_3.36.48_AM-removebg-preview.dim_800x800.png)"
+    ],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [
+      "Ensure MCP-downloaded codebase includes all static assets so local render matches live preview."
+    ],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [
+      "User reports that all images are missing in the downloaded project."
+    ],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

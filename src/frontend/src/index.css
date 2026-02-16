@@ -1,0 +1,870 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark Navy Base for contrast with white text */
+    --background: oklch(0.12 0.03 240);
+    /* White Text */
+    --foreground: oklch(0.98 0.01 75);
+    /* Dark glass card with transparency */
+    --card: oklch(0.14 0.025 240 / 0.65);
+    --card-foreground: oklch(0.98 0.01 75);
+    --popover: oklch(0.14 0.025 240);
+    --popover-foreground: oklch(0.98 0.01 75);
+    /* Luxury Gold: #C6A75E */
+    --primary: oklch(0.70 0.10 70);
+    --primary-foreground: oklch(0.16 0.03 240);
+    /* Deep Navy Section: #0E2238 */
+    --secondary: oklch(0.16 0.03 240);
+    --secondary-foreground: oklch(0.98 0.01 75);
+    /* Muted backgrounds and text - white with opacity */
+    --muted: oklch(0.18 0.02 240);
+    --muted-foreground: oklch(0.98 0.01 75 / 0.7);
+    /* Hover Gold: #D4B46A */
+    --accent: oklch(0.75 0.09 70);
+    --accent-foreground: oklch(0.16 0.03 240);
+    --destructive: oklch(0.55 0.22 25);
+    --destructive-foreground: oklch(0.98 0.01 75);
+    /* Subtle borders */
+    --border: oklch(0.22 0.02 240);
+    --input: oklch(0.22 0.02 240);
+    --ring: oklch(0.70 0.10 70);
+    --radius: 0.875rem;
+    
+    /* Section-specific backgrounds - all dark for white text */
+    --section-ivory: oklch(0.12 0.03 240);
+    --section-navy-dark: oklch(0.08 0.03 240);
+    --section-charcoal: oklch(0.12 0.02 240);
+    --section-cta-navy: oklch(0.11 0.03 240);
+    --warm-white: oklch(0.98 0.01 75);
+    
+    /* Home Page specific colors - matching live version */
+    --home-deep-navy: oklch(0.12 0.025 240);
+    --home-teal-navy: oklch(0.14 0.03 200);
+    --home-slate: oklch(0.16 0.02 240);
+  }
+
+  .dark {
+    /* Keep dark mode similar for system preference */
+    --background: oklch(0.14 0.025 240);
+    --foreground: oklch(0.98 0.01 75);
+    --card: oklch(0.14 0.025 240 / 0.04);
+    --card-foreground: oklch(0.98 0.01 75);
+    --popover: oklch(0.14 0.025 240);
+    --popover-foreground: oklch(0.98 0.01 75);
+    --primary: oklch(0.70 0.10 70);
+    --primary-foreground: oklch(0.14 0.025 240);
+    --secondary: oklch(0.18 0.03 240);
+    --secondary-foreground: oklch(0.98 0.01 75);
+    --muted: oklch(0.18 0.02 240);
+    --muted-foreground: oklch(0.98 0.01 75 / 0.7);
+    --accent: oklch(0.75 0.09 70);
+    --accent-foreground: oklch(0.14 0.025 240);
+    --destructive: oklch(0.55 0.22 25);
+    --destructive-foreground: oklch(0.98 0.01 240);
+    --border: oklch(0.22 0.02 240);
+    --input: oklch(0.22 0.02 240);
+    --ring: oklch(0.70 0.10 70);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Ensure all form elements inherit white text */
+  input,
+  textarea,
+  select,
+  option {
+    color: oklch(0.98 0.01 75);
+  }
+  
+  /* Placeholder text - white with opacity */
+  input::placeholder,
+  textarea::placeholder {
+    color: oklch(0.98 0.01 75 / 0.5);
+  }
+}
+
+/* ========================================
+   HOME PAGE WRAPPER
+   ======================================== */
+.home-page-wrapper {
+  background: oklch(var(--home-deep-navy));
+  min-height: 100vh;
+}
+
+/* ========================================
+   PRODUCT PAGE WRAPPER - LAYERED GRADIENT
+   ======================================== */
+.product-page-wrapper {
+  background: linear-gradient(180deg, #0b1622 0%, #0f1f2f 50%, #0b1622 100%);
+  min-height: 100vh;
+}
+
+/* ========================================
+   HOME HEADER - GLASS LUXURY STYLE
+   ======================================== */
+.home-header-glass {
+  background: rgba(10, 20, 30, 0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home-header-glass-scrolled {
+  background: rgba(10, 20, 30, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Home nav items - white with gold underline animation */
+.home-nav-item {
+  color: #ffffff;
+  position: relative;
+}
+
+.home-nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: oklch(var(--primary));
+  transform: translateX(-50%);
+  transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home-nav-item:hover::after {
+  width: 48px;
+}
+
+.home-nav-item-active {
+  color: #ffffff;
+  position: relative;
+}
+
+.home-nav-item-active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 48px;
+  height: 2px;
+  background: oklch(var(--primary));
+  transform: translateX(-50%);
+}
+
+/* ========================================
+   HOME HERO SECTION - LIVE VERSION
+   ======================================== */
+.home-hero-overlay {
+  background: linear-gradient(to right, rgba(14, 34, 56, 0.75) 0%, rgba(14, 34, 56, 0.4) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+.home-hero-headline {
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  letter-spacing: -0.02em;
+}
+
+.home-hero-subtext {
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Hero buttons - matching live version exactly */
+.home-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.25rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #0E2238;
+  background: linear-gradient(135deg, #D4B46A 0%, #C6A75E 100%);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(198, 167, 94, 0.3);
+  transition: all 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .home-btn-primary {
+    width: auto;
+    min-width: 200px;
+  }
+}
+
+.home-btn-primary:hover {
+  background: linear-gradient(135deg, #E0C480 0%, #D4B46A 100%);
+  box-shadow: 0 6px 16px rgba(198, 167, 94, 0.4);
+  transform: translateY(-2px);
+}
+
+.home-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.25rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #D4B46A;
+  background: transparent;
+  border: 2px solid #C6A75E;
+  border-radius: 0.5rem;
+  transition: all 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .home-btn-secondary {
+    width: auto;
+    min-width: 200px;
+  }
+}
+
+.home-btn-secondary:hover {
+  background: rgba(198, 167, 94, 0.12);
+  border-color: #D4B46A;
+  color: #E0C480;
+  box-shadow: 0 4px 12px rgba(198, 167, 94, 0.2);
+}
+
+/* ========================================
+   HOME INTRO SECTION - LIVE VERSION
+   ======================================== */
+.home-section-intro {
+  background: #0E2238;
+}
+
+/* ========================================
+   HOME HIGHLIGHTS SECTION - LIVE VERSION
+   ======================================== */
+.home-section-highlights {
+  background: linear-gradient(180deg, #0E2238 0%, #0F2A3E 100%);
+}
+
+.home-highlight-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.03) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(198, 167, 94, 0.3);
+  border-radius: 1.25rem;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 320ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home-highlight-card:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-color: rgba(212, 180, 106, 0.5);
+  box-shadow: 
+    0 12px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px);
+}
+
+.home-icon-badge {
+  background: linear-gradient(135deg, rgba(212, 180, 106, 0.25) 0%, rgba(198, 167, 94, 0.2) 100%);
+  border: 1px solid rgba(198, 167, 94, 0.3);
+  box-shadow: 
+    0 4px 12px rgba(198, 167, 94, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.home-icon-color {
+  color: #D4B46A;
+  filter: drop-shadow(0 2px 4px rgba(198, 167, 94, 0.3));
+}
+
+.home-card-text {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ========================================
+   HOME TRANSITION SECTION
+   ======================================== */
+.home-section-transition {
+  background: linear-gradient(to bottom, #0F2A3E 0%, #12303A 50%, #14364A 100%);
+}
+
+/* ========================================
+   HOME CTA SECTION - LIVE VERSION
+   ======================================== */
+.home-section-cta {
+  background: linear-gradient(180deg, #14364A 0%, #0E2238 100%);
+}
+
+.home-btn-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.125rem 2.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #0E2238;
+  background: linear-gradient(135deg, #D4B46A 0%, #C6A75E 100%);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(198, 167, 94, 0.3);
+  transition: all 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home-btn-cta:hover {
+  background: linear-gradient(135deg, #E0C480 0%, #D4B46A 100%);
+  box-shadow: 0 6px 16px rgba(198, 167, 94, 0.4);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   HOME SCROLL REVEAL ANIMATIONS
+   ======================================== */
+.home-section-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1), transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home-section-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.home-card-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1), transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home-card-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-section-reveal,
+  .home-card-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  
+  .home-section-revealed,
+  .home-card-revealed {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ========================================
+   HOME FOOTER
+   ======================================== */
+.home-footer {
+  background: #08121a;
+  border-top: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.home-footer-logo {
+  filter: brightness(1.1);
+}
+
+.home-footer-heading {
+  color: oklch(var(--primary));
+}
+
+.home-footer-text {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.home-footer-text:hover {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.home-gold-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent 0%, oklch(var(--primary)) 50%, transparent 100%);
+}
+
+/* ========================================
+   PRODUCT PAGE BANNER - CINEMATIC OVERLAY
+   ======================================== */
+.product-banner-overlay {
+  background: rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+}
+
+.product-banner-heading {
+  color: #f5f2ea;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+.product-banner-fade-in {
+  animation: bannerFadeIn 800ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes bannerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-banner-fade-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ========================================
+   CUSTOMIZATION CARD - PREMIUM GLASS
+   ======================================== */
+.customization-card {
+  background: rgba(20, 30, 45, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.customization-card:hover {
+  border-color: rgba(212, 175, 55, 0.25);
+  box-shadow: 0 0 24px rgba(212, 175, 55, 0.08);
+}
+
+.customization-card-text {
+  color: #d6d6d6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .customization-card:hover {
+    box-shadow: none;
+  }
+}
+
+/* ========================================
+   SUBCATEGORY CARDS - DARK GLASS LUXURY
+   ======================================== */
+.subcategory-luxury-card {
+  background: rgba(18, 28, 40, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(11, 22, 34, 0.4);
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.subcategory-luxury-card:hover {
+  background: rgba(18, 28, 40, 0.85);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
+  transform: translateY(-6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .subcategory-luxury-card:hover {
+    transform: none;
+  }
+}
+
+/* ========================================
+   PRODUCT CARDS - DARK GLASS WITH GOLD HOVER
+   ======================================== */
+.product-luxury-card {
+  background: rgba(18, 28, 40, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(11, 22, 34, 0.4);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.product-luxury-card:hover {
+  background: rgba(18, 28, 40, 0.85);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
+  transform: scale(1.02);
+}
+
+.product-luxury-card-title {
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-luxury-card:hover .product-luxury-card-title {
+  color: oklch(var(--primary));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-luxury-card:hover {
+    transform: none;
+  }
+}
+
+/* ========================================
+   PRODUCT DETAIL MODAL - GLASS PANEL
+   ======================================== */
+.modal-overlay {
+  animation: modalOverlayFadeIn 300ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes modalOverlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-backdrop {
+  background: rgba(11, 22, 34, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-glass-panel {
+  background: rgba(18, 28, 40, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 1.25rem;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+}
+
+.modal-panel {
+  animation: modalPanelFadeIn 400ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes modalPanelFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent 0%, rgba(212, 175, 55, 0.4) 50%, transparent 100%);
+}
+
+.modal-description-text {
+  color: #d6d6d6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-overlay,
+  .modal-panel {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ========================================
+   GLASS CARD STYLES (NON-HOME PAGES)
+   ======================================== */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(198, 167, 94, 0.2);
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: all 300ms ease;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(198, 167, 94, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.glass-card-hover {
+  background: rgba(18, 28, 40, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(11, 22, 34, 0.4);
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card-hover:hover {
+  background: rgba(18, 28, 40, 0.85);
+  border-color: rgba(212, 175, 55, 0.35);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
+  transform: translateY(-4px);
+}
+
+.glass-card-static {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(198, 167, 94, 0.2);
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   PRODUCT CARD STYLES
+   ======================================== */
+.product-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(198, 167, 94, 0.2);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 300ms ease;
+}
+
+.product-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(198, 167, 94, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+}
+
+.product-card-image {
+  transition: transform 400ms ease;
+}
+
+.product-card:hover .product-card-image {
+  transform: scale(1.05);
+}
+
+.product-card-title {
+  transition: color 250ms ease;
+}
+
+.product-card:hover .product-card-title {
+  color: oklch(var(--primary));
+}
+
+/* ========================================
+   CATEGORY CARD STYLES
+   ======================================== */
+.category-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(198, 167, 94, 0.2);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 300ms ease;
+}
+
+.category-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(198, 167, 94, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+}
+
+.category-card-image {
+  transition: transform 400ms ease;
+}
+
+.category-card:hover .category-card-image {
+  transform: scale(1.05);
+}
+
+.category-card-title {
+  transition: color 250ms ease;
+}
+
+.category-card:hover .category-card-title {
+  color: oklch(var(--primary));
+}
+
+/* ========================================
+   FORM STYLES
+   ======================================== */
+.form-input {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(198, 167, 94, 0.2);
+  color: rgba(255, 255, 255, 0.95);
+  transition: all 250ms ease;
+}
+
+.form-input:focus {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: oklch(var(--primary));
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(198, 167, 94, 0.1);
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.form-label {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 500;
+}
+
+.form-helper {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ========================================
+   SECTION BACKGROUNDS
+   ======================================== */
+.section-ivory {
+  background: oklch(var(--section-ivory));
+}
+
+.section-navy-dark {
+  background: oklch(var(--section-navy-dark));
+}
+
+.section-charcoal {
+  background: oklch(var(--section-charcoal));
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+.text-balance {
+  text-wrap: balance;
+}
+
+.gold-bullet {
+  color: oklch(var(--primary));
+}
+
+.gold-accent {
+  color: oklch(var(--primary));
+}
+
+.gold-border {
+  border-color: oklch(var(--primary));
+}
+
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent 0%, rgba(212, 175, 55, 0.4) 50%, transparent 100%);
+}
+
+.gold-divider-muted {
+  height: 1px;
+  background: linear-gradient(to right, transparent 0%, rgba(212, 175, 55, 0.2) 50%, transparent 100%);
+}
+
+.gold-divider-thick {
+  height: 3px;
+  background: linear-gradient(to right, transparent 0%, oklch(var(--primary)) 50%, transparent 100%);
+}
+
+/* ========================================
+   SCROLL REVEAL ANIMATIONS (GLOBAL)
+   ======================================== */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.product-card-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1), transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll,
+  .product-card-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  
+  .reveal-on-scroll.revealed,
+  .product-card-revealed {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ========================================
+   RESPONSIVE UTILITIES
+   ======================================== */
+@media (max-width: 768px) {
+  .home-hero-headline {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
+  
+  .home-hero-subtext {
+    font-size: 1rem;
+  }
+}
+
+/* ========================================
+   BUTTON STYLES (SHARED)
+   ======================================== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0E2238;
+  background: linear-gradient(135deg, #D4B46A 0%, #C6A75E 100%);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(198, 167, 94, 0.3);
+  transition: all 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #E0C480 0%, #D4B46A 100%);
+  box-shadow: 0 6px 16px rgba(198, 167, 94, 0.4);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary:hover {
+    transform: none;
+  }
+}

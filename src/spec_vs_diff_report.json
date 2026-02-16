@@ -1,0 +1,38 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-16T21:28:32.525Z",
+  "summary": "Added a centralized required-asset list, developer checklist doc, and a verification script; updated header/footer logo paths. However, the diff does not show the actual static image files being added under frontend/public, and it does not provide evidence that all image references across the app were audited/fixed beyond the header/footer logo.",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "Add all missing static image assets referenced by the frontend into the repository under frontend/public (including /assets and /assets/generated) so MCP downloads include them and pages render without broken images.",
+      "reason": "The diff shows new docs/utilities that *list* required asset paths, but it does not show any image files added under frontend/public (e.g., frontend/public/assets/generated/*.png). Without the actual binary assets being committed, the acceptance criteria that referenced src paths exist on disk cannot be confirmed from this diff.",
+      "evidence": [
+        "frontend/src/utils/requiredStaticAssets.ts",
+        "frontend/docs/static-assets-checklist.md",
+        "frontend/scripts/list-required-static-assets.mjs"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "requirement": "Audit and fix all frontend image references to use correct absolute public paths (/assets/... or /assets/generated/...) and remove reliance on external/temporary URLs for core visuals (hero, logo, category banners, placeholders).",
+      "reason": "The diff provides evidence of logo src updates in SiteHeader and SiteFooter, but it does not show changes (or confirmation) for other key pages/components called out in the AC (Home hero, Products/Category/Subcategory pages, taxonomy-driven category images, placeholders). No evidence is provided that external URLs were eliminated across the app or that all relevant <img src> paths were corrected.",
+      "evidence": [
+        "frontend/src/components/SiteHeader.tsx",
+        "frontend/src/components/SiteFooter.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [],
+  "confidence": 0.74,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/docs/static-assets-checklist.md",
+    "frontend/scripts/list-required-static-assets.mjs",
+    "frontend/src/components/SiteFooter.tsx",
+    "frontend/src/components/SiteHeader.tsx",
+    "frontend/src/utils/requiredStaticAssets.ts",
+    "project_state.json"
+  ]
+}

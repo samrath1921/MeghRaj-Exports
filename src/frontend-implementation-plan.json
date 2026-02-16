@@ -1,0 +1,189 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Restore and validate static image assets for offline MCP downloads",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Add all missing static image assets into frontend/public so the app renders without broken images after MCP download.",
+      "acceptanceCriteria": [
+        "All image files referenced by src attributes in the current frontend codebase exist on disk under frontend/public at the expected paths (e.g., /assets/... and /assets/generated/...).",
+        "Running the app locally shows no broken image icons on Home, Products, Category, and Subcategory pages.",
+        "A re-run of the MCP download command produces a folder that includes these image files."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/home-hero-saddle-editorial.dim_1600x900.png",
+          "operation": "create",
+          "description": "Add the required hero image asset to the public generated assets folder so HomePage loads without broken images."
+        },
+        {
+          "path": "frontend/public/assets/generated/cat-saddles.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add category banner image for Saddles to match product taxonomy references."
+        },
+        {
+          "path": "frontend/public/assets/generated/cat-bridles-headgear.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add category banner image for Bridles & Headgear to match product taxonomy references."
+        },
+        {
+          "path": "frontend/public/assets/generated/cat-halters-leads.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add category banner image for Halters & Leads to match product taxonomy references."
+        },
+        {
+          "path": "frontend/public/assets/generated/cat-girths-cinches.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add category banner image for Girths & Cinches to match product taxonomy references."
+        },
+        {
+          "path": "frontend/public/assets/generated/cat-stirrups-accessories.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add category banner image for Stirrups & Accessories to match product taxonomy references."
+        },
+        {
+          "path": "frontend/public/assets/generated/cat-saddle-pads-blankets.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add category banner image for Saddle Pads & Blankets to match product taxonomy references."
+        },
+        {
+          "path": "frontend/public/assets/generated/cat-breastplates-martingales.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add category banner image for Breastplates & Martingales to match product taxonomy references."
+        },
+        {
+          "path": "frontend/public/assets/generated/cat-horse-leg-protection.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add category banner image for Horse Leg Protection to match product taxonomy references."
+        },
+        {
+          "path": "frontend/public/assets/generated/cat-horse-rugs-clothing.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add category banner image for Horse Rugs & Clothing to match product taxonomy references."
+        },
+        {
+          "path": "frontend/public/assets/generated/cat-horse-care-stable-accessories.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add category banner image for Horse Care & Stable Accessories to match product taxonomy references."
+        },
+        {
+          "path": "frontend/public/assets/generated/cat-bits-spurs-control-gear.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add category banner image for Bits, Spurs & Control Gear to match product taxonomy references."
+        },
+        {
+          "path": "frontend/public/assets/generated/cat-harness-driving-equipment.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add category banner image for Harness & Driving Equipment to match product taxonomy references."
+        },
+        {
+          "path": "frontend/public/assets/generated/cat-rider-equipment.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add category banner image for Rider Equipment to match product taxonomy references."
+        },
+        {
+          "path": "frontend/public/assets/generated/cat-bags-leather-goods.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add category banner image for Bags & Leather Goods to match product taxonomy references."
+        },
+        {
+          "path": "frontend/public/assets/generated/prod-placeholder-saddle.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add product placeholder image for saddles used by SubcategoryCard and SubcategoryPage quick view details."
+        },
+        {
+          "path": "frontend/public/assets/generated/prod-placeholder-bridle.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add product placeholder image for bridles/headgear used by SubcategoryCard and SubcategoryPage quick view details."
+        },
+        {
+          "path": "frontend/public/assets/generated/prod-placeholder-leather.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add product placeholder image for leather goods used by SubcategoryCard and SubcategoryPage quick view details."
+        },
+        {
+          "path": "frontend/public/assets/generated/prod-placeholder-grooming.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add product placeholder image for grooming/stable accessories used by SubcategoryCard and SubcategoryPage quick view details."
+        },
+        {
+          "path": "frontend/public/assets/generated/prod-placeholder-textile.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add product placeholder image for textiles/pads/blankets used by SubcategoryCard and SubcategoryPage quick view details."
+        },
+        {
+          "path": "frontend/public/assets/generated/prod-placeholder-hardware.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add product placeholder image for bits/spurs/hardware used by SubcategoryCard and SubcategoryPage quick view details."
+        },
+        {
+          "path": "frontend/public/assets/generated/Screenshot_2026-02-15_at_3.36.48_AM-removebg-preview.dim_800x800.png",
+          "operation": "create",
+          "description": "Add the required transparent-background company logo image into the generated public assets folder for consistent local/prod rendering."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Audit and fix frontend image src references to use correct absolute public paths and avoid external/temporary URLs.",
+      "acceptanceCriteria": [
+        "No <img src> in the app points to an external URL for core site visuals (hero, logo, category banners, placeholders).",
+        "All pages that render category images (ProductsPage, CategoryPage, SubcategoryPage) successfully load images using the product taxonomy image paths.",
+        "Home page hero image loads from the local public asset path."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/SiteHeader.tsx",
+          "operation": "modify",
+          "description": "Update the logo <img src> to use an absolute local public path under /assets/generated, specifically /assets/generated/Screenshot_2026-02-15_at_3.36.48_AM-removebg-preview.dim_800x800.png, ensuring it does not rely on any missing or temporary asset path."
+        },
+        {
+          "path": "frontend/src/components/SiteFooter.tsx",
+          "operation": "modify",
+          "description": "Update the footer logo <img src> to use an absolute local public path under /assets/generated, specifically /assets/generated/Screenshot_2026-02-15_at_3.36.48_AM-removebg-preview.dim_800x800.png, ensuring it does not rely on any missing or temporary asset path."
+        },
+        {
+          "path": "frontend/src/data/productTaxonomy.ts",
+          "operation": "modify",
+          "description": "Audit and normalize category image paths to ensure every category image is an absolute public path under /assets/generated (and matches the files present under frontend/public/assets/generated), without introducing external URLs."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Confirm the hero <img src> uses the absolute local public path /assets/generated/home-hero-saddle-editorial.dim_1600x900.png and adjust if any non-public or temporary path is present."
+        },
+        {
+          "path": "frontend/src/components/SubcategoryCard.tsx",
+          "operation": "modify",
+          "description": "Audit placeholder image selection to ensure all returned placeholder paths are absolute public paths under /assets/generated and match files present on disk (prod-placeholder-*.dim_1200x800.png)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Provide a repo-local developer checklist/utility to enumerate required static asset paths used by the UI during development.",
+      "acceptanceCriteria": [
+        "There is a clear, repo-local way for a developer to see which static asset files are required by the current UI (e.g., a documented checklist or a small utility script/runbook).",
+        "The checklist/utility includes at least the hero image, the logo, category banner images, and product placeholder images."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/docs/static-assets-checklist.md",
+          "operation": "create",
+          "description": "Create a developer-facing checklist/runbook documenting all required static asset paths used by the UI, including: /assets/generated/home-hero-saddle-editorial.dim_1600x900.png, /assets/generated/Screenshot_2026-02-15_at_3.36.48_AM-removebg-preview.dim_800x800.png, all cat-*.dim_1200x800.png category banners, and all prod-placeholder-*.dim_1200x800.png placeholder images."
+        },
+        {
+          "path": "frontend/scripts/list-required-static-assets.mjs",
+          "operation": "create",
+          "description": "Add a lightweight Node script that prints (and optionally verifies existence of) the required public asset file paths referenced by the app so developers can quickly detect missing assets before exporting/downloading."
+        },
+        {
+          "path": "frontend/src/utils/requiredStaticAssets.ts",
+          "operation": "create",
+          "description": "Centralize a typed list of required public asset paths (hero, logo, category banners, product placeholders) that can be imported by the dev script/documentation to keep the list in sync with the UI."
+        }
+      ]
+    }
+  ]
+}
