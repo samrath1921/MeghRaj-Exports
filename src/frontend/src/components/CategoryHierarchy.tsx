@@ -70,26 +70,26 @@ function SubcategoryButton({ subcategory, onClick, index }: SubcategoryButtonPro
       }
     >
       <div className="flex items-start justify-between mb-4">
-        <h3 className="text-xl md:text-2xl font-serif font-semibold text-foreground transition-colors duration-300 group-hover:text-primary">
+        <h3 className="text-xl md:text-2xl font-serif font-semibold text-foreground transition-colors duration-300 group-hover:text-primary text-white">
           {subcategory.name}
         </h3>
-        <ChevronRight className="h-6 w-6 text-primary flex-shrink-0 ml-2" />
+        <ChevronRight className="h-6 w-6 text-primary flex-shrink-0 ml-2 text-white" />
       </div>
 
       {subcategory.productTypes.length > 0 && (
         <div className="space-y-2">
-          <p className="text-sm font-medium text-muted-foreground mb-3">
+          <p className="text-sm font-medium text-muted-foreground mb-3 text-white">
             Product Types:
           </p>
           <ul className="space-y-2">
             {subcategory.productTypes.slice(0, 4).map((productType, idx) => (
               <li key={idx} className="flex items-start text-sm text-muted-foreground">
                 <span className="mr-2 mt-1.5 h-1.5 w-1.5 rounded-full flex-shrink-0 bg-primary" />
-                <span className="leading-relaxed">{productType.name}</span>
+                <span className="leading-relaxed text-white">{productType.name}</span>
               </li>
             ))}
             {subcategory.productTypes.length > 4 && (
-              <li className="text-sm text-primary font-medium ml-4">
+              <li className="text-sm text-primary font-medium ml-4 text-white">
                 +{subcategory.productTypes.length - 4} more
               </li>
             )}

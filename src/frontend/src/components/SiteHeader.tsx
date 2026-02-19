@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useRouterState } from '@tanstack/react-router';
 import { Menu, X } from 'lucide-react';
+import Image from "../assets/generated/HOME_PAGE/MEGHRAJ_LOGO.png";
 
 export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -36,7 +37,7 @@ export default function SiteHeader() {
   };
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       scrolled ? 'home-header-glass-scrolled' : 'home-header-glass'
     }`}>
       <div className="container mx-auto px-4 lg:px-6">
@@ -47,7 +48,7 @@ export default function SiteHeader() {
             className="flex items-center gap-3 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
           >
             <img 
-              src="/assets/generated/Screenshot_2026-02-15_at_3.36.48_AM-removebg-preview.dim_800x800.png" 
+              src={Image} 
               alt="MeghRaj Exports" 
               className="h-40 w-auto md:h-44 object-contain"
             />

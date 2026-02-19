@@ -49,7 +49,7 @@ export default function CategoryPage() {
         <div className="absolute inset-0 product-banner-overlay" />
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
           <div className="container mx-auto">
-            <h1 className="font-serif font-bold product-banner-heading">
+            <h1 className="text-3xl md:text-4xl font-serif font-semibold text-foreground text-white product-banner-heading">
               {category.name}
             </h1>
           </div>
@@ -62,7 +62,7 @@ export default function CategoryPage() {
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <button
               onClick={() => navigate({ to: '/products' })}
-              className="inline-flex items-center text-muted-foreground transition-colors hover:text-primary font-medium"
+              className="inline-flex items-center text-muted-foreground transition-colors hover:text-primary font-medium text-white"
             >
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Products
@@ -77,7 +77,7 @@ export default function CategoryPage() {
 
           {/* Customization Note - Premium Glass Card */}
           <div className="mb-16 customization-card border-l-2 border-primary">
-            <h2 className="mb-4 text-2xl font-serif font-semibold text-foreground">
+            <h2 className="mb-4 text-2xl font-serif font-semibold text-foreground text-white">
               Customization Available
             </h2>
             <p className="text-base leading-relaxed customization-card-text">
@@ -90,7 +90,7 @@ export default function CategoryPage() {
           {/* Subcategories */}
           <div>
             <div className="mb-10 flex items-center gap-4">
-              <h2 className="text-3xl md:text-4xl font-serif font-semibold text-foreground">
+              <h2 className="text-3xl md:text-4xl font-serif font-semibold text-foreground text-white">
                 Subcategories
               </h2>
               <div className="flex-1 gold-divider-muted" />

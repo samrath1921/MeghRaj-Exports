@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useActor } from './useActor';
 import type { Inquiry } from '../backend';
+import { sendInquiryEmail } from '../utils/inquiryEmail';
 
 interface InquiryFormData {
   name: string;
@@ -31,6 +32,15 @@ export function useSubmitInquiry() {
         data.category,
         data.message
       );
+
+      try {
+        await sendInquiryEmail(data);
+      } catch (error) {
+        // Keep inquiry persisted in backend; report email failure explicitly.
+        const message =
+          error instanceof Error ? error.message : 'Inquiry saved, but email sending failed.';
+        throw new Error(`Inquiry saved, but email sending failed: ${message}`);
+      }
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['inquiries'] });

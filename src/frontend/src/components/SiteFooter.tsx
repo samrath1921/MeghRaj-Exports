@@ -1,4 +1,5 @@
 import { Heart } from 'lucide-react';
+import Image from "../assets/generated/HOME_PAGE/MEGHRAJ_LOGO_Complete.png"
 
 export default function SiteFooter() {
   const currentYear = new Date().getFullYear();
@@ -13,11 +14,11 @@ export default function SiteFooter() {
           {/* Company Info */}
           <div>
             <img 
-              src="/assets/generated/Screenshot_2026-02-15_at_3.36.48_AM-removebg-preview.dim_800x800.png" 
+              src={Image}
               alt="MeghRaj Exports" 
               className="h-32 w-auto mb-6 object-contain home-footer-logo"
             />
-            <h3 className="mb-4 text-lg font-serif font-semibold home-footer-heading">
+            <h3 className="mb-4 text-lg text-gray-300 hover:text-white">
               MeghRaj Exports
             </h3>
             <p className="text-sm leading-relaxed home-footer-text">
@@ -28,7 +29,7 @@ export default function SiteFooter() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="mb-4 text-lg font-serif font-semibold home-footer-heading">Quick Links</h3>
+            <h3 className="mb-4 text-lg text-gray-300 hover:text-white">Quick Links</h3>
             <ul className="space-y-2">
               <li>
                 <a
@@ -67,11 +68,11 @@ export default function SiteFooter() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="mb-4 text-lg font-serif font-semibold home-footer-heading">Contact</h3>
+            <h3 className="mb-4 text-lg text-gray-300 hover:text-white">Contact</h3>
             <ul className="space-y-2 text-sm home-footer-text">
               <li>Email: info@meghrajexports.com</li>
-              <li>Phone: +91 [Contact Number]</li>
-              <li>Location: India</li>
+              <li>Phone: +91 96966 97000</li>
+              <li>Location: E-1A, Industrial Area, Jalandhar, Punjab (144004) - India</li>
             </ul>
           </div>
         </div>
@@ -81,17 +82,6 @@ export default function SiteFooter() {
         <div className="mt-8 flex flex-col items-center justify-between gap-4 text-sm home-footer-text md:flex-row">
           <p>© {currentYear} MeghRaj Exports. All rights reserved.</p>
           <p className="flex items-center gap-1">
-            Built with{' '}
-            <Heart className="h-4 w-4 fill-primary text-primary" />{' '}
-            using{' '}
-            <a
-              href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${appIdentifier}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:opacity-80 home-footer-heading"
-            >
-              caffeine.ai
-            </a>
           </p>
         </div>
       </div>

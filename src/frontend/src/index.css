@@ -135,6 +135,10 @@
   position: relative;
 }
 
+.home-nav-item:hover {
+  color: #D4B46A;
+}
+
 .home-nav-item::after {
   content: '';
   position: absolute;
@@ -152,7 +156,7 @@
 }
 
 .home-nav-item-active {
-  color: #ffffff;
+  color: #D4B46A;
   position: relative;
 }
 
@@ -249,7 +253,8 @@
    HOME INTRO SECTION - LIVE VERSION
    ======================================== */
 .home-section-intro {
-  background: #0E2238;
+  background: linear-gradient(180deg, #14364A 0%, #0E2238 100%);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
 }
 
 /* ========================================
@@ -268,7 +273,7 @@
   box-shadow: 
     0 8px 24px rgba(0, 0, 0, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  transition: all 320ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 320ms cubic-bezier(0.4, 0, 0.2, 1);  
 }
 
 .home-highlight-card:hover {
@@ -302,6 +307,7 @@
    ======================================== */
 .home-section-transition {
   background: linear-gradient(to bottom, #0F2A3E 0%, #12303A 50%, #14364A 100%);
+  border-top: 1px solid rgba(212, 175, 55, 0.3); 
 }
 
 /* ========================================
@@ -309,6 +315,8 @@
    ======================================== */
 .home-section-cta {
   background: linear-gradient(180deg, #14364A 0%, #0E2238 100%);
+  border-top: 1px solid rgba(212, 175, 55, 0.3);
+
 }
 
 .home-btn-cta {

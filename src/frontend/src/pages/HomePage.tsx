@@ -2,6 +2,7 @@ import { useNavigate } from '@tanstack/react-router';
 import { ArrowRight, Award, Globe, Wrench } from 'lucide-react';
 import { useRevealOnce } from '../hooks/useRevealOnce';
 import { useParallax } from '../hooks/useParallax';
+import Image from "../assets/generated/HOME_PAGE/saddle_hero_image.png"
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ export default function HomePage() {
       <section className="relative h-[85vh] md:h-[90vh] overflow-hidden -mt-24">
         <div ref={parallaxRef} className="absolute inset-0 w-full h-[110vh]">
           <img
-            src="/assets/generated/home-hero-saddle-editorial.dim_1600x900.png"
+            src={Image}
             alt="Premium equestrian equipment"
             className="absolute inset-0 h-full w-full object-cover"
           />
@@ -58,7 +59,7 @@ export default function HomePage() {
       {/* Introduction Section */}
       <section
         ref={craftingSection.ref}
-        className={`home-section-intro py-24 md:py-32 home-section-reveal ${
+        className={`home-section-intro py-28 md:py-36 home-section-reveal ${
           craftingSection.isRevealed ? 'home-section-revealed' : ''
         }`}
       >
@@ -146,8 +147,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Transition Section */}
-      <section className="home-section-transition py-20" />
+      {/* Transition Section
+      <section className="home-section-transition py-20" /> */}
 
       {/* CTA Section */}
       <section

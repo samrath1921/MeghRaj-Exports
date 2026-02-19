@@ -66,21 +66,21 @@ export default function ProductQuickViewModal({
 
         <div className="grid gap-8 md:grid-cols-2 p-8">
           {/* Image */}
-          <div className="aspect-square overflow-hidden rounded-lg bg-primary/10">
+          <div className="overflow-hidden rounded-lg bg-primary/10 text-white flex items-center justify-center">
             <img
               src={product.image}
               alt={product.name}
-              className="h-full w-full object-cover"
+              className="max-h-[70vh] w-full object-contain"
             />
           </div>
 
           {/* Content */}
           <div className="flex flex-col">
-            <h2 className="mb-4 text-3xl font-serif font-bold text-foreground">
+            <h2 className="mb-4 text-center text-3xl font-serif font-bold text-foreground text-white">
               {product.name}
             </h2>
 
-            <div className="mb-6 modal-divider" />
+            <div className="mx-auto mb-6 w-full modal-divider" />
 
             <p className="mb-6 text-base leading-relaxed modal-description-text">
               {product.description}
@@ -88,7 +88,7 @@ export default function ProductQuickViewModal({
 
             {product.features.length > 0 && (
               <div className="mb-8">
-                <h3 className="mb-3 text-lg font-serif font-semibold text-foreground">
+                <h3 className="mb-3 text-lg font-serif font-semibold text-foreground text-white">
                   Key Features
                 </h3>
                 <ul className="space-y-2">

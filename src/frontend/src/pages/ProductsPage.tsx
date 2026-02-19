@@ -23,7 +23,7 @@ export default function ProductsPage() {
             <button
               key={category.slug}
               onClick={() => navigate({ to: '/products/$categorySlug', params: { categorySlug: category.slug } })}
-              className="home-highlight-card group relative overflow-hidden text-left"
+              className="home-highlight-card group relative overflow-hidden text-center"
             >
               <div className="aspect-[4/3] overflow-hidden">
                 <img
@@ -36,9 +36,6 @@ export default function ProductsPage() {
                 <h2 className="text-xl md:text-2xl font-serif font-semibold text-white transition-colors duration-300 group-hover:text-primary">
                   {category.name}
                 </h2>
-                <p className="mt-3 text-sm text-white/70">
-                  {category.subcategories.length} subcategories
-                </p>
               </div>
             </button>
           ))}
