@@ -3,6 +3,12 @@ import { useSearch } from '@tanstack/react-router';
 import { useSubmitInquiry } from '../hooks/useQueries';
 import { productCategories } from '../data/productTaxonomy';
 import { Mail, MessageSquare, CheckCircle } from 'lucide-react';
+import {
+  isValidCountryName,
+  isValidWhatsappLocalNumber,
+  normalizePhoneDigits,
+} from '../utils/validation';
+import { countryDialCodes } from '../utils/countryDialCodes';
 
 export default function ContactPage() {
   const search = useSearch({ from: '/contact' });
@@ -13,7 +19,8 @@ export default function ContactPage() {
     company: '',
     country: '',
     email: '',
-    whatsapp: '',
+    whatsappCode: '',
+    whatsappNumber: '',
     category: prefilledCategory,
     message: '',
   });
@@ -33,11 +40,23 @@ export default function ContactPage() {
     const newErrors: Record<string, string> = {};
 
     if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.country.trim()) newErrors.country = 'Country is required';
+    if (!formData.country.trim()) {
+      newErrors.country = 'Country is required';
+    } else if (!isValidCountryName(formData.country)) {
+      newErrors.country = 'Please enter a valid country name';
+    }
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Please enter a valid email';
+    }
+    if (formData.whatsappNumber.trim()) {
+      if (!formData.whatsappCode) {
+        newErrors.whatsappCode = 'Please select country code first';
+      }
+      if (!isValidWhatsappLocalNumber(formData.whatsappNumber)) {
+        newErrors.whatsappNumber = 'Please enter a valid WhatsApp number';
+      }
     }
     if (!formData.category) newErrors.category = 'Please select a product category';
     if (!formData.message.trim()) newErrors.message = 'Message is required';
@@ -52,14 +71,28 @@ export default function ContactPage() {
     if (!validateForm()) return;
 
     try {
-      await submitInquiry.mutateAsync(formData);
+      const whatsapp =
+        formData.whatsappCode && formData.whatsappNumber.trim()
+          ? `${formData.whatsappCode}${normalizePhoneDigits(formData.whatsappNumber)}`
+          : '';
+
+      await submitInquiry.mutateAsync({
+        name: formData.name,
+        company: formData.company,
+        country: formData.country,
+        email: formData.email,
+        whatsapp,
+        category: formData.category,
+        message: formData.message,
+      });
       setSubmitted(true);
       setFormData({
         name: '',
         company: '',
         country: '',
         email: '',
-        whatsapp: '',
+        whatsappCode: '',
+        whatsappNumber: '',
         category: '',
         message: '',
       });
@@ -212,21 +245,55 @@ export default function ContactPage() {
 
                 <div className="grid gap-6 sm:grid-cols-2">
                   <div>
-                    <label
-                      htmlFor="whatsapp"
-                      className="mb-2 block text-sm font-medium text-white"
-                    >
-                      WhatsApp Number
+                    <label className="mb-2 block text-sm font-medium text-white">
+                      WhatsApp Number (Optional)
                     </label>
-                    <input
-                      type="text"
-                      id="whatsapp"
-                      name="whatsapp"
-                      value={formData.whatsapp}
-                      onChange={handleChange}
-                      placeholder="+1234567890"
-                      className="w-full rounded-xl border border-input bg-background px-4 py-3 text-white transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
-                    />
+                    <div className="grid grid-cols-[110px_1fr] gap-3">
+                      <div className="relative min-w-0">
+                        <select
+                          id="whatsappCode"
+                          name="whatsappCode"
+                          value={formData.whatsappCode}
+                          onChange={handleChange}
+                          className={`h-12 w-full rounded-xl border ${
+                            errors.whatsappCode ? 'border-destructive' : 'border-input'
+                          } appearance-none bg-background px-3 pr-12 text-transparent transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
+                        >
+                          <option value="">Country Code</option>
+                          {countryDialCodes.map((item) => (
+                            <option key={`${item.country}-${item.dialCode}`} value={item.dialCode}>
+                              {item.country} ({item.dialCode})
+                            </option>
+                          ))}
+                        </select>
+                        <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-white">
+                          {formData.whatsappCode || 'Country Code'}
+                        </span>
+                        <span className="pointer-events-none absolute right-2 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-lg border border-input text-white/85">
+                          <span className="text-xs">▾</span>
+                        </span>
+                        {errors.whatsappCode && (
+                          <p className="mt-1 text-sm text-destructive">{errors.whatsappCode}</p>
+                        )}
+                      </div>
+
+                      <div className="min-w-0">
+                        <input
+                          type="tel"
+                          id="whatsappNumber"
+                          name="whatsappNumber"
+                          value={formData.whatsappNumber}
+                          onChange={handleChange}
+                          placeholder="Phone number"
+                          className={`h-12 w-full rounded-xl border ${
+                            errors.whatsappNumber ? 'border-destructive' : 'border-input'
+                          } bg-background px-4 text-white transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
+                        />
+                        {errors.whatsappNumber && (
+                          <p className="mt-1 text-sm text-destructive">{errors.whatsappNumber}</p>
+                        )}
+                      </div>
+                    </div>
                   </div>
 
                   <div>
@@ -241,9 +308,9 @@ export default function ContactPage() {
                       name="category"
                       value={formData.category}
                       onChange={handleChange}
-                      className={`w-full rounded-xl border ${
+                      className={`h-12 w-full rounded-xl border ${
                         errors.category ? 'border-destructive' : 'border-input'
-                      } bg-background px-4 py-3 text-white transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
+                      } bg-background px-4 text-white transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
                     >
                       <option value="">Select a category</option>
                       {categoryOptions.map((cat) => (
