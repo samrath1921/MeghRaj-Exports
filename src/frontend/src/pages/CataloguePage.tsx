@@ -85,7 +85,6 @@ export default function CataloguePage() {
       });
       setErrors({});
     } catch (error) {
-      // Extract backend error message if available
       let errorMessage = 'Failed to submit request. Please try again.';
       if (error instanceof Error) {
         errorMessage = error.message;

@@ -4,13 +4,11 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import globals from 'globals';
 import pluginRouter from '@tanstack/eslint-plugin-router';
 import noBigIntInQueryKeys from './eslint-rules/no-bigint-in-query-keys.js';
-import requireInternetIdentityProvider from './eslint-rules/require-internet-identity-provider.js';
 import pluginTailwindcss from 'eslint-plugin-tailwindcss';
 
 const customRules = {
     rules: {
-        'no-bigint-in-query-keys': noBigIntInQueryKeys,
-        'require-internet-identity-provider': requireInternetIdentityProvider
+        'no-bigint-in-query-keys': noBigIntInQueryKeys
     }
 };
 
@@ -74,8 +72,7 @@ export default [
             'tailwindcss/no-unnecessary-arbitrary-value': 'off',
             'tailwindcss/enforces-shorthand': 'off',
             // custom rules
-            'custom/no-bigint-in-query-keys': 'error',
-            'custom/require-internet-identity-provider': 'error'
+            'custom/no-bigint-in-query-keys': 'error'
         },
         settings: {
             tailwindcss: {

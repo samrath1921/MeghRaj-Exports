@@ -98,7 +98,6 @@ export default function ContactPage() {
       });
       setErrors({});
     } catch (error) {
-      // Extract backend error message if available
       let errorMessage = 'Failed to submit inquiry. Please try again.';
       if (error instanceof Error) {
         errorMessage = error.message;

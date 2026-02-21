@@ -2068,9 +2068,6 @@ video {
 .ease-linear {
   animation-timing-function: linear;
 }
-.running {
-  animation-play-state: running;
-}
 .\[--cell-size\:--spacing\(8\)\] {
   --cell-size: var(--spacing(8));
 }
