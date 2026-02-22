@@ -1,4 +1,5 @@
 import { RouterProvider, createRouter, createRoute, createRootRoute } from '@tanstack/react-router';
+import { Analytics } from '@vercel/analytics/react';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ProductsPage from './pages/ProductsPage';
@@ -73,5 +74,10 @@ declare module '@tanstack/react-router' {
 }
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+      <Analytics />
+    </>
+  );
 }
