@@ -17,7 +17,7 @@ export default function HomePage() {
   return (
     <div className="home-page-wrapper">
       {/* Hero Section */}
-      <section className="relative h-[85vh] md:h-[90vh] overflow-hidden -mt-24">
+      <section className="relative h-[85vh] md:h-[90vh] overflow-hidden">
         <div ref={parallaxRef} className="absolute inset-0 w-full h-[110vh]">
           <img
             src={Image}
@@ -27,7 +27,7 @@ export default function HomePage() {
         </div>
         <div className="absolute inset-0 home-hero-overlay" />
         
-        <div className="relative flex h-full items-center pt-24">
+        <div className="relative flex h-full items-center">
           <div className="container mx-auto px-4 lg:px-6">
             <div className="max-w-3xl">
               <h1 className="mb-6 font-serif font-bold leading-tight home-hero-headline">

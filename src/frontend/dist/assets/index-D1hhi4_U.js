@@ -19710,7 +19710,7 @@ function HomePage() {
   const card3 = useRevealOnce();
   const ctaSection = useRevealOnce();
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "home-page-wrapper", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "relative h-[85vh] md:h-[90vh] overflow-hidden -mt-24", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "relative h-[85vh] md:h-[90vh] overflow-hidden", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { ref: parallaxRef, className: "absolute inset-0 w-full h-[110vh]", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
         "img",
         {
@@ -19720,7 +19720,7 @@ function HomePage() {
         }
       ) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 home-hero-overlay" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "relative flex h-full items-center pt-24", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "container mx-auto px-4 lg:px-6", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-3xl", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "relative flex h-full items-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "container mx-auto px-4 lg:px-6", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-3xl", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "mb-6 font-serif font-bold leading-tight home-hero-headline", children: "Premium Equestrian Excellence" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mb-10 text-lg md:text-xl leading-relaxed home-hero-subtext", children: "Your trusted partner for high-quality saddlery and equestrian products worldwide" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-4 sm:flex-row sm:gap-5", children: [
@@ -24052,7 +24052,7 @@ function SiteHeader() {
     if (path === "/") return currentPath === "/";
     return currentPath.startsWith(path);
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("header", { className: `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "home-header-glass-scrolled" : "home-header-glass"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-4 lg:px-6", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("header", { className: `sticky top-0 z-50 transition-all duration-300 ${scrolled ? "home-header-glass-scrolled" : "home-header-glass"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-4 lg:px-6", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex h-32 items-center justify-between", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(
         "button",
