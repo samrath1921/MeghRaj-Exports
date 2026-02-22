@@ -22,15 +22,23 @@ export function useSubmitInquiry() {
         body: JSON.stringify(data),
       });
 
-      let payload: { error?: string } = {};
-      try {
-        payload = (await response.json()) as { error?: string };
-      } catch {
-        payload = {};
-      }
-
       if (!response.ok) {
-        throw new Error(payload.error || 'Failed to submit inquiry. Please try again.');
+        const contentType = response.headers.get('content-type') || '';
+        let message = 'Failed to submit inquiry. Please try again.';
+
+        if (contentType.includes('application/json')) {
+          const payload = (await response.json().catch(() => ({}))) as { error?: string };
+          if (payload.error) {
+            message = payload.error;
+          }
+        } else {
+          const text = (await response.text().catch(() => '')).trim();
+          if (text) {
+            message = text;
+          }
+        }
+
+        throw new Error(message);
       }
     },
   });

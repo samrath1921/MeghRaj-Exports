@@ -22960,14 +22960,21 @@ function useSubmitInquiry() {
         },
         body: JSON.stringify(data)
       });
-      let payload = {};
-      try {
-        payload = await response.json();
-      } catch {
-        payload = {};
-      }
       if (!response.ok) {
-        throw new Error(payload.error || "Failed to submit inquiry. Please try again.");
+        const contentType = response.headers.get("content-type") || "";
+        let message = "Failed to submit inquiry. Please try again.";
+        if (contentType.includes("application/json")) {
+          const payload = await response.json().catch(() => ({}));
+          if (payload.error) {
+            message = payload.error;
+          }
+        } else {
+          const text = (await response.text().catch(() => "")).trim();
+          if (text) {
+            message = text;
+          }
+        }
+        throw new Error(message);
       }
     }
   });

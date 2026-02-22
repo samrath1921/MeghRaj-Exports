@@ -1,5 +1,3 @@
-import nodemailer from 'nodemailer';
-
 const RECIPIENT_EMAIL = 'info@meghrajexports.com';
 
 function escapeHtml(value) {
@@ -58,11 +56,23 @@ export default async function handler(req, res) {
   const emailSecure =
     process.env.EMAIL_SECURE === 'true' || (process.env.EMAIL_SECURE !== 'false' && emailPort === 465);
 
-  if (!emailUser || !emailPass || !emailHost) {
-    return res.status(500).json({ error: 'Email service is not configured.' });
+  const missingConfig = [
+    !emailHost && 'EMAIL_HOST',
+    !emailUser && 'EMAIL_USER',
+    !emailPass && 'EMAIL_PASS',
+  ].filter(Boolean);
+
+  if (missingConfig.length > 0) {
+    return res.status(500).json({
+      error: 'Email service is not configured.',
+      ...(process.env.NODE_ENV !== 'production'
+        ? { details: `Missing environment variables: ${missingConfig.join(', ')}` }
+        : {}),
+    });
   }
 
   try {
+    const { default: nodemailer } = await import('nodemailer');
     const transporter = nodemailer.createTransport({
       host: emailHost,
       port: emailPort,
