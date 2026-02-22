@@ -3,6 +3,7 @@ import { useSearch } from '@tanstack/react-router';
 import { useSubmitInquiry } from '../hooks/useQueries';
 import { productCategories } from '../data/productTaxonomy';
 import { Mail, MessageSquare, CheckCircle } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import {
   isValidCountryName,
   isValidWhatsappLocalNumber,
@@ -13,6 +14,7 @@ import { countryDialCodes } from '../utils/countryDialCodes';
 export default function ContactPage() {
   const search = useSearch({ from: '/contact' });
   const prefilledCategory = (search as { category?: string })?.category || '';
+  const whatsappContactUrl = import.meta.env.VITE_WHATSAPP_URL || 'https://wa.me/919696697000';
 
   const [formData, setFormData] = useState({
     name: '',
@@ -394,6 +396,21 @@ export default function ContactPage() {
                 <p className="text-sm text-white/80">
                   info@meghrajexports.com
                 </p>
+              </div>
+
+              <div className="home-highlight-card p-6">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full home-icon-badge">
+                  <FaWhatsapp className="h-6 w-6 home-icon-color" />
+                </div>
+                <h3 className="mb-3 text-lg font-serif font-semibold text-white">WhatsApp</h3>
+                <a
+                  href={whatsappContactUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-white/80 transition-colors hover:text-white"
+                >
+                  +91 96966 97000
+                </a>
               </div>
 
               <div className="home-highlight-card p-6">

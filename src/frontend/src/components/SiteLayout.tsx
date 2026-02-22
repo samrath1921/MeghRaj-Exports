@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Outlet, useLocation } from '@tanstack/react-router';
 import SiteHeader from './SiteHeader';
 import SiteFooter from './SiteFooter';
+import FloatingSocialLinks from './FloatingSocialLinks';
 
 export default function SiteLayout() {
   const location = useLocation();
@@ -16,6 +17,7 @@ export default function SiteLayout() {
       <main className="relative flex-1">
         <Outlet />
       </main>
+      <FloatingSocialLinks />
       <SiteFooter />
     </div>
   );
