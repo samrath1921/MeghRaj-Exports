@@ -19468,11 +19468,22 @@ const createLucideIcon = (iconName, iconNode) => {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$d = [
+const __iconNode$e = [
   ["path", { d: "m12 19-7-7 7-7", key: "1l729n" }],
   ["path", { d: "M19 12H5", key: "x3x0zl" }]
 ];
-const ArrowLeft = createLucideIcon("arrow-left", __iconNode$d);
+const ArrowLeft = createLucideIcon("arrow-left", __iconNode$e);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$d = [
+  ["path", { d: "M5 12h14", key: "1ays0h" }],
+  ["path", { d: "m12 5 7 7-7 7", key: "xquz4c" }]
+];
+const ArrowRight = createLucideIcon("arrow-right", __iconNode$d);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -19480,17 +19491,6 @@ const ArrowLeft = createLucideIcon("arrow-left", __iconNode$d);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$c = [
-  ["path", { d: "M5 12h14", key: "1ays0h" }],
-  ["path", { d: "m12 5 7 7-7 7", key: "xquz4c" }]
-];
-const ArrowRight = createLucideIcon("arrow-right", __iconNode$c);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$b = [
   [
     "path",
     {
@@ -19500,15 +19500,26 @@ const __iconNode$b = [
   ],
   ["circle", { cx: "12", cy: "8", r: "6", key: "1vp47v" }]
 ];
-const Award = createLucideIcon("award", __iconNode$b);
+const Award = createLucideIcon("award", __iconNode$c);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$a = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
-const ChevronRight = createLucideIcon("chevron-right", __iconNode$a);
+const __iconNode$b = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
+const ChevronRight = createLucideIcon("chevron-right", __iconNode$b);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$a = [
+  ["path", { d: "M21.801 10A10 10 0 1 1 17 3.335", key: "yps3ct" }],
+  ["path", { d: "m9 11 3 3L22 4", key: "1pflzl" }]
+];
+const CircleCheckBig = createLucideIcon("circle-check-big", __iconNode$a);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -19516,10 +19527,11 @@ const ChevronRight = createLucideIcon("chevron-right", __iconNode$a);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$9 = [
-  ["path", { d: "M21.801 10A10 10 0 1 1 17 3.335", key: "yps3ct" }],
-  ["path", { d: "m9 11 3 3L22 4", key: "1pflzl" }]
+  ["path", { d: "M12 15V3", key: "m9g1x1" }],
+  ["path", { d: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4", key: "ih7n3h" }],
+  ["path", { d: "m7 10 5 5 5-5", key: "brsn70" }]
 ];
-const CircleCheckBig = createLucideIcon("circle-check-big", __iconNode$9);
+const Download = createLucideIcon("download", __iconNode$9);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -19527,11 +19539,13 @@ const CircleCheckBig = createLucideIcon("circle-check-big", __iconNode$9);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$8 = [
-  ["path", { d: "M12 15V3", key: "m9g1x1" }],
-  ["path", { d: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4", key: "ih7n3h" }],
-  ["path", { d: "m7 10 5 5 5-5", key: "brsn70" }]
+  ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
+  ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
+  ["path", { d: "M10 9H8", key: "b1mrlr" }],
+  ["path", { d: "M16 13H8", key: "t4e002" }],
+  ["path", { d: "M16 17H8", key: "z1uh3a" }]
 ];
-const Download = createLucideIcon("download", __iconNode$8);
+const FileText = createLucideIcon("file-text", __iconNode$8);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -19539,13 +19553,11 @@ const Download = createLucideIcon("download", __iconNode$8);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$7 = [
-  ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
-  ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
-  ["path", { d: "M10 9H8", key: "b1mrlr" }],
-  ["path", { d: "M16 13H8", key: "t4e002" }],
-  ["path", { d: "M16 17H8", key: "z1uh3a" }]
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["path", { d: "M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20", key: "13o1zl" }],
+  ["path", { d: "M2 12h20", key: "9i4pu4" }]
 ];
-const FileText = createLucideIcon("file-text", __iconNode$7);
+const Globe = createLucideIcon("globe", __iconNode$7);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -19553,11 +19565,10 @@ const FileText = createLucideIcon("file-text", __iconNode$7);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$6 = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["path", { d: "M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20", key: "13o1zl" }],
-  ["path", { d: "M2 12h20", key: "9i4pu4" }]
+  ["path", { d: "m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7", key: "132q7q" }],
+  ["rect", { x: "2", y: "4", width: "20", height: "16", rx: "2", key: "izxlao" }]
 ];
-const Globe = createLucideIcon("globe", __iconNode$6);
+const Mail = createLucideIcon("mail", __iconNode$6);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -19565,10 +19576,11 @@ const Globe = createLucideIcon("globe", __iconNode$6);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$5 = [
-  ["path", { d: "m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7", key: "132q7q" }],
-  ["rect", { x: "2", y: "4", width: "20", height: "16", rx: "2", key: "izxlao" }]
+  ["path", { d: "M4 12h16", key: "1lakjw" }],
+  ["path", { d: "M4 18h16", key: "19g7jn" }],
+  ["path", { d: "M4 6h16", key: "1o0s65" }]
 ];
-const Mail = createLucideIcon("mail", __iconNode$5);
+const Menu = createLucideIcon("menu", __iconNode$5);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -19576,11 +19588,9 @@ const Mail = createLucideIcon("mail", __iconNode$5);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$4 = [
-  ["path", { d: "M4 12h16", key: "1lakjw" }],
-  ["path", { d: "M4 18h16", key: "19g7jn" }],
-  ["path", { d: "M4 6h16", key: "1o0s65" }]
+  ["path", { d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z", key: "1lielz" }]
 ];
-const Menu = createLucideIcon("menu", __iconNode$4);
+const MessageSquare = createLucideIcon("message-square", __iconNode$4);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -19588,9 +19598,10 @@ const Menu = createLucideIcon("menu", __iconNode$4);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$3 = [
-  ["path", { d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z", key: "1lielz" }]
+  ["path", { d: "m21 21-4.34-4.34", key: "14j7rj" }],
+  ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }]
 ];
-const MessageSquare = createLucideIcon("message-square", __iconNode$3);
+const Search = createLucideIcon("search", __iconNode$3);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -21156,6 +21167,8 @@ function SubcategoryPage() {
   const { categorySlug, subcategorySlug } = useParams({
     from: "/products/$categorySlug/$subcategorySlug"
   });
+  const search = useSearch({ from: "/products/$categorySlug/$subcategorySlug" });
+  const preselectedProductSlug = ((search == null ? void 0 : search.product) || "").toLowerCase();
   const navigate = useNavigate();
   const [selectedProduct, setSelectedProduct] = reactExports.useState(null);
   const category = productCategories.find((cat) => cat.slug === categorySlug);
@@ -21188,8 +21201,23 @@ function SubcategoryPage() {
     if (!product.image) console.warn("Product image missing for", productName, productSlug);
     setSelectedProduct(product);
   };
+  reactExports.useEffect(() => {
+    if (!preselectedProductSlug || !subcategory) return;
+    const matchedProduct = subcategory.productTypes.find(
+      (productType) => getProductSlug$1(productType).toLowerCase() === preselectedProductSlug
+    );
+    if (!matchedProduct) return;
+    setSelectedProduct(getProductDetails(matchedProduct.name, categorySlug, preselectedProductSlug));
+  }, [categorySlug, preselectedProductSlug, subcategory]);
   const handleCloseModal = () => {
     setSelectedProduct(null);
+    if (preselectedProductSlug) {
+      navigate({
+        to: "/products/$categorySlug/$subcategorySlug",
+        params: { categorySlug, subcategorySlug },
+        search: {}
+      });
+    }
   };
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "product-page-wrapper pb-32 md:pb-40", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative h-72 md:h-96 overflow-hidden product-banner-fade-in", children: [
@@ -21233,8 +21261,7 @@ function SubcategoryPage() {
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 gold-divider-muted" })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4", children: subcategory.productTypes.map((productType, index2) => {
-          const generatedSlug = productType.name.toLowerCase().replace(/\s+/g, "-").replace(/[\/()]/g, "");
-          const effectiveSlug = productType.slug || generatedSlug;
+          const effectiveSlug = getProductSlug$1(productType);
           return /* @__PURE__ */ jsxRuntimeExports.jsx(
             SubcategoryCard,
             {
@@ -21258,6 +21285,9 @@ function SubcategoryPage() {
       }
     )
   ] });
+}
+function getProductSlug$1(productType) {
+  return productType.slug || toSlug(productType.name);
 }
 function getProductDetails(productName, categorySlug, productSlug) {
   let imageSource = "/assets/generated/prod-placeholder-saddle.dim_1200x800.png";
@@ -23446,7 +23476,7 @@ function ContactPage() {
     email: "",
     whatsappCode: "",
     whatsappNumber: "",
-    category: prefilledCategory,
+    categories: prefilledCategory ? [prefilledCategory] : [],
     message: ""
   });
   const [errors, setErrors] = reactExports.useState({});
@@ -23454,7 +23484,10 @@ function ContactPage() {
   const submitInquiry = useSubmitInquiry();
   reactExports.useEffect(() => {
     if (prefilledCategory) {
-      setFormData((prev) => ({ ...prev, category: prefilledCategory }));
+      setFormData((prev) => {
+        if (prev.categories.includes(prefilledCategory)) return prev;
+        return { ...prev, categories: [...prev.categories, prefilledCategory] };
+      });
     }
   }, [prefilledCategory]);
   const validateForm = () => {
@@ -23478,7 +23511,9 @@ function ContactPage() {
         newErrors.whatsappNumber = "Please enter a valid WhatsApp number";
       }
     }
-    if (!formData.category) newErrors.category = "Please select a product category";
+    if (formData.categories.length === 0) {
+      newErrors.categories = "Please select at least one product category";
+    }
     if (!formData.message.trim()) newErrors.message = "Message is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -23494,7 +23529,8 @@ function ContactPage() {
         country: formData.country,
         email: formData.email,
         whatsapp,
-        category: formData.category,
+        categories: formData.categories,
+        category: formData.categories.join(", "),
         message: formData.message
       });
       setSubmitted(true);
@@ -23505,7 +23541,7 @@ function ContactPage() {
         email: "",
         whatsappCode: "",
         whatsappNumber: "",
-        category: "",
+        categories: [],
         message: ""
       });
       setErrors({});
@@ -23524,11 +23560,22 @@ function ContactPage() {
       setErrors((prev) => ({ ...prev, [name]: "" }));
     }
   };
-  const categoryOptions = [
-    "Catalogue Request",
-    ...productCategories.map((cat) => cat.name),
-    "General Inquiry"
-  ];
+  const handleCategoryToggle = (category) => {
+    setFormData((prev) => {
+      const alreadySelected = prev.categories.includes(category);
+      return {
+        ...prev,
+        categories: alreadySelected ? prev.categories.filter((item) => item !== category) : [...prev.categories, category]
+      };
+    });
+    if (errors.categories) {
+      setErrors((prev) => ({ ...prev, categories: "" }));
+    }
+  };
+  const categoryOptions = reactExports.useMemo(
+    () => [...productCategories.map((cat) => cat.name), "General Inquiry"],
+    []
+  );
   if (submitted) {
     return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "home-section-cta py-32 md:py-40", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "container mx-auto px-4 lg:px-6", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-2xl text-center", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-8 flex justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-24 w-24 items-center justify-center rounded-full home-icon-badge", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheckBig, { className: "h-12 w-12 home-icon-color" }) }) }),
@@ -23675,29 +23722,36 @@ function ContactPage() {
             ] })
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mb-2 block text-sm font-medium text-white", children: "Product Categories * (Select one or more)" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "label",
+              "div",
               {
-                htmlFor: "category",
-                className: "mb-2 block text-sm font-medium text-white",
-                children: "Product Category *"
+                className: `rounded-xl border ${errors.categories ? "border-destructive" : "border-input"} bg-background p-3`,
+                children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid max-h-40 grid-cols-1 gap-2 overflow-y-auto pr-1 sm:grid-cols-2", children: categoryOptions.map((category) => {
+                  const isSelected = formData.categories.includes(category);
+                  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                    "label",
+                    {
+                      className: "flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 text-sm text-white transition-colors hover:bg-white/5",
+                      children: [
+                        /* @__PURE__ */ jsxRuntimeExports.jsx(
+                          "input",
+                          {
+                            type: "checkbox",
+                            checked: isSelected,
+                            onChange: () => handleCategoryToggle(category),
+                            className: "h-4 w-4 rounded border-input bg-background text-primary focus:ring-primary"
+                          }
+                        ),
+                        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "leading-snug", children: category })
+                      ]
+                    },
+                    category
+                  );
+                }) })
               }
             ),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              "select",
-              {
-                id: "category",
-                name: "category",
-                value: formData.category,
-                onChange: handleChange,
-                className: `h-12 w-full rounded-xl border ${errors.category ? "border-destructive" : "border-input"} bg-background px-4 text-white transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`,
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: "", children: "Select a category" }),
-                  categoryOptions.map((cat) => /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: cat, children: cat }, cat))
-                ]
-              }
-            ),
-            errors.category && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-1 text-sm text-destructive", children: errors.category })
+            errors.categories && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-1 text-sm text-destructive", children: errors.categories })
           ] })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
@@ -23743,6 +23797,219 @@ function ContactPage() {
   ] }) }) });
 }
 const Image$1 = "/assets/MEGHRAJ_LOGO-BsfMDXyJ.png";
+function getProductSlug(product) {
+  return product.slug || toSlug(product.name);
+}
+function buildProductSearchIndex() {
+  const entries = [];
+  for (const category of productCategories) {
+    for (const subcategory of category.subcategories) {
+      const subcategorySlug = toSlug(subcategory.name);
+      for (const product of subcategory.productTypes) {
+        const productSlug = getProductSlug(product);
+        entries.push({
+          id: `${category.slug}/${subcategorySlug}/${productSlug}`,
+          name: product.name,
+          normalizedName: product.name.toLowerCase(),
+          categoryName: category.name,
+          categorySlug: category.slug,
+          subcategoryName: subcategory.name,
+          subcategorySlug,
+          productSlug
+        });
+      }
+    }
+  }
+  entries.sort((a, b) => a.name.localeCompare(b.name));
+  return entries;
+}
+const productSearchIndex = buildProductSearchIndex();
+function splitByMatch(text, query) {
+  const normalizedQuery = query.trim().toLowerCase();
+  if (!normalizedQuery) {
+    return [{ text, isMatch: false }];
+  }
+  const normalizedText = text.toLowerCase();
+  const segments = [];
+  let cursor = 0;
+  while (cursor < text.length) {
+    const matchIndex = normalizedText.indexOf(normalizedQuery, cursor);
+    if (matchIndex === -1) {
+      segments.push({ text: text.slice(cursor), isMatch: false });
+      break;
+    }
+    if (matchIndex > cursor) {
+      segments.push({ text: text.slice(cursor, matchIndex), isMatch: false });
+    }
+    const matchEnd = matchIndex + normalizedQuery.length;
+    segments.push({ text: text.slice(matchIndex, matchEnd), isMatch: true });
+    cursor = matchEnd;
+  }
+  return segments.length > 0 ? segments : [{ text, isMatch: false }];
+}
+function ProductSearchAutocomplete({
+  className = "",
+  maxResults = 12,
+  placeholder = "Search products...",
+  onSelect
+}) {
+  const navigate = useNavigate();
+  const containerRef = reactExports.useRef(null);
+  const [query, setQuery] = reactExports.useState("");
+  const [isFocused, setIsFocused] = reactExports.useState(false);
+  const [highlightedIndex, setHighlightedIndex] = reactExports.useState(-1);
+  const [isDropdownMounted, setIsDropdownMounted] = reactExports.useState(false);
+  const [isDropdownVisible, setIsDropdownVisible] = reactExports.useState(false);
+  const normalizedQuery = query.trim().toLowerCase();
+  const results = reactExports.useMemo(() => {
+    if (!normalizedQuery) return [];
+    return productSearchIndex.filter(
+      (entry) => entry.normalizedName.startsWith(normalizedQuery) || entry.normalizedName.includes(normalizedQuery)
+    ).slice(0, maxResults);
+  }, [maxResults, normalizedQuery]);
+  const isDropdownOpen = isFocused && normalizedQuery.length > 0;
+  const handleSelect = reactExports.useCallback(
+    (entry) => {
+      navigate({
+        to: "/products/$categorySlug/$subcategorySlug",
+        params: {
+          categorySlug: entry.categorySlug,
+          subcategorySlug: entry.subcategorySlug
+        },
+        search: {
+          product: entry.productSlug
+        }
+      });
+      setQuery("");
+      setIsFocused(false);
+      setHighlightedIndex(-1);
+      onSelect == null ? void 0 : onSelect();
+    },
+    [navigate, onSelect]
+  );
+  reactExports.useEffect(() => {
+    if (isDropdownOpen) {
+      setIsDropdownMounted(true);
+      const frame = window.requestAnimationFrame(() => {
+        setIsDropdownVisible(true);
+      });
+      return () => window.cancelAnimationFrame(frame);
+    }
+    setIsDropdownVisible(false);
+    const timeout = window.setTimeout(() => {
+      setIsDropdownMounted(false);
+    }, 160);
+    return () => window.clearTimeout(timeout);
+  }, [isDropdownOpen]);
+  reactExports.useEffect(() => {
+    const handleClickOutside = (event) => {
+      var _a2;
+      if (!((_a2 = containerRef.current) == null ? void 0 : _a2.contains(event.target))) {
+        setIsFocused(false);
+        setHighlightedIndex(-1);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+  reactExports.useEffect(() => {
+    if (!isDropdownOpen || results.length === 0) {
+      setHighlightedIndex(-1);
+      return;
+    }
+    setHighlightedIndex((prev) => {
+      if (prev < 0 || prev >= results.length) return 0;
+      return prev;
+    });
+  }, [isDropdownOpen, results.length]);
+  const handleKeyDown = (event) => {
+    if (!isDropdownOpen) return;
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      if (results.length === 0) return;
+      setHighlightedIndex((prev) => (prev + 1) % results.length);
+      return;
+    }
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      if (results.length === 0) return;
+      setHighlightedIndex((prev) => prev <= 0 ? results.length - 1 : prev - 1);
+      return;
+    }
+    if (event.key === "Enter") {
+      event.preventDefault();
+      if (results.length === 0) return;
+      const selectedIndex = highlightedIndex >= 0 && highlightedIndex < results.length ? highlightedIndex : 0;
+      if (results[selectedIndex]) {
+        handleSelect(results[selectedIndex]);
+      }
+      return;
+    }
+    if (event.key === "Escape") {
+      setIsFocused(false);
+      setHighlightedIndex(-1);
+    }
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref: containerRef, className: `relative w-full max-w-sm ${className}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Search, { className: "pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/70" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "input",
+        {
+          value: query,
+          onChange: (event) => {
+            const value = event.target.value;
+            setQuery(value);
+            setHighlightedIndex(-1);
+            if (!value.trim()) {
+              setIsFocused(false);
+              return;
+            }
+            setIsFocused(true);
+          },
+          onFocus: () => {
+            if (normalizedQuery) setIsFocused(true);
+          },
+          onKeyDown: handleKeyDown,
+          type: "text",
+          placeholder,
+          "aria-label": "Search products",
+          "aria-expanded": isDropdownOpen,
+          "aria-controls": "product-search-listbox",
+          "aria-activedescendant": highlightedIndex >= 0 && results[highlightedIndex] ? `product-search-option-${highlightedIndex}` : void 0,
+          className: "h-14 w-full rounded-lg border border-white/20 bg-black/20 pl-11 pr-3 text-xl text-white placeholder:text-white/65 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/30"
+        }
+      )
+    ] }),
+    isDropdownMounted && /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "div",
+      {
+        className: `absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-lg border border-white/15 bg-slate-950/95 shadow-lg backdrop-blur-sm transition-all duration-150 ease-out ${isDropdownVisible ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-1 opacity-0"}`,
+        children: results.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 py-3 text-sm text-white/80", children: "No products found" }) : /* @__PURE__ */ jsxRuntimeExports.jsx("ul", { id: "product-search-listbox", role: "listbox", className: "max-h-72 overflow-y-auto py-1", children: results.map((entry, index2) => /* @__PURE__ */ jsxRuntimeExports.jsx("li", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "button",
+          {
+            id: `product-search-option-${index2}`,
+            type: "button",
+            role: "option",
+            "aria-selected": index2 === highlightedIndex,
+            onMouseEnter: () => setHighlightedIndex(index2),
+            onMouseDown: (event) => event.preventDefault(),
+            onClick: () => handleSelect(entry),
+            className: `w-full px-4 py-2.5 text-left transition-colors ${index2 === highlightedIndex ? "bg-primary/25" : "hover:bg-white/10"}`,
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "truncate text-base font-medium text-white", children: splitByMatch(entry.name, normalizedQuery).map((segment, segmentIndex) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "span",
+              {
+                className: segment.isMatch ? "font-semibold" : void 0,
+                children: segment.text
+              },
+              `${entry.id}-${segmentIndex}`
+            )) })
+          }
+        ) }, entry.id)) })
+      }
+    )
+  ] });
+}
 function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = reactExports.useState(false);
   const [scrolled, setScrolled] = reactExports.useState(false);
@@ -23753,7 +24020,6 @@ function SiteHeader() {
     { label: "Home", path: "/" },
     { label: "Products", path: "/products" },
     { label: "About", path: "/about" },
-    { label: "Catalogue", path: "/catalogue" },
     { label: "Contact", path: "/contact" }
   ];
   reactExports.useEffect(() => {
@@ -23763,6 +24029,14 @@ function SiteHeader() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  reactExports.useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [mobileMenuOpen]);
   const handleNavigation = (path) => {
     navigate({ to: path });
     setMobileMenuOpen(false);
@@ -23772,7 +24046,7 @@ function SiteHeader() {
     return currentPath.startsWith(path);
   };
   return /* @__PURE__ */ jsxRuntimeExports.jsx("header", { className: `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "home-header-glass-scrolled" : "home-header-glass"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-4 lg:px-6", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex h-28 items-center justify-between", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex h-32 items-center justify-between", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(
         "button",
         {
@@ -23788,15 +24062,18 @@ function SiteHeader() {
           )
         }
       ),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("nav", { className: "hidden md:flex md:items-center md:gap-1", children: navItems.map((item) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-        "button",
-        {
-          onClick: () => handleNavigation(item.path),
-          className: `relative px-6 py-2 text-[15px] font-medium tracking-wide transition-colors ${isActive(item.path) ? "home-nav-item-active" : "home-nav-item"}`,
-          children: item.label
-        },
-        item.path
-      )) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "hidden md:flex md:items-center md:gap-4 lg:gap-6", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("nav", { className: "md:flex md:items-center md:gap-1 lg:gap-2", children: navItems.map((item) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "button",
+          {
+            onClick: () => handleNavigation(item.path),
+            className: `relative px-3 py-1.5 text-xl font-medium tracking-wide transition-colors lg:px-5 lg:text-2xl ${isActive(item.path) ? "home-nav-item-active" : "home-nav-item"}`,
+            children: item.label
+          },
+          item.path
+        )) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(ProductSearchAutocomplete, { className: "w-56 lg:w-72" })
+      ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(
         "button",
         {
@@ -23807,15 +24084,24 @@ function SiteHeader() {
         }
       )
     ] }),
-    mobileMenuOpen && /* @__PURE__ */ jsxRuntimeExports.jsx("nav", { className: "md:hidden pb-6 pt-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-col gap-2", children: navItems.map((item) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "button",
-      {
-        onClick: () => handleNavigation(item.path),
-        className: `px-4 py-3 text-left text-base font-medium rounded-lg transition-colors ${isActive(item.path) ? "bg-primary/20 text-white" : "text-white/90 hover:bg-white/10 hover:text-white"}`,
-        children: item.label
-      },
-      item.path
-    )) }) })
+    mobileMenuOpen && /* @__PURE__ */ jsxRuntimeExports.jsx("nav", { className: "md:hidden max-h-[calc(100dvh-8rem)] overflow-y-auto overscroll-contain pb-6 pt-2 pr-1", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        ProductSearchAutocomplete,
+        {
+          className: "mb-2 max-w-none",
+          onSelect: () => setMobileMenuOpen(false)
+        }
+      ),
+      navItems.map((item) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "button",
+        {
+          onClick: () => handleNavigation(item.path),
+          className: `px-4 py-3 text-left text-lg font-medium rounded-lg transition-colors ${isActive(item.path) ? "bg-primary/20 text-white" : "text-white/90 hover:bg-white/10 hover:text-white"}`,
+          children: item.label
+        },
+        item.path
+      ))
+    ] }) })
   ] }) });
 }
 const Image = "/assets/MEGHRAJ_LOGO_Complete-C2O6X2F0.png";

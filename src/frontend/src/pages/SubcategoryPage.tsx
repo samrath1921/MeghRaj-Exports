@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { useParams, useNavigate } from '@tanstack/react-router';
-import { productCategories } from '../data/productTaxonomy';
+import { useEffect, useState } from 'react';
+import { useParams, useNavigate, useSearch } from '@tanstack/react-router';
+import { productCategories, type ProductType } from '../data/productTaxonomy';
 import { toSlug } from '../utils/slug';
 import { ArrowLeft } from 'lucide-react';
 import SubcategoryCard from '../components/SubcategoryCard';
@@ -409,6 +409,8 @@ export default function SubcategoryPage() {
   const { categorySlug, subcategorySlug } = useParams({
     from: '/products/$categorySlug/$subcategorySlug'
   });
+  const search = useSearch({ from: '/products/$categorySlug/$subcategorySlug' });
+  const preselectedProductSlug = ((search as { product?: string })?.product || '').toLowerCase();
   const navigate = useNavigate();
   const [selectedProduct, setSelectedProduct] = useState<{
     name: string;
@@ -457,8 +459,28 @@ export default function SubcategoryPage() {
     setSelectedProduct(product);
   };
 
+  useEffect(() => {
+    if (!preselectedProductSlug || !subcategory) return;
+
+    const matchedProduct = subcategory.productTypes.find(
+      (productType) => getProductSlug(productType).toLowerCase() === preselectedProductSlug
+    );
+
+    if (!matchedProduct) return;
+
+    setSelectedProduct(getProductDetails(matchedProduct.name, categorySlug, preselectedProductSlug));
+  }, [categorySlug, preselectedProductSlug, subcategory]);
+
   const handleCloseModal = () => {
     setSelectedProduct(null);
+
+    if (preselectedProductSlug) {
+      navigate({
+        to: '/products/$categorySlug/$subcategorySlug',
+        params: { categorySlug, subcategorySlug },
+        search: {},
+      });
+    }
   };
 
   return (
@@ -510,11 +532,7 @@ export default function SubcategoryPage() {
 
             <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {subcategory.productTypes.map((productType, index) => {
-                const generatedSlug = productType.name
-                  .toLowerCase()
-                  .replace(/\s+/g, "-")
-                  .replace(/[\/()]/g, "");
-                const effectiveSlug = productType.slug || generatedSlug;
+                const effectiveSlug = getProductSlug(productType);
                 return (
                   <SubcategoryCard
                     key={index}
@@ -541,6 +559,11 @@ export default function SubcategoryPage() {
       )}
     </div>
   );
+}
+
+// Helper to normalize product slug
+function getProductSlug(productType: ProductType): string {
+  return productType.slug || toSlug(productType.name);
 }
 
 // Helper to generate product details for modal

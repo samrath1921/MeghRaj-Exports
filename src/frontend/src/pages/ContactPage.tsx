@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useSearch } from '@tanstack/react-router';
 import { useSubmitInquiry } from '../hooks/useQueries';
 import { productCategories } from '../data/productTaxonomy';
@@ -21,7 +21,7 @@ export default function ContactPage() {
     email: '',
     whatsappCode: '',
     whatsappNumber: '',
-    category: prefilledCategory,
+    categories: prefilledCategory ? [prefilledCategory] : [],
     message: '',
   });
 
@@ -32,7 +32,10 @@ export default function ContactPage() {
 
   useEffect(() => {
     if (prefilledCategory) {
-      setFormData((prev) => ({ ...prev, category: prefilledCategory }));
+      setFormData((prev) => {
+        if (prev.categories.includes(prefilledCategory)) return prev;
+        return { ...prev, categories: [...prev.categories, prefilledCategory] };
+      });
     }
   }, [prefilledCategory]);
 
@@ -58,7 +61,9 @@ export default function ContactPage() {
         newErrors.whatsappNumber = 'Please enter a valid WhatsApp number';
       }
     }
-    if (!formData.category) newErrors.category = 'Please select a product category';
+    if (formData.categories.length === 0) {
+      newErrors.categories = 'Please select at least one product category';
+    }
     if (!formData.message.trim()) newErrors.message = 'Message is required';
 
     setErrors(newErrors);
@@ -82,7 +87,8 @@ export default function ContactPage() {
         country: formData.country,
         email: formData.email,
         whatsapp,
-        category: formData.category,
+        categories: formData.categories,
+        category: formData.categories.join(', '),
         message: formData.message,
       });
       setSubmitted(true);
@@ -93,7 +99,7 @@ export default function ContactPage() {
         email: '',
         whatsappCode: '',
         whatsappNumber: '',
-        category: '',
+        categories: [],
         message: '',
       });
       setErrors({});
@@ -116,11 +122,26 @@ export default function ContactPage() {
     }
   };
 
-  const categoryOptions = [
-    'Catalogue Request',
-    ...productCategories.map((cat) => cat.name),
-    'General Inquiry',
-  ];
+  const handleCategoryToggle = (category: string) => {
+    setFormData((prev) => {
+      const alreadySelected = prev.categories.includes(category);
+      return {
+        ...prev,
+        categories: alreadySelected
+          ? prev.categories.filter((item) => item !== category)
+          : [...prev.categories, category],
+      };
+    });
+
+    if (errors.categories) {
+      setErrors((prev) => ({ ...prev, categories: '' }));
+    }
+  };
+
+  const categoryOptions = useMemo(
+    () => [...productCategories.map((cat) => cat.name), 'General Inquiry'],
+    []
+  );
 
   if (submitted) {
     return (
@@ -296,30 +317,36 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="category"
-                      className="mb-2 block text-sm font-medium text-white"
+                    <p className="mb-2 block text-sm font-medium text-white">
+                      Product Categories * (Select one or more)
+                    </p>
+                    <div
+                      className={`rounded-xl border ${
+                        errors.categories ? 'border-destructive' : 'border-input'
+                      } bg-background p-3`}
                     >
-                      Product Category *
-                    </label>
-                    <select
-                      id="category"
-                      name="category"
-                      value={formData.category}
-                      onChange={handleChange}
-                      className={`h-12 w-full rounded-xl border ${
-                        errors.category ? 'border-destructive' : 'border-input'
-                      } bg-background px-4 text-white transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
-                    >
-                      <option value="">Select a category</option>
-                      {categoryOptions.map((cat) => (
-                        <option key={cat} value={cat}>
-                          {cat}
-                        </option>
-                      ))}
-                    </select>
-                    {errors.category && (
-                      <p className="mt-1 text-sm text-destructive">{errors.category}</p>
+                      <div className="grid max-h-40 grid-cols-1 gap-2 overflow-y-auto pr-1 sm:grid-cols-2">
+                        {categoryOptions.map((category) => {
+                          const isSelected = formData.categories.includes(category);
+                          return (
+                            <label
+                              key={category}
+                              className="flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 text-sm text-white transition-colors hover:bg-white/5"
+                            >
+                              <input
+                                type="checkbox"
+                                checked={isSelected}
+                                onChange={() => handleCategoryToggle(category)}
+                                className="h-4 w-4 rounded border-input bg-background text-primary focus:ring-primary"
+                              />
+                              <span className="leading-snug">{category}</span>
+                            </label>
+                          );
+                        })}
+                      </div>
+                    </div>
+                    {errors.categories && (
+                      <p className="mt-1 text-sm text-destructive">{errors.categories}</p>
                     )}
                   </div>
                 </div>

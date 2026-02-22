@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useRouterState } from '@tanstack/react-router';
 import { Menu, X } from 'lucide-react';
 import Image from "../assets/generated/HOME_PAGE/MEGHRAJ_LOGO.png";
+import ProductSearchAutocomplete from './ProductSearchAutocomplete';
 
 export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -14,7 +15,6 @@ export default function SiteHeader() {
     { label: 'Home', path: '/' },
     { label: 'Products', path: '/products' },
     { label: 'About', path: '/about' },
-    { label: 'Catalogue', path: '/catalogue' },
     { label: 'Contact', path: '/contact' },
   ];
 
@@ -25,6 +25,17 @@ export default function SiteHeader() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [mobileMenuOpen]);
 
   const handleNavigation = (path: string) => {
     navigate({ to: path });
@@ -41,7 +52,7 @@ export default function SiteHeader() {
       scrolled ? 'home-header-glass-scrolled' : 'home-header-glass'
     }`}>
       <div className="container mx-auto px-4 lg:px-6">
-        <div className="flex h-28 items-center justify-between">
+        <div className="flex h-32 items-center justify-between">
           {/* Logo */}
           <button
             onClick={() => handleNavigation('/')}
@@ -55,19 +66,22 @@ export default function SiteHeader() {
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex md:items-center md:gap-1">
-            {navItems.map((item) => (
-              <button
-                key={item.path}
-                onClick={() => handleNavigation(item.path)}
-                className={`relative px-6 py-2 text-[15px] font-medium tracking-wide transition-colors ${
-                  isActive(item.path) ? 'home-nav-item-active' : 'home-nav-item'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </nav>
+          <div className="hidden md:flex md:items-center md:gap-4 lg:gap-6">
+            <nav className="md:flex md:items-center md:gap-1 lg:gap-2">
+              {navItems.map((item) => (
+                <button
+                  key={item.path}
+                  onClick={() => handleNavigation(item.path)}
+                  className={`relative px-3 py-1.5 text-xl font-medium tracking-wide transition-colors lg:px-5 lg:text-2xl ${
+                    isActive(item.path) ? 'home-nav-item-active' : 'home-nav-item'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </nav>
+            <ProductSearchAutocomplete className="w-56 lg:w-72" />
+          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -81,13 +95,17 @@ export default function SiteHeader() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <nav className="md:hidden pb-6 pt-2">
+          <nav className="md:hidden max-h-[calc(100dvh-8rem)] overflow-y-auto overscroll-contain pb-6 pt-2 pr-1">
             <div className="flex flex-col gap-2">
+              <ProductSearchAutocomplete
+                className="mb-2 max-w-none"
+                onSelect={() => setMobileMenuOpen(false)}
+              />
               {navItems.map((item) => (
                 <button
                   key={item.path}
                   onClick={() => handleNavigation(item.path)}
-                  className={`px-4 py-3 text-left text-base font-medium rounded-lg transition-colors ${
+                  className={`px-4 py-3 text-left text-lg font-medium rounded-lg transition-colors ${
                     isActive(item.path)
                       ? 'bg-primary/20 text-white'
                       : 'text-white/90 hover:bg-white/10 hover:text-white'

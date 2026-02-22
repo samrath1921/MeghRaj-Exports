@@ -8,6 +8,7 @@ interface InquiryFormData {
   country?: string;
   whatsapp?: string;
   category?: string;
+  categories?: string[];
 }
 
 export function useSubmitInquiry() {
