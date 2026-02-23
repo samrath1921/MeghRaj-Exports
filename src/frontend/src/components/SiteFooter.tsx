@@ -72,7 +72,10 @@ export default function SiteFooter() {
             <ul className="space-y-2 text-sm home-footer-text">
               <li>Email: info@meghrajexports.com</li>
               <li>Phone: +91 96966 97000</li>
-              <li>Location: E-1A, Industrial Area, Jalandhar, Punjab (144004) - India</li>
+              <li>
+                Location: E-1A, Industrial Area, Jalandhar, Punjab (144004)
+                <span className="whitespace-nowrap"> - India</span>
+              </li>
             </ul>
           </div>
         </div>
