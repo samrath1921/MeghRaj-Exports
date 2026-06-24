@@ -14,7 +14,7 @@ export default function ProductsPage() {
           <div className="mx-auto mb-6 w-24 home-gold-divider" style={{ height: '3px' }} />
           <p className="mx-auto max-w-2xl text-lg md:text-xl leading-relaxed text-white/85">
             Explore our comprehensive range of equestrian and saddlery products. Each category
-            offers extensive customization options to meet your specific requirements.
+            offers extensive customisation options to meet your specific requirements.
           </p>
         </div>
 

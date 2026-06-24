@@ -454,8 +454,6 @@ export default function SubcategoryPage() {
 
   const handleProductClick = (productName: string, productSlug?: string) => {
     const product = getProductDetails(productName, categorySlug, productSlug);
-    console.log('Open product quick view', { productName, productSlug, resolvedImage: product.image });
-    if (!product.image) console.warn('Product image missing for', productName, productSlug);
     setSelectedProduct(product);
   };
 
@@ -517,7 +515,7 @@ export default function SubcategoryPage() {
               onClick={handleSendInquiry}
               className="btn-primary"
             >
-              Send Inquiry
+              Send Enquiry
             </button>
           </div>
 
@@ -574,14 +572,14 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
   image: string;
 } {
   // Get image based on slug and category
-  let imageSource = '/assets/generated/prod-placeholder-saddle.dim_1200x800.png';
+  let imageSource = English_Saddle_1;
   if (categorySlug === 'saddles') {
-    imageSource = '/assets/generated/prod-placeholder-saddle.dim_1200x800.png';
+    imageSource = English_Saddle_1;
     if (productSlug && saddleImageMap[productSlug]) {
       imageSource = saddleImageMap[productSlug];
     }
   } else if (categorySlug === 'bridles-headgear') {
-    imageSource = '/assets/generated/prod-placeholder-bridle.dim_1200x800.png';
+    imageSource = Bridle_byType_1;
     if (productSlug) {
       imageSource = bridleImageMapByType[productSlug]
         || bridleImageMapByMaterial[productSlug]
@@ -591,52 +589,52 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
         || imageSource;
     }
   } else if (categorySlug === 'halters-leads') {
-    imageSource = '/assets/generated/prod-placeholder-bridle.dim_1200x800.png';
+    imageSource = Halter_1;
     if (productSlug) {
       imageSource = halterImageMap[productSlug] || leadImageMap[productSlug] || imageSource;
     }
   } else if (categorySlug === 'girths-cinches') {
-    imageSource = '/assets/generated/prod-placeholder-saddle.dim_1200x800.png';
+    imageSource = Girth_1;
     if (productSlug) {
       imageSource = englishGirthImageMap[productSlug] || westernCinchImageMap[productSlug] || imageSource;
     }
   } else if (categorySlug === 'stirrups-accessories') {
-    imageSource = '/assets/generated/prod-placeholder-saddle.dim_1200x800.png';
+    imageSource = Stirrups_1;
     if (productSlug) {
       imageSource = stirrupsImageMap[productSlug] || stirrupsAccessoriesImageMap[productSlug] || imageSource;
     }
   } else if (categorySlug === 'saddle-pads-blankets') {
-    imageSource = '/assets/generated/prod-placeholder-textile.dim_1200x800.png';
+    imageSource = Pad_1;
     if (productSlug) {
       imageSource = saddlePadsImageMap[productSlug] || saddleBlanketsImageMap[productSlug] || imageSource;
     }
   } else if (categorySlug === 'breastplates-martingales') {
-    imageSource = '/assets/generated/prod-placeholder-leather.dim_1200x800.png';
+    imageSource = Bp_Mg_1;
     if (productSlug) {
       imageSource = breastplatesMartingalesImageMap[productSlug] || imageSource;
     }
   } else if (categorySlug === 'horse-leg-protection') {
-    imageSource = '/assets/generated/prod-placeholder-hardware.dim_1200x800.png';
+    imageSource = Leg_1;
     if (productSlug) {
       imageSource = horseLegProtectionImageMap[productSlug] || imageSource;
     }
   } else if (categorySlug === 'horse-rugs-clothing') {
-    imageSource = '/assets/generated/prod-placeholder-textile.dim_1200x800.png';
+    imageSource = Rug_1;
     if (productSlug) {
       imageSource = rugsBlanketsImageMap[productSlug] || horseClothingImageMap[productSlug] || imageSource;
     }
   } else if (categorySlug === 'horse-care-stable-accessories') {
-    imageSource = '/assets/generated/prod-placeholder-grooming.dim_1200x800.png';
+    imageSource = Grooming_1;
     if (productSlug) {
       imageSource = horseCareGroomingImageMap[productSlug] || horseCareStableAccessoriesImageMap[productSlug] || imageSource;
     }
   } else if (categorySlug === 'bits-spurs-control-gear') {
-    imageSource = '/assets/generated/prod-placeholder-hardware.dim_1200x800.png';
+    imageSource = Bit_1;
     if (productSlug) {
       imageSource = bitsImageMap[productSlug] || controlGearImageMap[productSlug] || imageSource;
     }
   } else if (categorySlug === 'harness-driving-equipment') {
-    imageSource = '/assets/generated/prod-placeholder-hardware.dim_1200x800.png';
+    imageSource = Harness_1;
     if (productSlug) {
       imageSource = harnessDrivingImageMap[productSlug] || imageSource;
     }
@@ -698,7 +696,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
     'Crownpiece': 'Designed for optimal comfort and balanced pressure distribution, our Crownpiece is crafted to enhance bridle fit and reduce poll pressure. Its contoured shape follows the natural anatomy of the horse’s head, promoting freedom of ear movement and improved overall comfort. Constructed from premium-grade materials with refined finishing, this component ensures durability while supporting precise rein contact and stable positioning.',
     'Browband': 'Designed to provide both stability and refined presentation, our Browband ensures proper bridle positioning while enhancing the overall appearance. Crafted for comfort and durability, it helps maintain balanced alignment across the horse’s forehead without causing pressure. Available in a variety of styles — from classic plain designs to decorative finishes — this browband complements both everyday training bridles and competition setups.',
     'Throatlatch': 'Designed to provide secure bridle positioning without restricting natural movement, our Throatlatch ensures stability and comfort during riding. It helps prevent the bridle from shifting while allowing sufficient flexibility for the horse’s throat and jaw. Crafted from premium-grade materials with durable stitching and reliable hardware, this component offers dependable performance for both training and competition use.',
-    'Cheekpiece(s)': 'Designed for precise bit alignment and consistent rein contact, our Cheekpieces ensure balanced positioning within the bridle system. Their adjustable construction allows accurate length customization, supporting clear communication between horse and rider. Crafted from premium-grade materials with reinforced stitching and durable hardware, these components provide reliability and long-term performance across training and competitive use.',
+    'Cheekpiece(s)': 'Designed for precise bit alignment and consistent rein contact, our Cheekpieces ensure balanced positioning within the bridle system. Their adjustable construction allows accurate length customisation, supporting clear communication between horse and rider. Crafted from premium-grade materials with reinforced stitching and durable hardware, these components provide reliability and long-term performance across training and competitive use.',
     'Noseband': 'Designed to enhance stability and refined communication, our Noseband supports balanced rein contact while maintaining comfort for the horse. Carefully shaped for proper fit, it helps ensure correct positioning without causing unnecessary pressure. Crafted from premium-grade materials with precise stitching and durable hardware, this noseband delivers long-lasting performance suitable for both training and competition use.',
     'Flash Strap': 'Designed to provide additional stability and controlled rein contact, our Flash Strap works in combination with a cavesson noseband to help maintain proper bit positioning. It supports consistent communication while allowing balanced comfort when correctly adjusted. Crafted from premium-grade materials with durable stitching and secure hardware, this component ensures reliable performance for training and competitive disciplines.',
     'Reins': 'Designed for precision and consistent contact, our Reins provide riders with reliable control and balanced communication. Crafted for durability and comfort, they offer a secure grip and responsive feel suitable for both training and competition. Available in various styles — including plain leather, rubber grip, web, and laced designs — these reins are built to perform across multiple riding disciplines.',
@@ -753,15 +751,15 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
     'Fleece Rugs': 'Designed for warmth, moisture management, and everyday comfort, our Fleece Rugs provide lightweight insulation while maintaining breathability. Ideal for use after exercise, during travel, or in cooler stable environments, they help wick away moisture while keeping horses dry and comfortable. Crafted from high-quality anti-pill fleece, these rugs offer a soft feel against the coat while ensuring durability for repeated use. The lightweight construction allows natural movement, while reinforced stitching and secure fastenings provide reliable fit and long-term performance. Combining functionality with clean presentation, they are a staple in professional and competition stables.',
     'Horse Blankets': 'Designed to provide reliable protection, comfort, and seasonal adaptability, our Horse Blankets combine functional performance with refined craftsmanship. Suitable for a wide range of climates and management needs, they offer dependable coverage whether used in stable environments, turnout conditions, travel, or recovery. Crafted from high-quality fabrics with reinforced construction, our horse blankets are engineered for durability, comfort, and long-term use. Thoughtfully designed with secure fastening systems, balanced weight distribution, and ergonomic fitting, they ensure freedom of movement while maintaining consistent protection. Built to meet international standards, they serve professional riders, equestrian facilities, and wholesale buyers worldwide.',
     'Horse Clothing': 'Designed to deliver comfort, protection, and performance across all seasons, our Horse Clothing collection combines functional innovation with refined craftsmanship. From protective rugs and blankets to cooling sheets and stable essentials, each piece is developed to support the horse’s well-being while maintaining professional presentation. Crafted using premium-grade fabrics and reinforced construction techniques, our products ensure durability, breathability, and optimal fit. Whether for training, turnout, travel, or stable management, our horse clothing solutions are engineered to meet international quality standards while offering versatility for diverse equestrian disciplines.',
-    'Grooming Kits': 'Designed for complete coat care and daily stable management, our Grooming Kits combine essential tools in one organized, durable solution. Ideal for professional riders, stable environments, and everyday horse care, these kits support hygiene, coat health, and presentation before and after training or competition. Each kit is assembled using high-quality materials and ergonomic designs to ensure comfort, durability, and ease of use. From body brushes and curry combs to hoof picks and mane combs, every component is crafted for long-term performance and efficient grooming routines.',
+    'Grooming Kits': 'Designed for complete coat care and daily stable management, our Grooming Kits combine essential tools in one organised, durable solution. Ideal for professional riders, stable environments, and everyday horse care, these kits support hygiene, coat health, and presentation before and after training or competition. Each kit is assembled using high-quality materials and ergonomic designs to ensure comfort, durability, and ease of use. From body brushes and curry combs to hoof picks and mane combs, every component is crafted for long-term performance and efficient grooming routines.',
     'Grooming Brushes': 'Designed for effective cleaning, coat conditioning, and everyday stable care, our Grooming Brushes combine durability with ergonomic comfort. Suitable for professional yards, competition preparation, and daily grooming routines, they help remove dust, dirt, and loose hair while enhancing coat shine and overall presentation. Crafted from high-quality bristles and sturdy back materials, each brush is built for consistent performance and long-term use. The ergonomic design ensures comfortable handling, allowing efficient grooming without causing strain. Whether used for deep cleaning or finishing touches, our brushes deliver reliable results in every setting.',
     'Curry Comb': 'Designed for deep cleaning and effective loosening of dirt, mud, and loose hair, our Curry Combs are an essential tool in every grooming routine. Ideal for use before brushing, they stimulate circulation while helping remove debris from the coat, ensuring a cleaner and healthier finish. Crafted from high-quality, flexible materials, these curry combs provide durability while remaining gentle on the horse’s skin. The ergonomic grip ensures comfortable handling, allowing controlled pressure during grooming sessions. Built for daily stable use, they deliver consistent performance and long-lasting reliability.',
     'Hoof Pick': 'Designed for effective and safe hoof cleaning, our Hoof Picks are essential tools for maintaining hoof hygiene and overall hoof health. Ideal for daily stable use, they help remove dirt, mud, stones, and debris from the hoof cavity, reducing the risk of infection and discomfort. Crafted from high-quality, durable materials, each hoof pick is built for strength and longevity. The ergonomic handle ensures a secure and comfortable grip, allowing precise control during cleaning. Whether for professional stable management or everyday grooming routines, our hoof picks deliver reliability and consistent performance.',
     'Bit Guards': 'Designed to enhance comfort and protect sensitive areas of the mouth, our Bit Guards help prevent pinching and rubbing at the corners of the lips during riding. Suitable for use with a variety of bit types, they provide added cushioning while supporting steady and consistent rein contact. Crafted from high-quality, flexible materials, these guards offer durability without compromising softness. Their secure fit ensures stability throughout training and competition, making them ideal for both young horses and experienced performance mounts. Built with a focus on comfort and welfare, they combine practicality with professional finishing.',
     'Fly Mask': 'Designed to provide reliable protection against flies, insects, and airborne irritants, our Fly Masks help safeguard sensitive facial areas including the eyes and ears. Ideal for turnout during warmer months, they reduce irritation and support overall comfort without obstructing vision or natural movement. Crafted from durable, breathable mesh fabric, these masks ensure optimal airflow while maintaining structured coverage. Soft edging and ergonomic contouring provide a secure, comfortable fit that minimizes rubbing. Built for daily outdoor use, they combine effective insect protection with long-lasting durability and professional presentation.',
     'Fly Veil': 'Designed to protect the horse’s ears from flies and airborne distractions, our Fly Veils provide comfort and focus during training and competition. Ideal for dressage, jumping, and eventing disciplines, they help reduce irritation while enhancing the overall presentation of the tack setup. Crafted from breathable crochet fabric combined with soft, flexible ear material, these veils ensure optimal airflow and a secure, comfortable fit. The contoured design sits neatly beneath the bridle without causing pressure, making them suitable for extended use in performance environments. Built for both practicality and style, they offer dependable protection with a refined finish.',
-    'Hay Bag': 'Designed for convenient and controlled feeding, our Hay Bags provide a practical solution for stable, travel, and competition environments. They help reduce hay waste while promoting organized feeding, making them ideal for barns, trailers, and paddock use. Constructed from durable, high-quality materials, these hay bags are built to withstand regular handling and long-term use. Reinforced stitching and strong hanging straps ensure stability, while thoughtfully designed openings allow easy access for feeding without excessive spillage. Combining functionality with robust construction, they offer dependable performance in professional and everyday stable settings.',
-    'Hay Net': 'Designed to promote controlled feeding and reduce hay waste, our Hay Nets provide an efficient solution for stable, pasture, and travel use. By encouraging slower consumption, they support better digestion while keeping feeding areas organized and clean. Crafted from high-strength, durable netting material, these hay nets are built to withstand regular use in demanding stable environments. Reinforced knot construction and sturdy hanging loops ensure reliable performance, while thoughtfully designed mesh sizes allow controlled access to forage. Built for both professional yards and everyday management, they combine practicality with long-lasting durability.',
+    'Hay Bag': 'Designed for convenient and controlled feeding, our Hay Bags provide a practical solution for stable, travel, and competition environments. They help reduce hay waste while promoting organised feeding, making them ideal for barns, trailers, and paddock use. Constructed from durable, high-quality materials, these hay bags are built to withstand regular handling and long-term use. Reinforced stitching and strong hanging straps ensure stability, while thoughtfully designed openings allow easy access for feeding without excessive spillage. Combining functionality with robust construction, they offer dependable performance in professional and everyday stable settings.',
+    'Hay Net': 'Designed to promote controlled feeding and reduce hay waste, our Hay Nets provide an efficient solution for stable, pasture, and travel use. By encouraging slower consumption, they support better digestion while keeping feeding areas organised and clean. Crafted from high-strength, durable netting material, these hay nets are built to withstand regular use in demanding stable environments. Reinforced knot construction and sturdy hanging loops ensure reliable performance, while thoughtfully designed mesh sizes allow controlled access to forage. Built for both professional yards and everyday management, they combine practicality with long-lasting durability.',
     'Feed Bucket': 'Designed for convenient and hygienic feeding, our Feed Buckets provide a reliable solution for daily stable management. Suitable for grains, concentrates, supplements, and water, they are built to withstand regular use in demanding barn and paddock environments. Manufactured from high-quality, durable materials, these buckets offer strength and impact resistance while remaining easy to handle and clean. Reinforced rims and sturdy handles ensure secure carrying and hanging, making them practical for both fixed and portable feeding setups. Engineered for longevity and efficiency, they deliver dependable performance in professional and everyday equestrian settings.',
     'Water Tub': 'Designed for reliable hydration in stable, paddock, and pasture environments, our Water Tubs provide a durable and practical solution for daily water management. Built to withstand outdoor conditions and regular handling, they ensure consistent access to clean water in professional and everyday equestrian settings. Manufactured from high-quality, impact-resistant materials, these water tubs offer strength, stability, and long-term performance. Reinforced rims and sturdy construction help prevent cracking or deformation, while smooth interior surfaces allow easy cleaning and maintenance. Engineered for durability and efficiency, they combine functionality with dependable design.',
     'Snaffle Bit': 'Designed to provide direct and balanced communication between horse and rider, our Snaffle Bits offer reliable control with gentle action when used correctly. Suitable for training, schooling, and competition across various English and Western disciplines, they promote clear rein contact while supporting comfort and responsiveness. Crafted from high-quality, durable materials, each snaffle bit is engineered for strength, smooth finish, and long-term performance. The carefully designed mouthpiece ensures even pressure distribution across the bars and tongue, encouraging acceptance and consistent contact. Built to meet international quality standards, our snaffle bits combine precision engineering with refined craftsmanship.',
@@ -784,14 +782,14 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
     'Riding Gloves': 'Designed to enhance grip, comfort, and rider control, our Riding Gloves provide dependable performance across training and competition environments. Whether used for daily schooling, jumping, or dressage, they ensure secure rein contact while protecting the hands from friction and fatigue. Crafted from premium-quality materials with flexible construction, these gloves offer an ergonomic fit that adapts naturally to hand movement. Reinforced palm panels improve durability and grip, while breathable fabrics promote comfort during extended use. Manufactured to meet international standards, they combine precision craftsmanship with reliable performance.',
     'Riding Chaps (Half / Full)': 'Designed to enhance leg stability, comfort, and protection in the saddle, our Riding Chaps (Half / Full) combine durability with refined craftsmanship. Suitable for training, competition, and everyday riding, they provide improved grip and support while protecting the rider’s lower leg from friction and wear. Crafted from premium-grade leather and high-performance synthetic materials, these chaps offer flexibility without compromising structure. Half chaps deliver lightweight coverage and easy wear, ideal for schooling and casual riding, while full chaps provide extended protection and a traditional, polished appearance suited for advanced disciplines. Built to meet international standards, they reflect precision construction and long-term reliability.',
     'Riding Boots (Long / Ankle)': 'Designed to deliver stability, comfort, and refined presentation, our Riding Boots (Long / Ankle) combine performance functionality with expert craftsmanship. Suitable for training, competition, and everyday riding, they provide secure support while maintaining flexibility for natural movement in the saddle. Crafted from premium-grade leather and high-performance materials, these boots are engineered for durability and long-term wear. Long boots offer extended leg support with a classic, polished appearance ideal for dressage and show disciplines, while ankle boots provide lightweight versatility suited for schooling and casual riding. Reinforced soles and secure closures ensure reliable grip and stability in varied riding conditions.',
-    'Saddle Bags': 'Designed for convenience and secure storage during riding and travel, our Saddle Bags combine functionality with durable craftsmanship. Ideal for trail riding, endurance disciplines, and long-distance rides, they provide easy access to essentials without compromising balance or comfort. Crafted from high-quality leather and durable synthetic materials, these saddle bags are built to withstand regular outdoor use. Reinforced stitching, secure fastening systems, and balanced weight distribution ensure stability during movement. Thoughtfully designed compartments offer organized storage while maintaining a clean and professional appearance. Manufactured to meet international standards, they reflect reliable performance and long-term durability.',
-    'Horn Bags': 'Designed for convenience and accessibility during Western riding, our Horn Bags provide practical storage solutions that attach securely to the saddle horn. Ideal for trail riding, ranch work, and endurance activities, they allow riders to carry essentials without compromising balance or comfort. Crafted from premium leather and durable synthetic materials, these horn bags are built to withstand demanding outdoor conditions. Reinforced stitching, secure fastening straps, and balanced dual-pocket designs ensure stability during movement. Thoughtfully structured compartments provide organized storage while maintaining a clean Western aesthetic. Manufactured to meet international standards, they combine rugged durability with refined craftsmanship.',
-    'Backpacks': 'Designed for functionality, organization, and everyday performance, our Backpacks combine durable construction with refined design. Suitable for stable visits, travel, competitions, and daily use, they provide practical storage solutions while maintaining a clean and professional appearance. Crafted from high-quality, long-lasting materials, these backpacks are engineered to withstand regular handling and outdoor environments. Reinforced stitching, sturdy zippers, and thoughtfully arranged compartments ensure secure storage and easy organization. Whether used for riding gear, personal essentials, or travel accessories, they deliver reliability and structured comfort. Manufactured to meet international standards, they reflect dependable craftsmanship and modern practicality.',
-    'Messenger Bags': 'Designed for practicality and refined everyday use, our Messenger Bags combine structured organization with durable construction. Suitable for travel, stable visits, competitions, and daily routines, they offer convenient storage while maintaining a clean and professional appearance. Crafted from premium-quality leather and high-performance materials, these bags are engineered for strength and long-term reliability. Reinforced stitching, secure closures, and thoughtfully designed compartments ensure safe storage of essentials, documents, and accessories. The adjustable shoulder strap provides comfortable carrying, making them ideal for riders and professionals alike. Manufactured to meet international standards, they reflect dependable craftsmanship with modern functionality.',
-    'Laptop Bags': 'Designed for secure protection and organized portability, our Laptop Bags combine durability with refined presentation. Suitable for business travel, daily office use, and professional environments, they provide reliable storage while maintaining a clean, structured appearance. Crafted from premium-quality leather and high-performance materials, these bags are engineered for long-term use and everyday functionality. Padded laptop compartments offer enhanced protection against impact, while thoughtfully arranged interior sections ensure efficient organization of documents and accessories. Reinforced stitching and durable hardware enhance strength and reliability. Manufactured to meet international standards, they reflect expert craftsmanship and dependable performance.',
-    'Tote Bags': 'Designed for everyday practicality with refined presentation, our Tote Bags combine spacious functionality with durable construction. Suitable for travel, shopping, stable visits, and daily routines, they offer convenient open-access storage while maintaining a polished appearance. Crafted from premium-quality leather and high-performance materials, these tote bags are engineered for strength and long-term use. Reinforced stitching and sturdy handles ensure reliability under regular load, while thoughtfully structured interiors provide organized storage. Built to meet international standards, they reflect expert craftsmanship with modern versatility.',
-    'Waist Bags': 'Designed for hands-free convenience and organized storage, our Waist Bags combine compact functionality with durable craftsmanship. Ideal for travel, outdoor activities, stable visits, and daily use, they provide secure access to essentials while allowing unrestricted movement. Crafted from premium-quality leather and high-performance materials, these waist bags are engineered for durability and long-term reliability. Reinforced stitching, secure zipper systems, and adjustable straps ensure a stable and comfortable fit. Thoughtfully designed compartments offer efficient organization without adding bulk. Manufactured to meet international standards, they reflect dependable construction with modern practicality.',
-    'Wallets': 'Designed to combine elegance with everyday functionality, our Wallets reflect refined craftsmanship and durable construction. Suitable for professional, travel, and daily use, they offer organized storage while maintaining a sleek and timeless appearance. Crafted from premium-grade leather and high-quality materials, each wallet is engineered for long-term durability and structured performance. Precision stitching, smooth finishing, and thoughtfully arranged compartments ensure both practicality and sophisticated presentation. Manufactured to meet international standards, they represent dependable quality with modern design sensibility.',
+    'Saddle Bags': 'Designed for convenience and secure storage during riding and travel, our Saddle Bags combine functionality with durable craftsmanship. Ideal for trail riding, endurance disciplines, and long-distance rides, they provide easy access to essentials without compromising balance or comfort. Crafted from high-quality leather and durable synthetic materials, these saddle bags are built to withstand regular outdoor use. Reinforced stitching, secure fastening systems, and balanced weight distribution ensure stability during movement. Thoughtfully designed compartments offer organised storage while maintaining a clean and professional appearance. Manufactured to meet international standards, they reflect reliable performance and long-term durability.',
+    'Horn Bags': 'Designed for convenience and accessibility during Western riding, our Horn Bags provide practical storage solutions that attach securely to the saddle horn. Ideal for trail riding, ranch work, and endurance activities, they allow riders to carry essentials without compromising balance or comfort. Crafted from premium leather and durable synthetic materials, these horn bags are built to withstand demanding outdoor conditions. Reinforced stitching, secure fastening straps, and balanced dual-pocket designs ensure stability during movement. Thoughtfully structured compartments provide organised storage while maintaining a clean Western aesthetic. Manufactured to meet international standards, they combine rugged durability with refined craftsmanship.',
+    'Backpacks': 'Designed for functionality, organisation, and everyday performance, our Backpacks combine durable construction with refined design. Suitable for stable visits, travel, competitions, and daily use, they provide practical storage solutions while maintaining a clean and professional appearance. Crafted from high-quality, long-lasting materials, these backpacks are engineered to withstand regular handling and outdoor environments. Reinforced stitching, sturdy zippers, and thoughtfully arranged compartments ensure secure storage and easy organisation. Whether used for riding gear, personal essentials, or travel accessories, they deliver reliability and structured comfort. Manufactured to meet international standards, they reflect dependable craftsmanship and modern practicality.',
+    'Messenger Bags': 'Designed for practicality and refined everyday use, our Messenger Bags combine structured organisation with durable construction. Suitable for travel, stable visits, competitions, and daily routines, they offer convenient storage while maintaining a clean and professional appearance. Crafted from premium-quality leather and high-performance materials, these bags are engineered for strength and long-term reliability. Reinforced stitching, secure closures, and thoughtfully designed compartments ensure safe storage of essentials, documents, and accessories. The adjustable shoulder strap provides comfortable carrying, making them ideal for riders and professionals alike. Manufactured to meet international standards, they reflect dependable craftsmanship with modern functionality.',
+    'Laptop Bags': 'Designed for secure protection and organised portability, our Laptop Bags combine durability with refined presentation. Suitable for business travel, daily office use, and professional environments, they provide reliable storage while maintaining a clean, structured appearance. Crafted from premium-quality leather and high-performance materials, these bags are engineered for long-term use and everyday functionality. Padded laptop compartments offer enhanced protection against impact, while thoughtfully arranged interior sections ensure efficient organisation of documents and accessories. Reinforced stitching and durable hardware enhance strength and reliability. Manufactured to meet international standards, they reflect expert craftsmanship and dependable performance.',
+    'Tote Bags': 'Designed for everyday practicality with refined presentation, our Tote Bags combine spacious functionality with durable construction. Suitable for travel, shopping, stable visits, and daily routines, they offer convenient open-access storage while maintaining a polished appearance. Crafted from premium-quality leather and high-performance materials, these tote bags are engineered for strength and long-term use. Reinforced stitching and sturdy handles ensure reliability under regular load, while thoughtfully structured interiors provide organised storage. Built to meet international standards, they reflect expert craftsmanship with modern versatility.',
+    'Waist Bags': 'Designed for hands-free convenience and organised storage, our Waist Bags combine compact functionality with durable craftsmanship. Ideal for travel, outdoor activities, stable visits, and daily use, they provide secure access to essentials while allowing unrestricted movement. Crafted from premium-quality leather and high-performance materials, these waist bags are engineered for durability and long-term reliability. Reinforced stitching, secure zipper systems, and adjustable straps ensure a stable and comfortable fit. Thoughtfully designed compartments offer efficient organisation without adding bulk. Manufactured to meet international standards, they reflect dependable construction with modern practicality.',
+    'Wallets': 'Designed to combine elegance with everyday functionality, our Wallets reflect refined craftsmanship and durable construction. Suitable for professional, travel, and daily use, they offer organised storage while maintaining a sleek and timeless appearance. Crafted from premium-grade leather and high-quality materials, each wallet is engineered for long-term durability and structured performance. Precision stitching, smooth finishing, and thoughtfully arranged compartments ensure both practicality and sophisticated presentation. Manufactured to meet international standards, they represent dependable quality with modern design sensibility.',
     'Wrist Bands': 'Designed to combine subtle style with everyday durability, our Wrist Bands offer a refined accessory option for casual, lifestyle, and equestrian-inspired wear. Whether worn as a statement piece or a minimal accent, they provide comfort, structure, and long-lasting quality. Crafted from premium-grade leather and durable materials, each wrist band is carefully constructed with reinforced stitching and smooth finishing. The ergonomic fit ensures comfortable wear throughout the day, while adjustable closures provide secure positioning. Manufactured to meet international standards, they reflect expert craftsmanship and dependable durability.',
   };
 
@@ -874,7 +872,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Durable synthetic finish resistant to moisture',
       'Supportive knee rolls for added stability',
       'Anatomically shaped panels for even weight distribution',
-      'Available in multiple seat sizes and color options'
+      'Available in multiple seat sizes and colour options'
     ],
     'Trail Saddle': [
       'Deep, secure seat for long-hour comfort',
@@ -1144,7 +1142,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Flexible yet strong material for reliable performance',
       'Corrosion-resistant hardware',
       'Suitable for varied weather and riding conditions',
-      'Custom sizing and color options available'
+      'Custom sizing and colour options available'
     ],
     'PVC Bridle': [
       'Durable PVC construction resistant to moisture',
@@ -1153,7 +1151,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Strong, reinforced stitching for added durability',
       'Corrosion-resistant hardware',
       'Suitable for riding schools and training environments',
-      'Available in multiple sizes and color options'
+      'Available in multiple sizes and colour options'
     ],
     'Nylon Bridle': [
       'Strong woven nylon construction for durability',
@@ -1162,7 +1160,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Adjustable components for proper fit',
       'Rust-resistant hardware for long-term reliability',
       'Low-maintenance and easy to clean',
-      'Available in multiple sizes and color options'
+      'Available in multiple sizes and colour options'
     ],
     'Crownpiece': [
       'Anatomically contoured design for reduced poll pressure',
@@ -1243,7 +1241,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Reinforced stitching for added durability',
       'Rust-resistant hardware for long-term use',
       'Easy to clean and maintain',
-      'Available in multiple sizes and color options'
+      'Available in multiple sizes and colour options'
     ],
     'Rope Halter': [
       'Lightweight, knot-based rope construction',
@@ -1252,7 +1250,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Durable material resistant to wear',
       'Minimal bulk for improved control',
       'Suitable for daily handling and training',
-      'Available in multiple sizes and color options'
+      'Available in multiple sizes and colour options'
     ],
     'Show Halter': [
       'Elegant, show-ring focused design',
@@ -1279,7 +1277,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Reinforced stitching for added strength',
       'Corrosion-resistant hardware',
       'Suitable for stable, transport, and turnout use',
-      'Available in multiple sizes and color options'
+      'Available in multiple sizes and colour options'
     ],
     'Lead Rope (Cotton / Nylon / Leather)': [
       'Available in cotton, nylon, and leather options',
@@ -1405,7 +1403,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Secure foot support for improved control',
       'Low-maintenance and easy to clean',
       'Suitable for training and everyday riding',
-      'Available in multiple sizes and colors'
+      'Available in multiple sizes and colours'
     ],
     'Safety Stirrups': [
       'Designed to help reduce risk of foot entrapment',
@@ -1459,7 +1457,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Durable outer material for long-term use',
       'Soft lining to reduce friction and irritation',
       'Reinforced girth straps for secure positioning',
-      'Available in multiple sizes, colors, and quilt patterns'
+      'Available in multiple sizes, colours, and quilt patterns'
     ],
     'Dressage Saddle Pad': [
       'Contoured shape designed for dressage saddles',
@@ -1468,7 +1466,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Breathable construction to promote airflow',
       'Soft inner lining to reduce friction',
       'Reinforced girth loops for secure placement',
-      'Available in multiple sizes, colors, and quilt patterns'
+      'Available in multiple sizes, colours, and quilt patterns'
     ],
     'Half Pad': [
       'Additional cushioning for enhanced comfort',
@@ -1486,7 +1484,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Contoured shape for secure saddle fit',
       'Soft lining to minimize friction',
       'Reinforced girth straps for stability',
-      'Available in multiple sizes, colors, and quilt styles'
+      'Available in multiple sizes, colours, and quilt styles'
     ],
     'Bareback Pad': [
       'Close-contact design for enhanced rider feel',
@@ -1513,7 +1511,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Durable stitching for long-term use',
       'Suitable for Western and general riding applications',
       'Easy to maintain and clean',
-      'Available in multiple sizes, colors, and patterns'
+      'Available in multiple sizes, colours, and patterns'
     ],
     'Studded Western Blankets': [
       'Decorative stud detailing for authentic Western style',
@@ -1522,17 +1520,17 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Suitable for Western saddle compatibility',
       'Reinforced edges for enhanced durability',
       'Breathable material options available',
-      'Custom sizes, colors, and stud patterns available'
+      'Custom sizes, colours, and stud patterns available'
     ],
     'Breastplate (English / Western)': [
       'High-quality leather with smooth, refined finish',
       'Designed for saddle stability and secure fit',
       'Suitable for English and Western disciplines',
       'Reinforced stitching for enhanced strength',
-      'Adjustable straps for customized fitting',
+      'Adjustable straps for customised fitting',
       'Durable metal hardware with corrosion resistance',
       'Comfort-focused design to reduce pressure points',
-      'Available in multiple styles, colors, and custom configurations'
+      'Available in multiple styles, colours, and custom configurations'
     ],
     'Breast Collar (Western)': [
       'Premium quality leather with durable finishing',
@@ -1541,7 +1539,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Heavy-duty hardware for long-term performance',
       'Comfort-focused design to prevent restriction',
       'Available in plain, tooled, studded, and concho styles',
-      'Custom sizes, colors, tooling patterns, and hardware options available',
+      'Custom sizes, colours, tooling patterns, and hardware options available',
       'Suitable for professional and everyday Western use',
       'Competitive pricing for bulk and export orders'
     ],
@@ -1553,7 +1551,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Adjustable straps for precise and secure fitting',
       'Designed for jumping, eventing, and training disciplines',
       'Comfort-focused construction to prevent pressure buildup',
-      'Available in multiple sizes, colors, and custom configurations',
+      'Available in multiple sizes, colours, and custom configurations',
       'Competitive pricing for bulk and export orders'
     ],
     'Standing Martingale': [
@@ -1564,7 +1562,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Adjustable design for secure and accurate fitting',
       'Suitable for jumping, hunting, and English disciplines',
       'Comfort-focused construction to reduce restriction',
-      'Available in multiple sizes, colors, and custom options',
+      'Available in multiple sizes, colours, and custom options',
       'Competitive pricing for bulk and export orders'
     ],
     'Tendon Boots': [
@@ -1575,7 +1573,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Breathable lining to prevent heat buildup',
       'Designed for jumping, training, and performance use',
       'Easy to clean and maintain',
-      'Available in multiple sizes, colors, and custom branding options',
+      'Available in multiple sizes, colours, and custom branding options',
       'Competitive pricing for bulk and export orders'
     ],
     'Fetlock Boots': [
@@ -1586,7 +1584,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Breathable lining to minimize heat buildup',
       'Secure fastening system for stability during performance',
       'Suitable for jumping, eventing, and training disciplines',
-      'Available in multiple sizes, colors, and custom branding options',
+      'Available in multiple sizes, colours, and custom branding options',
       'Competitive pricing for bulk and export orders'
     ],
     'Bell Boots': [
@@ -1597,7 +1595,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Reinforced edges for enhanced durability',
       'Suitable for training, turnout, and competition use',
       'Easy to clean and maintain',
-      'Available in multiple materials, sizes, and color options',
+      'Available in multiple materials, sizes, and colour options',
       'Custom branding and bulk order options available',
       'Competitive pricing for export and wholesale buyers'
     ],
@@ -1609,8 +1607,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Reinforced stitching for added strength',
       'Secure fastening system for stability during performance',
       'Suitable for training, schooling, and competition use',
-      'Available in various materials, sizes, and color options',
-      'Customization and private labeling available',
+      'Available in various materials, sizes, and colour options',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Leg Wraps': [
@@ -1621,8 +1619,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Strong hook-and-loop fastening for secure fit',
       'Suitable for training, transport, and stable use',
       'Easy to apply and maintain',
-      'Available in multiple lengths, colors, and fabric options',
-      'Custom branding and private labeling available',
+      'Available in multiple lengths, colours, and fabric options',
+      'Custom branding and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Bandages': [
@@ -1633,8 +1631,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Strong fastening system for secure application',
       'Suitable for training, recovery, transport, and stable use',
       'Easy to apply, wash, and maintain',
-      'Available in various lengths, widths, and color options',
-      'Customization and private labeling available',
+      'Available in various lengths, widths, and colour options',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Summer Rugs': [
@@ -1645,8 +1643,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Secure chest straps and adjustable fittings',
       'Soft inner lining for added comfort',
       'Allows natural movement without restriction',
-      'Available in multiple sizes, colors, and fabric options',
-      'Customization and private labeling available',
+      'Available in multiple sizes, colours, and fabric options',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Winter Rugs': [
@@ -1657,8 +1655,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Secure chest straps and adjustable fastening systems',
       'Tail flap and leg straps for improved coverage and stability',
       'Comfort-focused lining to prevent rubbing',
-      'Available in various fill weights, sizes, and colors',
-      'Customization and private labeling available',
+      'Available in various fill weights, sizes, and colours',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Stable Rugs': [
@@ -1669,8 +1667,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Secure chest straps and adjustable fastenings',
       'Soft inner lining to reduce rubbing',
       'Tail cord for added stability',
-      'Available in multiple fill weights, sizes, and colors',
-      'Customization and private labeling available',
+      'Available in multiple fill weights, sizes, and colours',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Turnout Rugs': [
@@ -1682,8 +1680,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Secure chest closures with adjustable straps',
       'Tail flap and leg straps for improved coverage and stability',
       'Designed for long-term outdoor use',
-      'Available in multiple fill weights, sizes, and color options',
-      'Customization and private labeling available',
+      'Available in multiple fill weights, sizes, and colour options',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Fly Rugs': [
@@ -1695,8 +1693,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Secure chest closures and adjustable fittings',
       'Tail flap and optional neck cover for extended protection',
       'Soft lining at sensitive areas to prevent rubbing',
-      'Available in multiple sizes, colors, and mesh densities',
-      'Customization and private labeling available',
+      'Available in multiple sizes, colours, and mesh densities',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Fleece Rugs': [
@@ -1708,8 +1706,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Reinforced stitching for durability',
       'Secure chest closures and adjustable fittings',
       'Suitable for post-exercise, travel, and stable use',
-      'Available in multiple weights, sizes, and colors',
-      'Customization and private labeling available',
+      'Available in multiple weights, sizes, and colours',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Horse Blankets': [
@@ -1720,8 +1718,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Reinforced stitching for long-term performance',
       'Secure chest closures and adjustable fittings',
       'Designed for stable, turnout, travel, and recovery use',
-      'Available in multiple sizes, colors, and fabric variations',
-      'Customization, private labeling, and branding options available',
+      'Available in multiple sizes, colours, and fabric variations',
+      'Customisation, private labelling, and branding options available',
       'Competitive pricing for bulk and export orders'
     ],
     'Horse Clothing': [
@@ -1732,8 +1730,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Secure fastening systems for stable fit',
       'Available in lightweight to heavy-duty variants',
       'Suitable for stable, turnout, travel, and performance use',
-      'Wide range of sizes, colors, and functional designs',
-      'Customization, private labeling, and branding options available',
+      'Wide range of sizes, colours, and functional designs',
+      'Customisation, private labelling, and branding options available',
       'Competitive pricing for bulk and export orders'
     ],
     'Grooming Kits': [
@@ -1743,9 +1741,9 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'High-quality bristles and materials for effective cleaning',
       'Easy-to-carry storage case or bag options available',
       'Suitable for daily grooming and competition preparation',
-      'Available in multiple configurations and color options',
+      'Available in multiple configurations and colour options',
       'Custom kit combinations available',
-      'Private labeling and branding options offered',
+      'Private labelling and branding options offered',
       'Competitive pricing for bulk and export orders'
     ],
     'Grooming Brushes': [
@@ -1756,8 +1754,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Suitable for body, face, and finishing applications',
       'Designed for daily grooming and competition preparation',
       'Easy to clean and maintain',
-      'Available in multiple sizes, materials, and color options',
-      'Customization and private labeling available',
+      'Available in multiple sizes, materials, and colour options',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Curry Comb': [
@@ -1769,7 +1767,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Available in rubber, plastic, and metal variants',
       'Easy to clean and maintain',
       'Multiple sizes and designs available',
-      'Customization and private labeling options offered',
+      'Customisation and private labelling options offered',
       'Competitive pricing for bulk and export orders'
     ],
     'Hoof Pick': [
@@ -1781,7 +1779,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Available with brush attachment options',
       'Multiple material and design variations available',
       'Easy to clean and maintain',
-      'Customization and private labeling available',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Bit Guards': [
@@ -1793,7 +1791,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Compatible with multiple bit styles',
       'Suitable for training and competition environments',
       'Available in multiple sizes, thicknesses, and material options',
-      'Customization and private labeling available',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Fly Mask': [
@@ -1805,8 +1803,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Clear visibility without vision obstruction',
       'Optional ear and extended nose coverage variants available',
       'Durable stitching for long-term outdoor use',
-      'Available in multiple sizes, colors, and mesh densities',
-      'Customization and private labeling available',
+      'Available in multiple sizes, colours, and mesh densities',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Fly Veil': [
@@ -1817,8 +1815,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Reduces irritation from flies and insects',
       'Enhances presentation in dressage and jumping disciplines',
       'Durable stitching for long-term performance',
-      'Available in multiple colors, trims, and decorative options',
-      'Customization and private labeling available',
+      'Available in multiple colours, trims, and decorative options',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Hay Bag': [
@@ -1830,7 +1828,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Easy to fill and maintain',
       'Available in various sizes and mesh configurations',
       'Breathable material options available',
-      'Customization and private labeling available',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Hay Net': [
@@ -1842,8 +1840,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Available in multiple mesh sizes for feeding control',
       'Suitable for stable, paddock, and travel use',
       'Easy to fill and maintain',
-      'Available in various sizes and color options',
-      'Customization and private labeling available',
+      'Available in various sizes and colour options',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Feed Bucket': [
@@ -1853,9 +1851,9 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Sturdy handle for easy carrying and hanging',
       'Smooth interior surface for easy cleaning',
       'Designed for stable, paddock, and travel use',
-      'Available in multiple capacities and color options',
+      'Available in multiple capacities and colour options',
       'Stackable design for convenient storage',
-      'Customization and private labeling available',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Water Tub': [
@@ -1867,7 +1865,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Stable base design to prevent tipping',
       'Available in multiple capacities and shapes',
       'Stackable options for convenient storage',
-      'Customization and private labeling available',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Snaffle Bit': [
@@ -1879,7 +1877,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Suitable for training and competition use',
       'Corrosion-resistant construction for long-term durability',
       'Available in multiple sizes, ring styles, and thickness options',
-      'Customization and private labeling available',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Pelham Bit': [
@@ -1892,7 +1890,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Corrosion-resistant construction for long-term durability',
       'Suitable for show jumping, hunting, and performance disciplines',
       'Available in multiple sizes, shank lengths, and ring styles',
-      'Customization and private labeling available',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Double Ring Bit': [
@@ -1904,7 +1902,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Corrosion-resistant construction for long-term durability',
       'Available in single-joint, double-joint, and mullen mouth designs',
       'Various ring sizes and rein placement options available',
-      'Customization and private labeling available',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Spurs': [
@@ -1916,7 +1914,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Rowel and non-rowel design options available',
       'Corrosion-resistant construction for durability',
       'Suitable for dressage, jumping, and performance disciplines',
-      'Customization and private labeling available',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Whips (Leather / Plastic)': [
@@ -1928,7 +1926,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Available in multiple lengths and styles',
       'Reinforced lash or popper for durability',
       'Weather-resistant material options available',
-      'Customization and private labeling available',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Horse Harness Set': [
@@ -1939,8 +1937,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Designed for balanced weight distribution and comfort',
       'Suitable for carriage driving and ceremonial use',
       'Available in multiple styles and configurations',
-      'Various sizes, colors, and hardware finishes available',
-      'Customization and private labeling options offered',
+      'Various sizes, colours, and hardware finishes available',
+      'Customisation and private labelling options offered',
       'Competitive pricing for bulk and export orders'
     ],
     'Driving Harness (Single / Pair)': [
@@ -1951,8 +1949,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Designed for balanced weight distribution and comfort',
       'Suitable for carriage driving, training, and ceremonial use',
       'Adjustable straps for precise fitting',
-      'Multiple style, color, and hardware finish options available',
-      'Customization and private labeling options offered',
+      'Multiple style, colour, and hardware finish options available',
+      'Customisation and private labelling options offered',
       'Competitive pricing for bulk and export orders'
     ],
     'Marathon Harness': [
@@ -1965,7 +1963,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Adjustable components for precise and secure fitting',
       'Suitable for professional competition use',
       'Available in multiple sizes, configurations, and finishes',
-      'Customization and private labeling options available',
+      'Customisation and private labelling options available',
       'Competitive pricing for bulk and export orders'
     ],
     'Patent Harness': [
@@ -1976,8 +1974,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Balanced construction for secure and comfortable fit',
       'Suitable for formal carriage and parade use',
       'Available in multiple styles and configurations',
-      'Various sizes, colors, and hardware finishes available',
-      'Customization and private labeling options offered',
+      'Various sizes, colours, and hardware finishes available',
+      'Customisation and private labelling options offered',
       'Competitive pricing for bulk and export orders'
     ],
     'Riding Breeches': [
@@ -1988,8 +1986,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Reinforced stitching for durability',
       'Designed for training and competition use',
       'Elastic ankle panels for seamless boot fit',
-      'Available in multiple sizes, colors, and fabric variations',
-      'Customization and private labeling available',
+      'Available in multiple sizes, colours, and fabric variations',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Jodhpurs': [
@@ -2000,8 +1998,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Elastic or reinforced ankle design for secure fit',
       'Full seat and knee patch options available',
       'Suitable for training, schooling, and competition use',
-      'Available in multiple sizes, colors, and fabric variations',
-      'Customization and private labeling available',
+      'Available in multiple sizes, colours, and fabric variations',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Riding Tights': [
@@ -2013,8 +2011,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Flatlock seams to reduce chafing',
       'Designed for training and everyday riding use',
       'Side pockets for convenience and practicality',
-      'Available in multiple sizes, colors, and fabric variations',
-      'Customization and private labeling available',
+      'Available in multiple sizes, colours, and fabric variations',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Riding Jackets': [
@@ -2026,8 +2024,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Reinforced stitching for long-term durability',
       'Secure zipper and fastening systems',
       'Suitable for training and competition environments',
-      'Available in multiple styles, sizes, and color options',
-      'Customization and private labeling available',
+      'Available in multiple styles, sizes, and colour options',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Riding Shirts': [
@@ -2039,8 +2037,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Reinforced stitching for durability',
       'Competition collar and casual variants available',
       'Suitable for training and show environments',
-      'Available in multiple sizes, colors, and fabric styles',
-      'Customization and private labeling available',
+      'Available in multiple sizes, colours, and fabric styles',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Belts': [
@@ -2050,8 +2048,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Designed for riding and everyday use',
       'Comfortable and secure fit',
       'Classic and contemporary style variations available',
-      'Available in multiple sizes, colors, and finishes',
-      'Customization and private labeling options offered',
+      'Available in multiple sizes, colours, and finishes',
+      'Customisation and private labelling options offered',
       'Competitive pricing for bulk and export orders'
     ],
     'Riding Helmets': [
@@ -2063,7 +2061,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Soft, removable, and washable inner padding',
       'Suitable for training and competition environments',
       'Available in multiple sizes, finishes, and design variations',
-      'Customization and private labeling options available',
+      'Customisation and private labelling options available',
       'Competitive pricing for bulk and export orders'
     ],
     'Body Protectors': [
@@ -2075,7 +2073,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Breathable inner lining for temperature regulation',
       'Suitable for cross-country, jumping, and training use',
       'Available in multiple sizes and configurations',
-      'Customization and private labeling available',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Riding Gloves': [
@@ -2086,8 +2084,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Reinforced palm areas for durability',
       'Secure wrist closure for stable fit',
       'Suitable for training and competition use',
-      'Available in multiple sizes, colors, and styles',
-      'Customization and private labeling available',
+      'Available in multiple sizes, colours, and styles',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Riding Chaps (Half / Full)': [
@@ -2099,8 +2097,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Secure zipper and fastening systems',
       'Comfort-focused ergonomic design',
       'Suitable for training and competition use',
-      'Available in multiple sizes, colors, and finishes',
-      'Customization and private labeling available',
+      'Available in multiple sizes, colours, and finishes',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Riding Boots (Long / Ankle)': [
@@ -2112,8 +2110,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Durable stitching for long-term performance',
       'Secure zipper and fastening systems',
       'Suitable for training and competition use',
-      'Available in multiple sizes, colors, and finishes',
-      'Customization and private labeling available',
+      'Available in multiple sizes, colours, and finishes',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Saddle Bags': [
@@ -2121,12 +2119,12 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Designed for trail riding and endurance use',
       'Secure attachment system for stable positioning',
       'Reinforced stitching for enhanced strength',
-      'Multiple compartments for organized storage',
+      'Multiple compartments for organised storage',
       'Weather-resistant material options available',
       'Lightweight construction for balanced weight distribution',
       'Suitable for long-distance and recreational riding',
-      'Available in multiple sizes, colors, and styles',
-      'Customization and private labeling available',
+      'Available in multiple sizes, colours, and styles',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Horn Bags': [
@@ -2138,32 +2136,32 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Weather-resistant material options available',
       'Suitable for trail riding, ranch work, and endurance use',
       'Lightweight design for balanced weight distribution',
-      'Available in multiple sizes, colors, and styles',
-      'Customization and private labeling available',
+      'Available in multiple sizes, colours, and styles',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Backpacks': [
       'Durable, high-quality fabric construction',
-      'Spacious main compartment with organized storage sections',
+      'Spacious main compartment with organised storage sections',
       'Reinforced stitching for long-term durability',
       'Strong zipper systems for secure closure',
       'Ergonomic shoulder straps for comfortable carrying',
       'Suitable for stable, competition, and travel use',
       'Lightweight yet sturdy design',
-      'Available in multiple sizes, colors, and styles',
-      'Customization and private labeling available',
+      'Available in multiple sizes, colours, and styles',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Messenger Bags': [
       'Premium leather and durable material options',
-      'Spacious main compartment with organized interior sections',
+      'Spacious main compartment with organised interior sections',
       'Reinforced stitching for enhanced durability',
       'Secure zipper or flap closure systems',
       'Adjustable shoulder strap for comfortable carrying',
       'Suitable for travel, stable, and daily use',
       'Structured design for professional presentation',
-      'Available in multiple sizes, colors, and finishes',
-      'Customization and private labeling available',
+      'Available in multiple sizes, colours, and finishes',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Laptop Bags': [
@@ -2175,7 +2173,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Comfortable handles and adjustable shoulder strap',
       'Suitable for business travel and daily office use',
       'Available in multiple sizes and finishes',
-      'Customization and private labeling available',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Tote Bags': [
@@ -2186,8 +2184,8 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Organized interior pockets for added convenience',
       'Suitable for travel, daily use, and lifestyle needs',
       'Lightweight yet durable construction',
-      'Available in multiple sizes, colors, and finishes',
-      'Customization and private labeling available',
+      'Available in multiple sizes, colours, and finishes',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Waist Bags': [
@@ -2196,23 +2194,23 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Secure zipper closures for safe storage',
       'Adjustable waist strap for comfortable fit',
       'Reinforced stitching for enhanced durability',
-      'Multiple compartments for organized storage',
+      'Multiple compartments for organised storage',
       'Lightweight yet sturdy construction',
       'Suitable for travel, outdoor, and daily use',
-      'Available in various sizes, colors, and finishes',
-      'Customization and private labeling available',
+      'Available in various sizes, colours, and finishes',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Wallets': [
       'Premium leather and durable material options',
-      'Structured design with organized card and cash compartments',
+      'Structured design with organised card and cash compartments',
       'Reinforced stitching for enhanced longevity',
       'Slim and compact profile for comfortable carrying',
       'Smooth finishing for refined appearance',
       'Secure closure options available',
       'Suitable for everyday and professional use',
       'Available in multiple styles, sizes, and finishes',
-      'Customization, embossing, and private labeling available',
+      'Customisation, embossing, and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
     'Wrist Bands': [
@@ -2222,9 +2220,9 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
       'Secure buckle or snap closure systems',
       'Smooth finishing for refined presentation',
       'Lightweight design for everyday wear',
-      'Available in multiple sizes, colors, and finishes',
+      'Available in multiple sizes, colours, and finishes',
       'Decorative, embossed, and studded options available',
-      'Customization and private labeling available',
+      'Customisation and private labelling available',
       'Competitive pricing for bulk and export orders'
     ],
   };
@@ -2235,7 +2233,7 @@ function getProductDetails(productName: string, categorySlug: string, productSlu
     features: features[productName] || [
       'Premium quality materials',
       'Expert craftsmanship',
-      'Customization available',
+      'Customisation available',
       'International quality standards',
       'Competitive pricing for bulk orders'
     ],

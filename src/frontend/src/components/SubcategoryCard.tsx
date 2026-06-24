@@ -470,7 +470,6 @@ export default function SubcategoryCard({ title, categorySlug, subcategorySlug, 
 
   const handleClick = () => {
     if (onClick) {
-      console.log('SubcategoryCard click', { title, categorySlug, subcategorySlug, productImage });
       onClick();
     }
   };

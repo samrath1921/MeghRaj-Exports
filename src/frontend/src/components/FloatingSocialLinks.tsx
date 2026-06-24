@@ -12,7 +12,7 @@ export default function FloatingSocialLinks() {
         aria-label="Chat on WhatsApp"
         className="floating-social-link"
       >
-        <FaWhatsapp className="h-10 w-10" />
+        <FaWhatsapp className="h-5 w-5" />
         <span className="sr-only">Chat on WhatsApp</span>
       </a>
     </nav>

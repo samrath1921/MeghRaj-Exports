@@ -24,7 +24,7 @@ export function useSubmitInquiry() {
 
       if (!response.ok) {
         const contentType = response.headers.get('content-type') || '';
-        let message = 'Failed to submit inquiry. Please try again.';
+        let message = 'Failed to submit enquiry. Please try again.';
 
         if (contentType.includes('application/json')) {
           const payload = (await response.json().catch(() => ({}))) as { error?: string };

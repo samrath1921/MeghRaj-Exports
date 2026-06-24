@@ -85,7 +85,15 @@ export default defineConfig(({ mode }) => {
         build: {
             emptyOutDir: true,
             sourcemap: false,
-            minify: false
+            minify: 'esbuild',
+            rollupOptions: {
+                output: {
+                    manualChunks: {
+                        vendor: ['react', 'react-dom'],
+                        router: ['@tanstack/react-router', '@tanstack/react-query'],
+                    },
+                },
+            },
         },
         css: {
             postcss: './postcss.config.js'

@@ -107,7 +107,7 @@ export default function ProductQuickViewModal({
                 onClick={onSendInquiry}
                 className="btn-primary w-full"
               >
-                Send Inquiry
+                Send Enquiry
               </button>
             </div>
           </div>

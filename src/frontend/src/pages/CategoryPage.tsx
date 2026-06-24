@@ -71,19 +71,19 @@ export default function CategoryPage() {
               onClick={handleSendInquiry}
               className="btn-primary"
             >
-              Send Inquiry
+              Send Enquiry
             </button>
           </div>
 
-          {/* Customization Note - Premium Glass Card */}
+          {/* Customisation Note - Premium Glass Card */}
           <div className="mb-16 customization-card border-l-2 border-primary">
             <h2 className="mb-4 text-2xl font-serif font-semibold text-foreground text-white">
-              Customization Available
+              Customisation Available
             </h2>
             <p className="text-base leading-relaxed customization-card-text">
-              All products in this category can be customized to your specifications. We offer
-              flexibility in materials, colors, dimensions, and branding to meet your exact
-              requirements. Contact us to discuss your customization needs.
+              All products in this category can be customised to your specifications. We offer
+              flexibility in materials, colours, dimensions, and branding to meet your exact
+              requirements. Contact us to discuss your customisation needs.
             </p>
           </div>
 
