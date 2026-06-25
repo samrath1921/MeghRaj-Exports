@@ -15,13 +15,19 @@ export default function MarqueeTicker() {
   const doubled = [...items, ...items];
   return (
     <div className="marquee-strip" aria-hidden="true">
-      <div className="marquee-track">
-        {doubled.map((item, i) => (
-          <span key={i} className="marquee-item">
-            {item}
-            <span className="marquee-sep">◆</span>
-          </span>
-        ))}
+      <div className="marquee-live-badge">
+        <span className="marquee-live-dot" />
+        LIVE
+      </div>
+      <div style={{ flex: 1, overflow: 'hidden' }}>
+        <div className="marquee-track">
+          {doubled.map((item, i) => (
+            <span key={i} className="marquee-item">
+              {item}
+              <span className="marquee-sep">//</span>
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );

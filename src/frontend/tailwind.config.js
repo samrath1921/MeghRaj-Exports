@@ -18,6 +18,7 @@ export default {
             fontFamily: {
                 serif: ['Cormorant Garamond', 'Georgia', 'serif'],
                 sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                mono: ['JetBrains Mono', 'Menlo', 'Monaco', 'monospace'],
             },
             colors: {
                 border: 'oklch(var(--border))',

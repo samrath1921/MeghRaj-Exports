@@ -96,6 +96,8 @@ export default function HomePage() {
         <div className="absolute inset-0 hero-bg-gradient" />
         {/* Noise grain texture for depth */}
         <div className="hero-noise-overlay" />
+        {/* Dot grid */}
+        <div className="dot-grid-overlay" />
         {/* Subtle radial gold glow — top right */}
         <div className="absolute inset-0 hero-glow-overlay hero-glow-pulse" />
         {/* Bottom border */}
@@ -114,7 +116,7 @@ export default function HomePage() {
               <h1 className="mb-7 font-serif font-bold leading-[1.05] home-hero-headline">
                 <em className="hero-italic-em">Premium</em> Bag<br />
                 Manufacturer<br />
-                from India
+                from India<span className="hero-cursor" aria-hidden="true">_</span>
               </h1>
 
               <p className="mb-8 text-lg md:text-xl leading-relaxed" style={{ color: 'rgba(255,255,255,0.72)', maxWidth: '42ch' }}>
