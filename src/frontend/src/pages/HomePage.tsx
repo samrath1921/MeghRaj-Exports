@@ -1,6 +1,8 @@
 import { useNavigate } from '@tanstack/react-router';
 import { ArrowRight, Package, Settings, Globe, Shield, Factory, Award, Truck, Star, FileText, ChevronRight, Image, Video, BadgeCheck, ClipboardCheck, Microscope, Layers } from 'lucide-react';
 import { useRevealOnce } from '../hooks/useRevealOnce';
+import { useStaggerReveal } from '../hooks/useStaggerReveal';
+import MarqueeTicker from '../components/MarqueeTicker';
 import { phase1Categories } from '../data/categories';
 import PageMeta from '../components/PageMeta';
 
@@ -76,6 +78,10 @@ export default function HomePage() {
   const whySection = useRevealOnce();
   const ctaSection = useRevealOnce();
 
+  const oemGrid = useStaggerReveal();
+  const credentialsGrid = useStaggerReveal();
+  const whyGrid = useStaggerReveal();
+
   return (
     <div className="home-page-wrapper">
       <PageMeta
@@ -88,8 +94,10 @@ export default function HomePage() {
       <section className="relative overflow-hidden hero-split-section">
         {/* Background gradient + glow */}
         <div className="absolute inset-0 hero-bg-gradient" />
+        {/* Noise grain texture for depth */}
+        <div className="hero-noise-overlay" />
         {/* Subtle radial gold glow — top right */}
-        <div className="absolute inset-0 hero-glow-overlay" />
+        <div className="absolute inset-0 hero-glow-overlay hero-glow-pulse" />
         {/* Bottom border */}
         <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(to right, transparent, rgba(212,175,55,0.25), transparent)' }} />
 
@@ -104,7 +112,9 @@ export default function HomePage() {
               </div>
 
               <h1 className="mb-7 font-serif font-bold leading-[1.05] home-hero-headline">
-                Premium Bag<br />Manufacturer<br />from India
+                <em className="hero-italic-em">Premium</em> Bag<br />
+                Manufacturer<br />
+                from India
               </h1>
 
               <p className="mb-8 text-lg md:text-xl leading-relaxed" style={{ color: 'rgba(255,255,255,0.72)', maxWidth: '42ch' }}>
@@ -159,6 +169,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── MARQUEE TICKER ───────────────────────────── */}
+      <MarqueeTicker />
+
       {/* ── TRUST METRICS ────────────────────────────── */}
       <section
         ref={trustSection.ref}
@@ -193,7 +206,7 @@ export default function HomePage() {
             <p className="text-white/55 max-w-xl mx-auto">
               Factory-direct manufacturing for three product categories. Every style is available for full OEM customisation and bulk export.
             </p>
-            <div className="mx-auto mt-6 w-20 home-gold-divider" style={{ height: '2px' }} />
+            <div className="mx-auto mt-6 w-20 home-gold-divider gold-divider-anim" style={{ height: '2px' }} />
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
@@ -276,7 +289,7 @@ export default function HomePage() {
             <p className="text-white/60 max-w-2xl mx-auto">
               We manufacture to your exact specification. Every product can be fully customised, from materials and colours to branding and packaging.
             </p>
-            <div className="mx-auto mt-6 w-20 home-gold-divider" style={{ height: '2px' }} />
+            <div className="mx-auto mt-6 w-20 home-gold-divider gold-divider-anim" style={{ height: '2px' }} />
           </div>
 
           {/* Process Flow */}
@@ -291,9 +304,12 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div
+            ref={oemGrid.ref}
+            className={`grid gap-5 sm:grid-cols-2 lg:grid-cols-3 stagger-parent ${oemGrid.isRevealed ? 'stagger-parent-revealed' : ''}`}
+          >
             {oemCapabilities.map((c) => (
-              <div key={c.title} className="oem-capability-card">
+              <div key={c.title} className="oem-capability-card stagger-item">
                 <div className="oem-icon-box">{c.icon}</div>
                 <h3 className="font-semibold text-white text-base mb-2">{c.title}</h3>
                 <p className="text-white/55 text-sm leading-relaxed">{c.desc}</p>
@@ -372,9 +388,12 @@ export default function HomePage() {
             </p>
             <div className="mx-auto mt-5 w-20 home-gold-divider" style={{ height: '2px' }} />
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div
+            ref={credentialsGrid.ref}
+            className={`grid gap-4 sm:grid-cols-2 lg:grid-cols-3 stagger-parent ${credentialsGrid.isRevealed ? 'stagger-parent-revealed' : ''}`}
+          >
             {trustCredentials.map((c) => (
-              <div key={c.title} className="trust-credential-card">
+              <div key={c.title} className="trust-credential-card stagger-item">
                 <div className="flex items-center gap-3">
                   <div className="trust-credential-icon">{c.icon}</div>
                   <div>
@@ -405,12 +424,15 @@ export default function HomePage() {
             <p className="text-white/50 text-sm max-w-lg mx-auto">
               Every product is manufactured in our own facility. No outsourcing, no agents, no inflated margins.
             </p>
-            <div className="mx-auto mt-6 w-20 home-gold-divider" style={{ height: '2px' }} />
+            <div className="mx-auto mt-6 w-20 home-gold-divider gold-divider-anim" style={{ height: '2px' }} />
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div
+            ref={whyGrid.ref}
+            className={`grid gap-5 sm:grid-cols-2 lg:grid-cols-3 stagger-parent ${whyGrid.isRevealed ? 'stagger-parent-revealed' : ''}`}
+          >
             {socialProof.map((w) => (
-              <div key={w.title} className="social-proof-card">
+              <div key={w.title} className="social-proof-card stagger-item">
                 <div className="flex items-start gap-4">
                   <div className="oem-icon-box flex-shrink-0" style={{ width: '2.75rem', height: '2.75rem' }}>{w.icon}</div>
                   <div>
