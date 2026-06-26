@@ -1,16 +1,21 @@
+import { useState, useEffect, type MouseEvent } from 'react';
 import { useNavigate } from '@tanstack/react-router';
 import { ArrowRight, Package, Settings, Globe, Shield, Factory, Award, Truck, Star, FileText, ChevronRight, Image, Video, BadgeCheck, ClipboardCheck, Microscope, Layers } from 'lucide-react';
 import { useRevealOnce } from '../hooks/useRevealOnce';
 import { useStaggerReveal } from '../hooks/useStaggerReveal';
+import { useReducedMotion } from '../hooks/useReducedMotion';
+import { useTextScramble } from '../hooks/useTextScramble';
+import { useCountUp } from '../hooks/useCountUp';
 import MarqueeTicker from '../components/MarqueeTicker';
+import HeroParticles from '../components/HeroParticles';
 import { phase1Categories } from '../data/categories';
 import PageMeta from '../components/PageMeta';
 
 const trustMetrics = [
-  { value: '4th Gen', label: 'Family Manufacturing' },
-  { value: 'OEM', label: 'OEM & Private Label Ready' },
-  { value: '100%', label: 'Factory Direct Supply' },
-  { value: '25+', label: 'Countries Served' },
+  { count: 4,    suffix: 'th Gen', label: 'Family Manufacturing' },
+  { count: null, suffix: 'OEM',    label: 'OEM & Private Label Ready' },
+  { count: 100,  suffix: '%',      label: 'Factory Direct Supply' },
+  { count: 25,   suffix: '+',      label: 'Countries Served' },
 ];
 
 const oemProcess = [
@@ -66,6 +71,27 @@ const workflowSteps = [
   { n: '05', title: 'Export & Delivery', desc: 'All documentation prepared. Goods dispatched directly to your port or warehouse.' },
 ];
 
+function tiltCard(e: MouseEvent<HTMLElement>) {
+  const el = e.currentTarget;
+  const r = el.getBoundingClientRect();
+  const x = (e.clientX - r.left) / r.width - 0.5;
+  const y = (e.clientY - r.top) / r.height - 0.5;
+  el.style.transform = `perspective(900px) rotateX(${-y * 14}deg) rotateY(${x * 14}deg) translateZ(14px)`;
+  el.style.transition = 'transform 60ms ease';
+}
+
+function resetTilt(e: MouseEvent<HTMLElement>) {
+  const el = e.currentTarget;
+  el.style.transform = '';
+  el.style.transition = 'transform 700ms cubic-bezier(0.23, 1, 0.32, 1)';
+}
+
+function CountUpValue({ count, suffix, trigger }: { count: number | null; suffix: string; trigger: boolean }) {
+  const n = useCountUp(count ?? 0, 1800, trigger && count !== null);
+  if (count === null) return <span className="trust-metric-value">{suffix}</span>;
+  return <span className="trust-metric-value">{n}{suffix}</span>;
+}
+
 export default function HomePage() {
   const navigate = useNavigate();
 
@@ -81,6 +107,18 @@ export default function HomePage() {
   const oemGrid = useStaggerReveal();
   const credentialsGrid = useStaggerReveal();
   const whyGrid = useStaggerReveal();
+
+  const prefersReducedMotion = useReducedMotion();
+  const { display: scrambleText, isDone: scrambleDone } = useTextScramble('PREMIUM BAG\nMANUFACTURER\nFROM INDIA');
+  const [heroReady, setHeroReady] = useState(prefersReducedMotion);
+
+  useEffect(() => {
+    if (prefersReducedMotion) { setHeroReady(true); return; }
+    if (scrambleDone) {
+      const t = setTimeout(() => setHeroReady(true), 150);
+      return () => clearTimeout(t);
+    }
+  }, [scrambleDone, prefersReducedMotion]);
 
   return (
     <div className="home-page-wrapper">
@@ -98,6 +136,8 @@ export default function HomePage() {
         <div className="hero-noise-overlay" />
         {/* Dot grid */}
         <div className="dot-grid-overlay" />
+        {/* Gold particles */}
+        <HeroParticles />
         {/* Subtle radial gold glow — top right */}
         <div className="absolute inset-0 hero-glow-overlay hero-glow-pulse" />
         {/* Bottom border */}
@@ -113,11 +153,17 @@ export default function HomePage() {
                 <span className="section-eyebrow">Manufacturer · OEM · Private Label · Export</span>
               </div>
 
-              <h1 className="mb-7 font-serif font-bold leading-[1.05] home-hero-headline">
-                <em className="hero-italic-em">Premium</em> Bag<br />
-                Manufacturer<br />
-                from India<span className="hero-cursor" aria-hidden="true">_</span>
-              </h1>
+              {!heroReady ? (
+                <pre className="scramble-headline mb-7">
+                  {scrambleText}<span className="hero-cursor">_</span>
+                </pre>
+              ) : (
+                <h1 className="mb-7 font-serif font-bold leading-[1.05] home-hero-headline hero-headline-revealed">
+                  <em className="hero-italic-em">Premium</em> Bag<br />
+                  Manufacturer<br />
+                  from India<span className="hero-cursor" aria-hidden="true">_</span>
+                </h1>
+              )}
 
               <p className="mb-8 text-lg md:text-xl leading-relaxed" style={{ color: 'rgba(255,255,255,0.72)', maxWidth: '42ch' }}>
                 OEM, private label and export-ready manufacturing for backpacks, duffel bags and sports bags. Backed by a 4th-generation manufacturing family in Punjab.
@@ -127,7 +173,7 @@ export default function HomePage() {
               <div className="flex flex-wrap gap-2 mb-10">
                 {trustMetrics.map((m) => (
                   <span key={m.label} className="hero-trust-pill">
-                    <span className="hero-trust-value">{m.value}</span>
+                    <span className="hero-trust-value">{m.count !== null ? `${m.count}${m.suffix}` : m.suffix}</span>
                     <span className="hero-trust-sep">·</span>
                     <span className="hero-trust-label">{m.label}</span>
                   </span>
@@ -183,7 +229,7 @@ export default function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-4">
             {trustMetrics.map((m, i) => (
               <div key={m.label} className="trust-metric">
-                <span className="trust-metric-value">{m.value}</span>
+                <CountUpValue count={m.count} suffix={m.suffix} trigger={trustSection.isRevealed} />
                 <span className="trust-metric-label">{m.label}</span>
                 {i < trustMetrics.length - 1 && (
                   <div className="trust-metric-divider" />
@@ -217,6 +263,8 @@ export default function HomePage() {
                 key={cat.id}
                 onClick={() => navigate({ to: cat.slug as '/' })}
                 className="phase-cat-card text-left group"
+                onMouseMove={tiltCard}
+                onMouseLeave={resetTilt}
               >
                 <div className="phase-cat-number">0{i + 1}</div>
                 <div>
@@ -311,7 +359,7 @@ export default function HomePage() {
             className={`grid gap-5 sm:grid-cols-2 lg:grid-cols-3 stagger-parent ${oemGrid.isRevealed ? 'stagger-parent-revealed' : ''}`}
           >
             {oemCapabilities.map((c) => (
-              <div key={c.title} className="oem-capability-card stagger-item">
+              <div key={c.title} className="oem-capability-card stagger-item" onMouseMove={tiltCard} onMouseLeave={resetTilt}>
                 <div className="oem-icon-box">{c.icon}</div>
                 <h3 className="font-semibold text-white text-base mb-2">{c.title}</h3>
                 <p className="text-white/55 text-sm leading-relaxed">{c.desc}</p>
@@ -395,7 +443,7 @@ export default function HomePage() {
             className={`grid gap-4 sm:grid-cols-2 lg:grid-cols-3 stagger-parent ${credentialsGrid.isRevealed ? 'stagger-parent-revealed' : ''}`}
           >
             {trustCredentials.map((c) => (
-              <div key={c.title} className="trust-credential-card stagger-item">
+              <div key={c.title} className="trust-credential-card stagger-item" onMouseMove={tiltCard} onMouseLeave={resetTilt}>
                 <div className="flex items-center gap-3">
                   <div className="trust-credential-icon">{c.icon}</div>
                   <div>
@@ -434,7 +482,7 @@ export default function HomePage() {
             className={`grid gap-5 sm:grid-cols-2 lg:grid-cols-3 stagger-parent ${whyGrid.isRevealed ? 'stagger-parent-revealed' : ''}`}
           >
             {socialProof.map((w) => (
-              <div key={w.title} className="social-proof-card stagger-item">
+              <div key={w.title} className="social-proof-card stagger-item" onMouseMove={tiltCard} onMouseLeave={resetTilt}>
                 <div className="flex items-start gap-4">
                   <div className="oem-icon-box flex-shrink-0" style={{ width: '2.75rem', height: '2.75rem' }}>{w.icon}</div>
                   <div>
