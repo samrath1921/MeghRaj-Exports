@@ -2862,3 +2862,230 @@ h2.font-serif {
   animation: countPop 400ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
+/* ============================================================
+   PRODUCT SHOWCASE — Hero auto-cycling carousel
+   ============================================================ */
+
+.showcase-wrap {
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.showcase-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  max-height: 520px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  background: rgba(6, 9, 18, 0.9);
+}
+
+.showcase-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 24px;
+  opacity: 0;
+  transform: scale(1.06) translateY(8px);
+  transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
+              transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.showcase-img.sc-active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  z-index: 2;
+}
+
+.showcase-img.sc-exit {
+  opacity: 0;
+  transform: scale(0.94) translateY(-6px);
+  z-index: 1;
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+.showcase-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  padding: 40px 20px 18px;
+  background: linear-gradient(to top, rgba(4, 6, 14, 0.96) 0%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.showcase-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  color: rgba(212, 175, 55, 0.65);
+  text-transform: uppercase;
+}
+
+.showcase-cat {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.showcase-prog-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(212, 175, 55, 0.1);
+  z-index: 5;
+}
+
+.showcase-prog-fill {
+  height: 100%;
+  background: #D4B46A;
+  transition: width 16ms linear;
+}
+
+.showcase-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.showcase-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(212, 175, 55, 0.2);
+  cursor: pointer;
+  padding: 0;
+  transition: all 250ms ease;
+}
+
+.showcase-dot.sc-dot-active {
+  background: #D4B46A;
+  width: 22px;
+  border-radius: 3px;
+}
+
+/* ============================================================
+   PRODUCT STRIP — Horizontal auto-scroll
+   ============================================================ */
+
+.strip-section {
+  padding: 20px 0 28px;
+  overflow: hidden;
+  border-top: 1px solid rgba(212, 175, 55, 0.07);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.07);
+}
+
+.strip-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  color: rgba(212, 175, 55, 0.3);
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.strip-mask {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 7%,
+    black 93%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 7%,
+    black 93%,
+    transparent 100%
+  );
+}
+
+@keyframes stripScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.strip-track {
+  display: flex;
+  gap: 14px;
+  width: max-content;
+  animation: stripScroll 28s linear infinite;
+}
+
+.strip-track:hover {
+  animation-play-state: paused;
+}
+
+.strip-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  cursor: default;
+}
+
+.strip-img-box {
+  width: 130px;
+  height: 130px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  transition: border-color 250ms ease, transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.strip-item:hover .strip-img-box {
+  border-color: rgba(212, 175, 55, 0.55);
+  transform: translateY(-6px) scale(1.05);
+}
+
+.strip-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 10px;
+}
+
+.strip-item-label {
+  font-size: 0.58rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 200ms ease;
+}
+
+.strip-item:hover .strip-item-label {
+  color: rgba(212, 175, 55, 0.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .strip-track { animation: none; }
+}
+
+/* ── factory-img-slot needs clip-path to be animatable ─── */
+.factory-img-slot {
+  clip-path: inset(0 0% 0 0);
+}
+
