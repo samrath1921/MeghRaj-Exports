@@ -8,6 +8,8 @@ import { useTextScramble } from '../hooks/useTextScramble';
 import { useCountUp } from '../hooks/useCountUp';
 import MarqueeTicker from '../components/MarqueeTicker';
 import HeroParticles from '../components/HeroParticles';
+import ProductShowcase from '../components/ProductShowcase';
+import { useGSAPAnimations } from '../hooks/useGSAPAnimations';
 import { phase1Categories } from '../data/categories';
 import PageMeta from '../components/PageMeta';
 
@@ -109,6 +111,7 @@ export default function HomePage() {
   const whyGrid = useStaggerReveal();
 
   const prefersReducedMotion = useReducedMotion();
+  useGSAPAnimations(prefersReducedMotion);
   const { display: scrambleText, isDone: scrambleDone } = useTextScramble('PREMIUM BAG\nMANUFACTURER\nFROM INDIA');
   const [heroReady, setHeroReady] = useState(prefersReducedMotion);
 
@@ -191,27 +194,9 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right: Image frame */}
+            {/* Right: Auto-cycling product showcase */}
             <div className="hidden lg:flex items-center justify-center">
-              <div className="hero-image-frame">
-                {/* Gold corner accents */}
-                <div className="hero-corner hero-corner-tl" />
-                <div className="hero-corner hero-corner-tr" />
-                <div className="hero-corner hero-corner-bl" />
-                <div className="hero-corner hero-corner-br" />
-                {/* Decorative badge */}
-                <div className="hero-frame-badge">
-                  <span className="hero-frame-badge-value">4th Gen</span>
-                  <span className="hero-frame-badge-label">Family Manufacturing</span>
-                </div>
-                <img
-                  src="/images/factory/factory-exterior.png"
-                  alt="Meghraj Exports manufacturing facility exterior"
-                  className="absolute inset-0 w-full h-full object-cover"
-                  style={{ objectPosition: '50% 40%' }}
-                  loading="eager"
-                />
-              </div>
+              <ProductShowcase />
             </div>
           </div>
         </div>
@@ -243,7 +228,7 @@ export default function HomePage() {
       {/* ── PRODUCT CATEGORIES ───────────────────────── */}
       <section
         ref={categoriesSection.ref}
-        className={`home-section-highlights py-24 md:py-32 home-section-reveal ${categoriesSection.isRevealed ? 'home-section-revealed' : ''}`}
+        className={`home-section-highlights products-section py-24 md:py-32 home-section-reveal ${categoriesSection.isRevealed ? 'home-section-revealed' : ''}`}
       >
         <div className="container mx-auto px-4 lg:px-6">
           <div className="mb-16 text-center">
@@ -397,7 +382,7 @@ export default function HomePage() {
             {factorySlots.map((slot) => (
               <div
                 key={slot.label}
-                className={`relative overflow-hidden rounded-xl border border-yellow-400/10 ${slot.span}`}
+                className={`relative overflow-hidden rounded-xl border border-yellow-400/10 factory-img-slot ${slot.span}`}
                 style={{ height: slot.height }}
               >
                 <img
