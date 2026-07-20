@@ -37,8 +37,8 @@ export const phase1Categories: Category[] = [
         images: [
           '/images/bags/backpacks/business/1.png',
           '/images/bags/backpacks/business/2.png',
-          '/images/bags/backpacks/business/3.png',
-          '/images/bags/backpacks/business/4.png',
+          '/images/bags/backpacks/business/3.jpg',
+          '/images/bags/backpacks/business/4.jpg',
         ],
       },
       {
