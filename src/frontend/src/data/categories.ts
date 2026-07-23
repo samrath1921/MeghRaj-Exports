@@ -37,8 +37,8 @@ export const phase1Categories: Category[] = [
         images: [
           '/images/bags/backpacks/business/1.png',
           '/images/bags/backpacks/business/2.png',
-          '/images/bags/backpacks/business/3.jpg',
-          '/images/bags/backpacks/business/4.jpg',
+          '/images/bags/backpacks/business/3.png',
+          '/images/bags/backpacks/business/4.png',
         ],
       },
       {
@@ -173,14 +173,13 @@ export const phase1Categories: Category[] = [
         moq: 'From 100 units',
         bgColor: '#f2f1ed',
         images: [
-          '/images/bags/sports/cricket/1.jpg',
-          '/images/bags/sports/cricket/2.jpg',
+          '/images/bags/sports/cricket/1.png',
+          '/images/bags/sports/cricket/2.png',
           '/images/bags/sports/cricket/3.png',
           '/images/bags/sports/cricket/4.png',
           '/images/bags/sports/cricket/5.png',
           '/images/bags/sports/cricket/6.png',
           '/images/bags/sports/cricket/7.png',
-          '/images/bags/sports/cricket/8.png',
         ],
       },
       {
