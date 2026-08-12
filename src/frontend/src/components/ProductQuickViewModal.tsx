@@ -70,6 +70,7 @@ export default function ProductQuickViewModal({
             <img
               src={product.image}
               alt={product.name}
+              loading="lazy"
               className="max-h-[70vh] w-full object-contain"
             />
           </div>

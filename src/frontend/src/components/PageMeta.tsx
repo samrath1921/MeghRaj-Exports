@@ -8,6 +8,7 @@ interface PageMetaProps {
   description: string;
   path?: string;
   ogImage?: string;
+  noindex?: boolean;
 }
 
 function setMeta(selector: string, attr: string, value: string) {
@@ -29,7 +30,7 @@ function setLink(selector: string, rel: string, href: string) {
   el.href = href;
 }
 
-export default function PageMeta({ title, description, path = '', ogImage }: PageMetaProps) {
+export default function PageMeta({ title, description, path = '', ogImage, noindex = false }: PageMetaProps) {
   useEffect(() => {
     const fullTitle = title.includes('Meghraj')
       ? title
@@ -57,7 +58,10 @@ export default function PageMeta({ title, description, path = '', ogImage }: Pag
 
     // Canonical link
     setLink('link[rel="canonical"]', 'canonical', canonical);
-  }, [title, description, path, ogImage]);
+
+    // Robots directive (defaults to index, follow unless explicitly overridden)
+    setMeta('meta[name="robots"]', 'content', noindex ? 'noindex, follow' : 'index, follow');
+  }, [title, description, path, ogImage, noindex]);
 
   return null;
 }

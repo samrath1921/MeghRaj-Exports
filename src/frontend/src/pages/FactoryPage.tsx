@@ -27,7 +27,7 @@ const factoryAreas = [
   {
     title: 'Logo Printing',
     desc: 'Screen printing and heat transfer printing for vibrant, durable logo application.',
-    image: '/images/factory/factory-photo-22.png',
+    image: '/images/factory/factory-photo-22.jpg',
   },
   {
     title: 'Quality Packaging',

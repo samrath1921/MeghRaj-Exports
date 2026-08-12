@@ -1,16 +1,16 @@
 const ITEMS = [
-  { src: '/images/bags/backpacks/laptop/1.png',       label: 'Laptop Bag'   },
-  { src: '/images/bags/backpacks/business/1.png',     label: 'Business'     },
-  { src: '/images/bags/duffel-gym/gym/2.png',          label: 'Gym Bag'      },
-  { src: '/images/bags/sports/cricket/3.png',          label: 'Cricket Kit'  },
-  { src: '/images/bags/backpacks/school/2.png',        label: 'School'       },
-  { src: '/images/bags/duffel-gym/travel/1.png',       label: 'Travel'       },
-  { src: '/images/bags/duffel-gym/convertible/3.png',  label: 'Convertible'  },
-  { src: '/images/bags/backpacks/everyday/1.png',      label: 'Everyday'     },
+  { src: '/images/bags/backpacks/laptop/1.jpg',       label: 'Laptop Bag'   },
+  { src: '/images/bags/backpacks/business/1.jpg',     label: 'Business'     },
+  { src: '/images/bags/duffel-gym/gym/2.jpg',          label: 'Gym Bag'      },
+  { src: '/images/bags/sports/cricket/3.jpg',          label: 'Cricket Kit'  },
+  { src: '/images/bags/backpacks/school/2.jpg',        label: 'School'       },
+  { src: '/images/bags/duffel-gym/travel/1.jpg',       label: 'Travel'       },
+  { src: '/images/bags/duffel-gym/convertible/3.jpg',  label: 'Convertible'  },
+  { src: '/images/bags/backpacks/everyday/1.jpg',      label: 'Everyday'     },
   { src: '/images/bags/sports/hockey/1.png',           label: 'Hockey'       },
-  { src: '/images/bags/backpacks/laptop/3.png',        label: 'Laptop Pro'   },
-  { src: '/images/bags/duffel-gym/gym/4.png',          label: 'Pro Gym'      },
-  { src: '/images/bags/sports/cricket/5.png',          label: 'Kit Bag'      },
+  { src: '/images/bags/backpacks/laptop/3.jpg',        label: 'Laptop Pro'   },
+  { src: '/images/bags/duffel-gym/gym/4.jpg',          label: 'Pro Gym'      },
+  { src: '/images/bags/sports/cricket/5.jpg',          label: 'Kit Bag'      },
 ];
 
 const doubled = [...ITEMS, ...ITEMS];

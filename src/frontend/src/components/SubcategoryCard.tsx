@@ -2,171 +2,171 @@ import { useState } from 'react';
 import { useRevealOnce } from '../hooks/useRevealOnce';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 
-import English_Saddle_1 from "../assets/generated/SUBCATEGORY/SADDLE/ENGLISH_SADDLE/1_dual_dressage.png";
-import English_Saddle_2 from "../assets/generated/SUBCATEGORY/SADDLE/ENGLISH_SADDLE/2_mono_dressage.png";
-import English_Saddle_3 from "../assets/generated/SUBCATEGORY/SADDLE/ENGLISH_SADDLE/3_jumping.png";
-import English_Saddle_4 from "../assets/generated/SUBCATEGORY/SADDLE/ENGLISH_SADDLE/4_close_contact.png";
-import English_Saddle_5 from "../assets/generated/SUBCATEGORY/SADDLE/ENGLISH_SADDLE/5_eventing.png";
-import English_Saddle_6 from "../assets/generated/SUBCATEGORY/SADDLE/ENGLISH_SADDLE/6_all_purpose.png";
-import English_Saddle_7 from "../assets/generated/SUBCATEGORY/SADDLE/ENGLISH_SADDLE/7_exercise.png";
-import English_Saddle_8 from "../assets/generated/SUBCATEGORY/SADDLE/ENGLISH_SADDLE/8_pony.png";
-import English_Saddle_9 from "../assets/generated/SUBCATEGORY/SADDLE/ENGLISH_SADDLE/9_synthetic.png";
+import English_Saddle_1 from "../assets/generated/SUBCATEGORY/SADDLE/ENGLISH_SADDLE/1_dual_dressage.jpg";
+import English_Saddle_2 from "../assets/generated/SUBCATEGORY/SADDLE/ENGLISH_SADDLE/2_mono_dressage.jpg";
+import English_Saddle_3 from "../assets/generated/SUBCATEGORY/SADDLE/ENGLISH_SADDLE/3_jumping.jpg";
+import English_Saddle_4 from "../assets/generated/SUBCATEGORY/SADDLE/ENGLISH_SADDLE/4_close_contact.jpg";
+import English_Saddle_5 from "../assets/generated/SUBCATEGORY/SADDLE/ENGLISH_SADDLE/5_eventing.jpg";
+import English_Saddle_6 from "../assets/generated/SUBCATEGORY/SADDLE/ENGLISH_SADDLE/6_all_purpose.jpg";
+import English_Saddle_7 from "../assets/generated/SUBCATEGORY/SADDLE/ENGLISH_SADDLE/7_exercise.jpg";
+import English_Saddle_8 from "../assets/generated/SUBCATEGORY/SADDLE/ENGLISH_SADDLE/8_pony.jpg";
+import English_Saddle_9 from "../assets/generated/SUBCATEGORY/SADDLE/ENGLISH_SADDLE/9_synthetic.jpg";
 
-import Western_Saddle_1 from "../assets/generated/SUBCATEGORY/SADDLE/WESTERN_SADDLE/1_trail.png";
-import Western_Saddle_2 from "../assets/generated/SUBCATEGORY/SADDLE/WESTERN_SADDLE/2_pleasure.png";
-import Western_Saddle_3 from "../assets/generated/SUBCATEGORY/SADDLE/WESTERN_SADDLE/3_barrel.png";
-import Western_Saddle_4 from "../assets/generated/SUBCATEGORY/SADDLE/WESTERN_SADDLE/4_roping.png";
-import Western_Saddle_5 from "../assets/generated/SUBCATEGORY/SADDLE/WESTERN_SADDLE/5_ranch.png";
-import Western_Saddle_6 from "../assets/generated/SUBCATEGORY/SADDLE/WESTERN_SADDLE/6_cutting.png";
-import Western_Saddle_7 from "../assets/generated/SUBCATEGORY/SADDLE/WESTERN_SADDLE/7_reining.png";
-import Western_Saddle_8 from "../assets/generated/SUBCATEGORY/SADDLE/WESTERN_SADDLE/8_wade.png";
-import Western_Saddle_9 from "../assets/generated/SUBCATEGORY/SADDLE/WESTERN_SADDLE/9_show.png";
-import Western_Saddle_10 from "../assets/generated/SUBCATEGORY/SADDLE/WESTERN_SADDLE/10_mexican.png";
+import Western_Saddle_1 from "../assets/generated/SUBCATEGORY/SADDLE/WESTERN_SADDLE/1_trail.jpg";
+import Western_Saddle_2 from "../assets/generated/SUBCATEGORY/SADDLE/WESTERN_SADDLE/2_pleasure.jpg";
+import Western_Saddle_3 from "../assets/generated/SUBCATEGORY/SADDLE/WESTERN_SADDLE/3_barrel.jpg";
+import Western_Saddle_4 from "../assets/generated/SUBCATEGORY/SADDLE/WESTERN_SADDLE/4_roping.jpg";
+import Western_Saddle_5 from "../assets/generated/SUBCATEGORY/SADDLE/WESTERN_SADDLE/5_ranch.jpg";
+import Western_Saddle_6 from "../assets/generated/SUBCATEGORY/SADDLE/WESTERN_SADDLE/6_cutting.jpg";
+import Western_Saddle_7 from "../assets/generated/SUBCATEGORY/SADDLE/WESTERN_SADDLE/7_reining.jpg";
+import Western_Saddle_8 from "../assets/generated/SUBCATEGORY/SADDLE/WESTERN_SADDLE/8_wade.jpg";
+import Western_Saddle_9 from "../assets/generated/SUBCATEGORY/SADDLE/WESTERN_SADDLE/9_show.jpg";
+import Western_Saddle_10 from "../assets/generated/SUBCATEGORY/SADDLE/WESTERN_SADDLE/10_mexican.jpg";
 
-import Speciality_Saddle_1 from "../assets/generated/SUBCATEGORY/SADDLE/SPECIALITY_SADDLE/1_polo.png";
-import Speciality_Saddle_2 from "../assets/generated/SUBCATEGORY/SADDLE/SPECIALITY_SADDLE/2_endurance.png";
-import Speciality_Saddle_3 from "../assets/generated/SUBCATEGORY/SADDLE/SPECIALITY_SADDLE/3_treeless.png";
-import Speciality_Saddle_4 from "../assets/generated/SUBCATEGORY/SADDLE/SPECIALITY_SADDLE/4_stock.png";
-import Speciality_Saddle_5 from "../assets/generated/SUBCATEGORY/SADDLE/SPECIALITY_SADDLE/5_half_breed.png";
-import Speciality_Saddle_6 from "../assets/generated/SUBCATEGORY/SADDLE/SPECIALITY_SADDLE/6_trooper.png";
-import Speciality_Saddle_7 from "../assets/generated/SUBCATEGORY/SADDLE/SPECIALITY_SADDLE/7_vaquera.png";
-import Speciality_Saddle_8 from "../assets/generated/SUBCATEGORY/SADDLE/SPECIALITY_SADDLE/8_icelandic.png";
+import Speciality_Saddle_1 from "../assets/generated/SUBCATEGORY/SADDLE/SPECIALITY_SADDLE/1_polo.jpg";
+import Speciality_Saddle_2 from "../assets/generated/SUBCATEGORY/SADDLE/SPECIALITY_SADDLE/2_endurance.jpg";
+import Speciality_Saddle_3 from "../assets/generated/SUBCATEGORY/SADDLE/SPECIALITY_SADDLE/3_treeless.jpg";
+import Speciality_Saddle_4 from "../assets/generated/SUBCATEGORY/SADDLE/SPECIALITY_SADDLE/4_stock.jpg";
+import Speciality_Saddle_5 from "../assets/generated/SUBCATEGORY/SADDLE/SPECIALITY_SADDLE/5_half_breed.jpg";
+import Speciality_Saddle_6 from "../assets/generated/SUBCATEGORY/SADDLE/SPECIALITY_SADDLE/6_trooper.jpg";
+import Speciality_Saddle_7 from "../assets/generated/SUBCATEGORY/SADDLE/SPECIALITY_SADDLE/7_vaquera.jpg";
+import Speciality_Saddle_8 from "../assets/generated/SUBCATEGORY/SADDLE/SPECIALITY_SADDLE/8_icelandic.jpg";
 
-import Bridle_byType_1 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/1_english.png";
-import Bridle_byType_2 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/2_dressage.png";
-import Bridle_byType_3 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/3_jumping.png";
-import Bridle_byType_4 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/4_snaffle.png";
-import Bridle_byType_5 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/5_double.png";
-import Bridle_byType_6 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/6_hunter.png";
-import Bridle_byType_7 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/7_fig8.png";
-import Bridle_byType_8 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/8_anatomical.png";
-import Bridle_byType_9 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/9_spanish.png";
-import Bridle_byType_10 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/10_icelandic.png";
-import Bridle_byType_11 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/11_polo.png";
+import Bridle_byType_1 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/1_english.jpg";
+import Bridle_byType_2 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/2_dressage.jpg";
+import Bridle_byType_3 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/3_jumping.jpg";
+import Bridle_byType_4 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/4_snaffle.jpg";
+import Bridle_byType_5 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/5_double.jpg";
+import Bridle_byType_6 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/6_hunter.jpg";
+import Bridle_byType_7 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/7_fig8.jpg";
+import Bridle_byType_8 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/8_anatomical.jpg";
+import Bridle_byType_9 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/9_spanish.jpg";
+import Bridle_byType_10 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/10_icelandic.jpg";
+import Bridle_byType_11 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_TYPE/11_polo.jpg";
 
-import Bridle_byMaterial_1 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_MATERIAL/1_biothane.png";
-import Bridle_byMaterial_2 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_MATERIAL/2_pvc.png";
-import Bridle_byMaterial_3 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_MATERIAL/3_nylon.png";
+import Bridle_byMaterial_1 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_MATERIAL/1_biothane.jpg";
+import Bridle_byMaterial_2 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_MATERIAL/2_pvc.jpg";
+import Bridle_byMaterial_3 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/BY_MATERIAL/3_nylon.jpg";
 
-import Bridle_Component_1 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/COMPONENTS/1_browband.png";
-import Bridle_Component_2 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/COMPONENTS/2_crownpiece.png";
-import Bridle_Component_3 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/COMPONENTS/3_throatlatch.png";
-import Bridle_Component_4 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/COMPONENTS/4_cheekpiece.png";
-import Bridle_Component_5 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/COMPONENTS/5_noseband.png";
-import Bridle_Component_6 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/COMPONENTS/6_flashstrap.png";
-import Bridle_Component_7 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/COMPONENTS/7_reins.png";
+import Bridle_Component_1 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/COMPONENTS/1_browband.jpg";
+import Bridle_Component_2 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/COMPONENTS/2_crownpiece.jpg";
+import Bridle_Component_3 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/COMPONENTS/3_throatlatch.jpg";
+import Bridle_Component_4 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/COMPONENTS/4_cheekpiece.jpg";
+import Bridle_Component_5 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/COMPONENTS/5_noseband.jpg";
+import Bridle_Component_6 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/COMPONENTS/6_flashstrap.jpg";
+import Bridle_Component_7 from "../assets/generated/SUBCATEGORY/BRIDLES_HEADGEAR/COMPONENTS/7_reins.jpg";
 
-import Halter_1 from "../assets/generated/SUBCATEGORY/HALTERS_LEADS/HALTERS/1_leather.png";
-import Halter_2 from "../assets/generated/SUBCATEGORY/HALTERS_LEADS/HALTERS/2_nylon.png";
-import Halter_3 from "../assets/generated/SUBCATEGORY/HALTERS_LEADS/HALTERS/3_rope.png";
-import Halter_4 from "../assets/generated/SUBCATEGORY/HALTERS_LEADS/HALTERS/4_pvc.png";
-import Halter_5 from "../assets/generated/SUBCATEGORY/HALTERS_LEADS/HALTERS/5_show.png";
-import Halter_6 from "../assets/generated/SUBCATEGORY/HALTERS_LEADS/HALTERS/6_head_collar.png";
+import Halter_1 from "../assets/generated/SUBCATEGORY/HALTERS_LEADS/HALTERS/1_leather.jpg";
+import Halter_2 from "../assets/generated/SUBCATEGORY/HALTERS_LEADS/HALTERS/2_nylon.jpg";
+import Halter_3 from "../assets/generated/SUBCATEGORY/HALTERS_LEADS/HALTERS/3_rope.jpg";
+import Halter_4 from "../assets/generated/SUBCATEGORY/HALTERS_LEADS/HALTERS/4_pvc.jpg";
+import Halter_5 from "../assets/generated/SUBCATEGORY/HALTERS_LEADS/HALTERS/5_show.jpg";
+import Halter_6 from "../assets/generated/SUBCATEGORY/HALTERS_LEADS/HALTERS/6_head_collar.jpg";
 
-import Lead_1 from "../assets/generated/SUBCATEGORY/HALTERS_LEADS/LEADS/1_rope.png";
-import Lead_2 from "../assets/generated/SUBCATEGORY/HALTERS_LEADS/LEADS/2_line.png";
+import Lead_1 from "../assets/generated/SUBCATEGORY/HALTERS_LEADS/LEADS/1_rope.jpg";
+import Lead_2 from "../assets/generated/SUBCATEGORY/HALTERS_LEADS/LEADS/2_line.jpg";
 
-import Girth_1 from "../assets/generated/SUBCATEGORY/GIRTHS_CINCHES/GIRTHS/1_leather.png";
-import Girth_2 from "../assets/generated/SUBCATEGORY/GIRTHS_CINCHES/GIRTHS/2_cotton.png";
-import Girth_3 from "../assets/generated/SUBCATEGORY/GIRTHS_CINCHES/GIRTHS/3_nylon.png";
-import Girth_4 from "../assets/generated/SUBCATEGORY/GIRTHS_CINCHES/GIRTHS/4_elastic.png";
-import Girth_5 from "../assets/generated/SUBCATEGORY/GIRTHS_CINCHES/GIRTHS/5_dressage.png";
-import Girth_6 from "../assets/generated/SUBCATEGORY/GIRTHS_CINCHES/GIRTHS/6_stud.png";
+import Girth_1 from "../assets/generated/SUBCATEGORY/GIRTHS_CINCHES/GIRTHS/1_leather.jpg";
+import Girth_2 from "../assets/generated/SUBCATEGORY/GIRTHS_CINCHES/GIRTHS/2_cotton.jpg";
+import Girth_3 from "../assets/generated/SUBCATEGORY/GIRTHS_CINCHES/GIRTHS/3_nylon.jpg";
+import Girth_4 from "../assets/generated/SUBCATEGORY/GIRTHS_CINCHES/GIRTHS/4_elastic.jpg";
+import Girth_5 from "../assets/generated/SUBCATEGORY/GIRTHS_CINCHES/GIRTHS/5_dressage.jpg";
+import Girth_6 from "../assets/generated/SUBCATEGORY/GIRTHS_CINCHES/GIRTHS/6_stud.jpg";
 
-import Cinch_1 from "../assets/generated/SUBCATEGORY/GIRTHS_CINCHES/CINCHES/1_western.png";
-import Cinch_2 from "../assets/generated/SUBCATEGORY/GIRTHS_CINCHES/CINCHES/2_back.png";
+import Cinch_1 from "../assets/generated/SUBCATEGORY/GIRTHS_CINCHES/CINCHES/1_western.jpg";
+import Cinch_2 from "../assets/generated/SUBCATEGORY/GIRTHS_CINCHES/CINCHES/2_back.jpg";
 
-import Stirrups_1 from "../assets/generated/SUBCATEGORY/STIRRUPS_ACCESSORIES/STIRRUPS/1_iron.png";
-import Stirrups_2 from "../assets/generated/SUBCATEGORY/STIRRUPS_ACCESSORIES/STIRRUPS/2_steel.png";
-import Stirrups_3 from "../assets/generated/SUBCATEGORY/STIRRUPS_ACCESSORIES/STIRRUPS/3_aluminium.png";
-import Stirrups_4 from "../assets/generated/SUBCATEGORY/STIRRUPS_ACCESSORIES/STIRRUPS/4_brass.png";
-import Stirrups_5 from "../assets/generated/SUBCATEGORY/STIRRUPS_ACCESSORIES/STIRRUPS/5_plastic.png";
-import Stirrups_6 from "../assets/generated/SUBCATEGORY/STIRRUPS_ACCESSORIES/STIRRUPS/6_safety.png";
+import Stirrups_1 from "../assets/generated/SUBCATEGORY/STIRRUPS_ACCESSORIES/STIRRUPS/1_iron.jpg";
+import Stirrups_2 from "../assets/generated/SUBCATEGORY/STIRRUPS_ACCESSORIES/STIRRUPS/2_steel.jpg";
+import Stirrups_3 from "../assets/generated/SUBCATEGORY/STIRRUPS_ACCESSORIES/STIRRUPS/3_aluminium.jpg";
+import Stirrups_4 from "../assets/generated/SUBCATEGORY/STIRRUPS_ACCESSORIES/STIRRUPS/4_brass.jpg";
+import Stirrups_5 from "../assets/generated/SUBCATEGORY/STIRRUPS_ACCESSORIES/STIRRUPS/5_plastic.jpg";
+import Stirrups_6 from "../assets/generated/SUBCATEGORY/STIRRUPS_ACCESSORIES/STIRRUPS/6_safety.jpg";
 
-import Accessory_1 from "../assets/generated/SUBCATEGORY/STIRRUPS_ACCESSORIES/ACCESSORIES/1_stirrup_leather.png";
-import Accessory_2 from "../assets/generated/SUBCATEGORY/STIRRUPS_ACCESSORIES/ACCESSORIES/2_stirrup_pads.png";
-import Accessory_3 from "../assets/generated/SUBCATEGORY/STIRRUPS_ACCESSORIES/ACCESSORIES/3_stirrup_belt.png";
+import Accessory_1 from "../assets/generated/SUBCATEGORY/STIRRUPS_ACCESSORIES/ACCESSORIES/1_stirrup_leather.jpg";
+import Accessory_2 from "../assets/generated/SUBCATEGORY/STIRRUPS_ACCESSORIES/ACCESSORIES/2_stirrup_pads.jpg";
+import Accessory_3 from "../assets/generated/SUBCATEGORY/STIRRUPS_ACCESSORIES/ACCESSORIES/3_stirrup_belt.jpg";
 
-import Pad_1 from "../assets/generated/SUBCATEGORY/SADDLE_PADS_BLANKETS/PADS/1_all_purpose.png";
-import Pad_2 from "../assets/generated/SUBCATEGORY/SADDLE_PADS_BLANKETS/PADS/2_dressage.png";
-import Pad_3 from "../assets/generated/SUBCATEGORY/SADDLE_PADS_BLANKETS/PADS/3_jumping.png";
-import Pad_4 from "../assets/generated/SUBCATEGORY/SADDLE_PADS_BLANKETS/PADS/4_Half.png";
-import Pad_5 from "../assets/generated/SUBCATEGORY/SADDLE_PADS_BLANKETS/PADS/5_bareback.png";
-import Pad_6 from "../assets/generated/SUBCATEGORY/SADDLE_PADS_BLANKETS/PADS/6_Western.png";
+import Pad_1 from "../assets/generated/SUBCATEGORY/SADDLE_PADS_BLANKETS/PADS/1_all_purpose.jpg";
+import Pad_2 from "../assets/generated/SUBCATEGORY/SADDLE_PADS_BLANKETS/PADS/2_dressage.jpg";
+import Pad_3 from "../assets/generated/SUBCATEGORY/SADDLE_PADS_BLANKETS/PADS/3_jumping.jpg";
+import Pad_4 from "../assets/generated/SUBCATEGORY/SADDLE_PADS_BLANKETS/PADS/4_Half.jpg";
+import Pad_5 from "../assets/generated/SUBCATEGORY/SADDLE_PADS_BLANKETS/PADS/5_bareback.jpg";
+import Pad_6 from "../assets/generated/SUBCATEGORY/SADDLE_PADS_BLANKETS/PADS/6_Western.jpg";
 
-import Blanket_1 from "../assets/generated/SUBCATEGORY/SADDLE_PADS_BLANKETS/BLANKETS/1_western.png";
-import Blanket_2 from "../assets/generated/SUBCATEGORY/SADDLE_PADS_BLANKETS/BLANKETS/2_studded.png";
+import Blanket_1 from "../assets/generated/SUBCATEGORY/SADDLE_PADS_BLANKETS/BLANKETS/1_western.jpg";
+import Blanket_2 from "../assets/generated/SUBCATEGORY/SADDLE_PADS_BLANKETS/BLANKETS/2_studded.jpg";
 
-import Bp_Mg_1 from "../assets/generated/SUBCATEGORY/BREASTPLATES_MARTINGALES/1_breastplate.png";
-import Bp_Mg_2 from "../assets/generated/SUBCATEGORY/BREASTPLATES_MARTINGALES/2_breastcollar.png";
-import Bp_Mg_3 from "../assets/generated/SUBCATEGORY/BREASTPLATES_MARTINGALES/3_running.png";
-import Bp_Mg_4 from "../assets/generated/SUBCATEGORY/BREASTPLATES_MARTINGALES/4_standing.png";
+import Bp_Mg_1 from "../assets/generated/SUBCATEGORY/BREASTPLATES_MARTINGALES/1_breastplate.jpg";
+import Bp_Mg_2 from "../assets/generated/SUBCATEGORY/BREASTPLATES_MARTINGALES/2_breastcollar.jpg";
+import Bp_Mg_3 from "../assets/generated/SUBCATEGORY/BREASTPLATES_MARTINGALES/3_running.jpg";
+import Bp_Mg_4 from "../assets/generated/SUBCATEGORY/BREASTPLATES_MARTINGALES/4_standing.jpg";
 
-import Leg_1 from "../assets/generated/SUBCATEGORY/HORSE_LEG_PROTECTION/1_tendonboot.png";
-import Leg_2 from "../assets/generated/SUBCATEGORY/HORSE_LEG_PROTECTION/2_fetlockboot.png";
-import Leg_3 from "../assets/generated/SUBCATEGORY/HORSE_LEG_PROTECTION/3_bellboot.png";
-import Leg_4 from "../assets/generated/SUBCATEGORY/HORSE_LEG_PROTECTION/4_ankleboot.png";
-import Leg_5 from "../assets/generated/SUBCATEGORY/HORSE_LEG_PROTECTION/5_wraps.png";
-import Leg_6 from "../assets/generated/SUBCATEGORY/HORSE_LEG_PROTECTION/6_bandage.png";
+import Leg_1 from "../assets/generated/SUBCATEGORY/HORSE_LEG_PROTECTION/1_tendonboot.jpg";
+import Leg_2 from "../assets/generated/SUBCATEGORY/HORSE_LEG_PROTECTION/2_fetlockboot.jpg";
+import Leg_3 from "../assets/generated/SUBCATEGORY/HORSE_LEG_PROTECTION/3_bellboot.jpg";
+import Leg_4 from "../assets/generated/SUBCATEGORY/HORSE_LEG_PROTECTION/4_ankleboot.jpg";
+import Leg_5 from "../assets/generated/SUBCATEGORY/HORSE_LEG_PROTECTION/5_wraps.jpg";
+import Leg_6 from "../assets/generated/SUBCATEGORY/HORSE_LEG_PROTECTION/6_bandage.jpg";
 
-import Rug_1 from "../assets/generated/SUBCATEGORY/RUGS_BLANKETS_CLOTHING/RUGS_BLANKETS/1_summer.png";
-import Rug_2 from "../assets/generated/SUBCATEGORY/RUGS_BLANKETS_CLOTHING/RUGS_BLANKETS/2_winter.png";
-import Rug_3 from "../assets/generated/SUBCATEGORY/RUGS_BLANKETS_CLOTHING/RUGS_BLANKETS/3_stable.png";
-import Rug_4 from "../assets/generated/SUBCATEGORY/RUGS_BLANKETS_CLOTHING/RUGS_BLANKETS/4_turnout.png";
-import Rug_5 from "../assets/generated/SUBCATEGORY/RUGS_BLANKETS_CLOTHING/RUGS_BLANKETS/5_fly.png";
-import Rug_6 from "../assets/generated/SUBCATEGORY/RUGS_BLANKETS_CLOTHING/RUGS_BLANKETS/6_fleece.png";
-import Rug_7 from "../assets/generated/SUBCATEGORY/RUGS_BLANKETS_CLOTHING/RUGS_BLANKETS/7_blanket.png";
+import Rug_1 from "../assets/generated/SUBCATEGORY/RUGS_BLANKETS_CLOTHING/RUGS_BLANKETS/1_summer.jpg";
+import Rug_2 from "../assets/generated/SUBCATEGORY/RUGS_BLANKETS_CLOTHING/RUGS_BLANKETS/2_winter.jpg";
+import Rug_3 from "../assets/generated/SUBCATEGORY/RUGS_BLANKETS_CLOTHING/RUGS_BLANKETS/3_stable.jpg";
+import Rug_4 from "../assets/generated/SUBCATEGORY/RUGS_BLANKETS_CLOTHING/RUGS_BLANKETS/4_turnout.jpg";
+import Rug_5 from "../assets/generated/SUBCATEGORY/RUGS_BLANKETS_CLOTHING/RUGS_BLANKETS/5_fly.jpg";
+import Rug_6 from "../assets/generated/SUBCATEGORY/RUGS_BLANKETS_CLOTHING/RUGS_BLANKETS/6_fleece.jpg";
+import Rug_7 from "../assets/generated/SUBCATEGORY/RUGS_BLANKETS_CLOTHING/RUGS_BLANKETS/7_blanket.jpg";
 
-import Clothing_1 from "../assets/generated/SUBCATEGORY/RUGS_BLANKETS_CLOTHING/CLOTHING/1_clothing.png";
+import Clothing_1 from "../assets/generated/SUBCATEGORY/RUGS_BLANKETS_CLOTHING/CLOTHING/1_clothing.jpg";
 
-import Grooming_1 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/GROOMING/1_kit.png";
-import Grooming_2 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/GROOMING/2_brushes.png";
-import Grooming_3 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/GROOMING/3_comb.png";
-import Grooming_4 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/GROOMING/4_hoof.png";
+import Grooming_1 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/GROOMING/1_kit.jpg";
+import Grooming_2 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/GROOMING/2_brushes.jpg";
+import Grooming_3 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/GROOMING/3_comb.jpg";
+import Grooming_4 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/GROOMING/4_hoof.jpg";
 
-import Stable_1 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/STABLE_ACCESSORIES/1_bitGuards.png";
-import Stable_2 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/STABLE_ACCESSORIES/2_flyMask.png";
-import Stable_3 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/STABLE_ACCESSORIES/3_flyVeil.png";
-import Stable_4 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/STABLE_ACCESSORIES/4_hayBag.png";
-import Stable_5 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/STABLE_ACCESSORIES/5_hayNet.png";
-import Stable_6 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/STABLE_ACCESSORIES/6_feedBucket.png";
-import Stable_7 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/STABLE_ACCESSORIES/7_waterTub.png";
+import Stable_1 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/STABLE_ACCESSORIES/1_bitGuards.jpg";
+import Stable_2 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/STABLE_ACCESSORIES/2_flyMask.jpg";
+import Stable_3 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/STABLE_ACCESSORIES/3_flyVeil.jpg";
+import Stable_4 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/STABLE_ACCESSORIES/4_hayBag.jpg";
+import Stable_5 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/STABLE_ACCESSORIES/5_hayNet.jpg";
+import Stable_6 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/STABLE_ACCESSORIES/6_feedBucket.jpg";
+import Stable_7 from "../assets/generated/SUBCATEGORY/HORSE_CARE_STABLE/STABLE_ACCESSORIES/7_waterTub.jpg";
 
-import Bit_1 from "../assets/generated/SUBCATEGORY/BITS_SPURS_CONTROL_GEAR/BITS/1_.snaffleBit.png";
-import Bit_2 from "../assets/generated/SUBCATEGORY/BITS_SPURS_CONTROL_GEAR/BITS/2_pelhamBit.png";
-import Bit_3 from "../assets/generated/SUBCATEGORY/BITS_SPURS_CONTROL_GEAR/BITS/3_doubleJointBit.png";
-import Bit_4 from "../assets/generated/SUBCATEGORY/BITS_SPURS_CONTROL_GEAR/BITS/4_bitGuards.png";
+import Bit_1 from "../assets/generated/SUBCATEGORY/BITS_SPURS_CONTROL_GEAR/BITS/1_.snaffleBit.jpg";
+import Bit_2 from "../assets/generated/SUBCATEGORY/BITS_SPURS_CONTROL_GEAR/BITS/2_pelhamBit.jpg";
+import Bit_3 from "../assets/generated/SUBCATEGORY/BITS_SPURS_CONTROL_GEAR/BITS/3_doubleJointBit.jpg";
+import Bit_4 from "../assets/generated/SUBCATEGORY/BITS_SPURS_CONTROL_GEAR/BITS/4_bitGuards.jpg";
 
-import Control_1 from "../assets/generated/SUBCATEGORY/BITS_SPURS_CONTROL_GEAR/CONTROL_EQUIPMENT/1_spurs.png";
-import Control_2 from "../assets/generated/SUBCATEGORY/BITS_SPURS_CONTROL_GEAR/CONTROL_EQUIPMENT/2_whips.png";
+import Control_1 from "../assets/generated/SUBCATEGORY/BITS_SPURS_CONTROL_GEAR/CONTROL_EQUIPMENT/1_spurs.jpg";
+import Control_2 from "../assets/generated/SUBCATEGORY/BITS_SPURS_CONTROL_GEAR/CONTROL_EQUIPMENT/2_whips.jpg";
 
-import Harness_1 from "../assets/generated/SUBCATEGORY/HARNESS_DRIVING_EQUIPMENT/1_harnessSet.png";
-import Harness_2 from "../assets/generated/SUBCATEGORY/HARNESS_DRIVING_EQUIPMENT/2_drivingHarness.png";
-import Harness_3 from "../assets/generated/SUBCATEGORY/HARNESS_DRIVING_EQUIPMENT/3_marathonHarness.png";
-import Harness_4 from "../assets/generated/SUBCATEGORY/HARNESS_DRIVING_EQUIPMENT/4_patentHarness.png";
+import Harness_1 from "../assets/generated/SUBCATEGORY/HARNESS_DRIVING_EQUIPMENT/1_harnessSet.jpg";
+import Harness_2 from "../assets/generated/SUBCATEGORY/HARNESS_DRIVING_EQUIPMENT/2_drivingHarness.jpg";
+import Harness_3 from "../assets/generated/SUBCATEGORY/HARNESS_DRIVING_EQUIPMENT/3_marathonHarness.jpg";
+import Harness_4 from "../assets/generated/SUBCATEGORY/HARNESS_DRIVING_EQUIPMENT/4_patentHarness.jpg";
 
-import RiderClothing_1 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_CLOTHING/1_ridingBreeches.png";
-import RiderClothing_2 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_CLOTHING/2_jodhpurs.png";
-import RiderClothing_3 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_CLOTHING/3_ridingTights.png";
-import RiderClothing_4 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_CLOTHING/4_ridingJackets.png";
-import RiderClothing_5 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_CLOTHING/5_ridingShirts.png";
-import RiderClothing_6 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_CLOTHING/6_belts.png";
+import RiderClothing_1 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_CLOTHING/1_ridingBreeches.jpg";
+import RiderClothing_2 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_CLOTHING/2_jodhpurs.jpg";
+import RiderClothing_3 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_CLOTHING/3_ridingTights.jpg";
+import RiderClothing_4 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_CLOTHING/4_ridingJackets.jpg";
+import RiderClothing_5 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_CLOTHING/5_ridingShirts.jpg";
+import RiderClothing_6 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_CLOTHING/6_belts.jpg";
 
-import RiderProtection_1 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_PROTECTION/1_helmet.png";
-import RiderProtection_2 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_PROTECTION/2_bodyProtector.png";
-import RiderProtection_3 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_PROTECTION/3_gloves.png";
-import RiderProtection_4 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_PROTECTION/4_chaps.png";
-import RiderProtection_5 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_PROTECTION/5_shoes.png";
+import RiderProtection_1 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_PROTECTION/1_helmet.jpg";
+import RiderProtection_2 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_PROTECTION/2_bodyProtector.jpg";
+import RiderProtection_3 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_PROTECTION/3_gloves.jpg";
+import RiderProtection_4 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_PROTECTION/4_chaps.jpg";
+import RiderProtection_5 from "../assets/generated/SUBCATEGORY/RIDER_EQUIPMENTS/RIDER_PROTECTION/5_shoes.jpg";
 
-import Bag_1 from "../assets/generated/SUBCATEGORY/BAGS_LEATHER_GOODS/1_saddleBag.png";
-import Bag_2 from "../assets/generated/SUBCATEGORY/BAGS_LEATHER_GOODS/2_hornBag.png";
-import Bag_3 from "../assets/generated/SUBCATEGORY/BAGS_LEATHER_GOODS/3_backpack.png";
-import Bag_4 from "../assets/generated/SUBCATEGORY/BAGS_LEATHER_GOODS/4_messengerBag.png";
-import Bag_5 from "../assets/generated/SUBCATEGORY/BAGS_LEATHER_GOODS/5_laptopBag.png";
-import Bag_6 from "../assets/generated/SUBCATEGORY/BAGS_LEATHER_GOODS/6_toteBag.png";
-import Bag_7 from "../assets/generated/SUBCATEGORY/BAGS_LEATHER_GOODS/7_waistBag.png";
-import Bag_8 from "../assets/generated/SUBCATEGORY/BAGS_LEATHER_GOODS/8_wallets.png";
-import Bag_9 from "../assets/generated/SUBCATEGORY/BAGS_LEATHER_GOODS/9_wristBands.png";
+import Bag_1 from "../assets/generated/SUBCATEGORY/BAGS_LEATHER_GOODS/1_saddleBag.jpg";
+import Bag_2 from "../assets/generated/SUBCATEGORY/BAGS_LEATHER_GOODS/2_hornBag.jpg";
+import Bag_3 from "../assets/generated/SUBCATEGORY/BAGS_LEATHER_GOODS/3_backpack.jpg";
+import Bag_4 from "../assets/generated/SUBCATEGORY/BAGS_LEATHER_GOODS/4_messengerBag.jpg";
+import Bag_5 from "../assets/generated/SUBCATEGORY/BAGS_LEATHER_GOODS/5_laptopBag.jpg";
+import Bag_6 from "../assets/generated/SUBCATEGORY/BAGS_LEATHER_GOODS/6_toteBag.jpg";
+import Bag_7 from "../assets/generated/SUBCATEGORY/BAGS_LEATHER_GOODS/7_waistBag.jpg";
+import Bag_8 from "../assets/generated/SUBCATEGORY/BAGS_LEATHER_GOODS/8_wallets.jpg";
+import Bag_9 from "../assets/generated/SUBCATEGORY/BAGS_LEATHER_GOODS/9_wristBands.jpg";
 
 
 interface SubcategoryCardProps {
@@ -530,6 +530,7 @@ export default function SubcategoryCard({ title, categorySlug, subcategorySlug, 
           }
           alt={title}
           onError={() => setImageError(true)}
+          loading="lazy"
           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>

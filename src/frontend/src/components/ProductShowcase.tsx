@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 
 const SLIDES = [
-  { src: '/images/bags/backpacks/laptop/1.png',       cat: 'Laptop Backpacks',   tag: 'OEM · Private Label' },
-  { src: '/images/bags/duffel-gym/gym/1.png',          cat: 'Gym Bags',           tag: 'Custom Branding'     },
-  { src: '/images/bags/backpacks/business/2.png',      cat: 'Business Backpacks', tag: 'Factory Direct'      },
-  { src: '/images/bags/sports/cricket/3.png',          cat: 'Cricket Kit Bags',   tag: 'Sport Series'        },
-  { src: '/images/bags/duffel-gym/travel/2.png',       cat: 'Travel Duffels',     tag: 'Bulk Export'         },
-  { src: '/images/bags/backpacks/school/1.png',        cat: 'School Backpacks',   tag: 'MOQ: 100 pcs'        },
-  { src: '/images/bags/duffel-gym/convertible/2.png',  cat: 'Convertible Bags',   tag: 'New Collection'      },
+  { src: '/images/bags/backpacks/laptop/1.jpg',       cat: 'Laptop Backpacks',   tag: 'OEM · Private Label' },
+  { src: '/images/bags/duffel-gym/gym/1.jpg',          cat: 'Gym Bags',           tag: 'Custom Branding'     },
+  { src: '/images/bags/backpacks/business/2.jpg',      cat: 'Business Backpacks', tag: 'Factory Direct'      },
+  { src: '/images/bags/sports/cricket/3.jpg',          cat: 'Cricket Kit Bags',   tag: 'Sport Series'        },
+  { src: '/images/bags/duffel-gym/travel/2.jpg',       cat: 'Travel Duffels',     tag: 'Bulk Export'         },
+  { src: '/images/bags/backpacks/school/1.jpg',        cat: 'School Backpacks',   tag: 'MOQ: 100 pcs'        },
+  { src: '/images/bags/duffel-gym/convertible/2.jpg',  cat: 'Convertible Bags',   tag: 'New Collection'      },
 ];
 
 const INTERVAL = 2800;

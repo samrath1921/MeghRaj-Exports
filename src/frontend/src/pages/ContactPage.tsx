@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSearch } from '@tanstack/react-router';
 import { useSubmitInquiry } from '../hooks/useQueries';
 import { Mail, CheckCircle, MapPin, Check, Clock, Settings, Factory, Briefcase, Dumbbell, Trophy, Star } from 'lucide-react';
@@ -12,6 +12,7 @@ import { countryDialCodes } from '../utils/countryDialCodes';
 import { useRevealOnce } from '../hooks/useRevealOnce';
 import { phase1Categories } from '../data/categories';
 import PageMeta from '../components/PageMeta';
+import { trackEvent } from '../lib/analytics';
 
 const TOTAL_STEPS = 4;
 
@@ -70,10 +71,18 @@ export default function ContactPage() {
   const hero = useRevealOnce();
   const formSection = useRevealOnce();
 
+  const formStartedRef = useRef(false);
+  const markFormStarted = () => {
+    if (formStartedRef.current) return;
+    formStartedRef.current = true;
+    trackEvent('form_start', { form_name: 'contact_enquiry' });
+  };
+
   useEffect(() => {
     if (prefilledCategory) {
       setFormData((prev) => ({ ...prev, category: prefilledCategory, subcategory: prefilledSub }));
       setStep(1);
+      markFormStarted();
     }
   }, [prefilledCategory, prefilledSub]);
 
@@ -83,6 +92,7 @@ export default function ContactPage() {
   };
 
   const pickCategory = (value: string) => {
+    markFormStarted();
     set('category', value);
     set('subcategory', '');
     setStep(1);
@@ -119,6 +129,7 @@ export default function ContactPage() {
 
   const handleSubmit = async () => {
     if (!validateStep(step)) return;
+    trackEvent('form_submit', { form_name: 'contact_enquiry' });
     try {
       const whatsapp =
         formData.whatsappCode && formData.whatsappNumber.trim()
@@ -147,6 +158,9 @@ export default function ContactPage() {
         categories: [formData.category],
         message: messageParts || '(No additional notes provided)',
       });
+      // generate_lead fires only here — after the API call has confirmed success —
+      // never on page load or on a failed submission (see catch block below).
+      trackEvent('generate_lead', { form_name: 'contact_enquiry', category: formData.category });
       setSubmitted(true);
     } catch (error) {
       setErrors({ submit: error instanceof Error ? error.message : 'Submission failed. Please try again.' });
@@ -517,8 +531,8 @@ export default function ContactPage() {
                   <h3 className="font-semibold text-white text-sm mb-5">Contact Information</h3>
                   <div className="flex flex-col gap-4 pb-5 border-b border-white/8">
                     {([
-                      { icon: <Mail className="h-4 w-4" />, label: 'Email', content: <a href="mailto:info@meghrajexports.com" className="text-yellow-400/80 hover:text-yellow-400 text-sm transition-colors">info@meghrajexports.com</a> },
-                      { icon: <FaWhatsapp className="h-4 w-4" />, label: 'WhatsApp', content: <a href={whatsappContactUrl} target="_blank" rel="noopener noreferrer" className="text-yellow-400/80 hover:text-yellow-400 text-sm transition-colors">Message us on WhatsApp</a> },
+                      { icon: <Mail className="h-4 w-4" />, label: 'Email', content: <a href="mailto:info@meghrajexports.com" onClick={() => trackEvent('email_click', { link_location: 'contact_page' })} className="text-yellow-400/80 hover:text-yellow-400 text-sm transition-colors">info@meghrajexports.com</a> },
+                      { icon: <FaWhatsapp className="h-4 w-4" />, label: 'WhatsApp', content: <a href={whatsappContactUrl} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('whatsapp_click', { link_location: 'contact_page' })} className="text-yellow-400/80 hover:text-yellow-400 text-sm transition-colors">Message us on WhatsApp</a> },
                       { icon: <MapPin className="h-4 w-4" />, label: 'Factory Location', content: <span className="text-white/60 text-sm">Jalandhar, Punjab, India</span> },
                       { icon: <Clock className="h-4 w-4" />, label: 'Response Time', content: <span className="text-white/60 text-sm">Within 24 business hours</span> },
                     ] as { icon: React.ReactNode; label: string; content: React.ReactNode }[]).map(({ icon, label, content }) => (

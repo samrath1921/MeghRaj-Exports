@@ -1,5 +1,6 @@
 import { useNavigate } from '@tanstack/react-router';
 import { ArrowRight } from 'lucide-react';
+import PageMeta from '../components/PageMeta';
 
 export default function NotFoundPage() {
   const navigate = useNavigate();
@@ -9,6 +10,12 @@ export default function NotFoundPage() {
       className="home-page-wrapper"
       style={{ minHeight: '70vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
     >
+      <PageMeta
+        title="Page Not Found"
+        description="The page you're looking for doesn't exist on meghrajexports.com."
+        noindex
+      />
+
       <div style={{ textAlign: 'center', padding: '2rem', maxWidth: '36rem' }}>
         <p
           style={{

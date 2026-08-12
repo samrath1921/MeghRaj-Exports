@@ -123,7 +123,7 @@ export default function SportsBagsPage() {
                           activeImageIdx === i ? 'border-yellow-400' : 'border-white/10 hover:border-white/30'
                         }`}
                       >
-                        <img src={src} alt="" className="w-full h-full object-contain" style={{ backgroundColor: selected.bgColor }} aria-hidden="true" />
+                        <img src={src} alt="" loading="lazy" className="w-full h-full object-contain" style={{ backgroundColor: selected.bgColor }} aria-hidden="true" />
                       </button>
                     ))}
                   </div>

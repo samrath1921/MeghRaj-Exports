@@ -55,6 +55,7 @@ export default function ImageLightbox({ images, activeIdx, alt, onClose, onNavig
         <img
           src={images[activeIdx]}
           alt={alt}
+          loading="lazy"
           className="object-contain"
           style={{ maxWidth: '80vw', maxHeight: '85vh', display: 'block' }}
         />

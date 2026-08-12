@@ -6,7 +6,7 @@
   "scripts": {
     "setup": "pnpm i",
     "start": "vite --port 3000",
-    "build:skip-bindings": "vite build",
+    "build:skip-bindings": "vite build && node scripts/prerender.mjs && node scripts/generate-sitemap.mjs",
     "typescript-check": "tsc --noEmit --pretty",
     "format": "prettier --write \"src/**/*.{json,js,jsx,ts,tsx,css,scss}\"",
     "lint": "eslint src --ext .ts,.tsx,.js,.jsx",
@@ -33,6 +33,7 @@
     "eslint-plugin-tailwindcss": "~3.18.2",
     "globals": "~16.2.0",
     "postcss": "^8.4.41",
+    "sharp": "^0.34.4",
     "tailwindcss": "^3.4.17",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.8.3",

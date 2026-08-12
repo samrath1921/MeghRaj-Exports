@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { Mail, Phone, MapPin, CheckCircle, Linkedin } from 'lucide-react';
 import Image from '../assets/generated/HOME_PAGE/MEGHRAJ_LOGO_Complete.png';
+import { trackEvent } from '../lib/analytics';
 
 const productLinks = [
   { label: 'Backpacks', path: '/backpacks' },
@@ -39,6 +40,7 @@ export default function SiteFooter() {
             <img
               src={Image}
               alt="Meghraj Exports"
+              loading="lazy"
               className="h-20 w-auto mb-5 object-contain opacity-90"
             />
             <p className="text-sm leading-relaxed mb-5" style={{ color: 'rgba(255,255,255,0.4)' }}>
@@ -78,14 +80,22 @@ export default function SiteFooter() {
           <div>
             <p className="footer-nav-label">Contact</p>
             <div className="flex flex-col gap-3">
-              <div className="footer-contact-item">
+              <a
+                href="mailto:info@meghrajexports.com"
+                onClick={() => trackEvent('email_click', { link_location: 'footer' })}
+                className="footer-contact-item hover:opacity-80 transition-opacity"
+              >
                 <Mail className="footer-contact-icon h-3.5 w-3.5" />
                 <span>info@meghrajexports.com</span>
-              </div>
-              <div className="footer-contact-item">
+              </a>
+              <a
+                href="tel:+919696697000"
+                onClick={() => trackEvent('phone_click', { link_location: 'footer' })}
+                className="footer-contact-item hover:opacity-80 transition-opacity"
+              >
                 <Phone className="footer-contact-icon h-3.5 w-3.5" />
                 <span>+91 96966 97000</span>
-              </div>
+              </a>
               <div className="footer-contact-item">
                 <MapPin className="footer-contact-icon h-3.5 w-3.5 mt-0.5" />
                 <span>E-1A, Industrial Area, Jalandhar, Punjab 144004, India</span>

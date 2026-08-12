@@ -2,6 +2,7 @@ import { useParams, useNavigate } from '@tanstack/react-router';
 import { productCategories } from '../data/productTaxonomy';
 import { ArrowLeft } from 'lucide-react';
 import CategoryHierarchy from '../components/CategoryHierarchy';
+import PageMeta from '../components/PageMeta';
 
 export default function CategoryPage() {
   const { categorySlug } = useParams({ from: '/products/$categorySlug' });
@@ -39,6 +40,12 @@ export default function CategoryPage() {
 
   return (
     <div className="product-page-wrapper pb-32 md:pb-40">
+      <PageMeta
+        title={`${category.name} — Equestrian Products`}
+        description={`Browse our ${category.name} range, part of Meghraj Exports' equestrian and saddlery product line manufactured in Punjab, India.`}
+        path={`/products/${categorySlug}`}
+      />
+
       {/* Category Banner Image with Cinematic Overlay */}
       <div className="relative h-72 md:h-96 overflow-hidden product-banner-fade-in">
         <img

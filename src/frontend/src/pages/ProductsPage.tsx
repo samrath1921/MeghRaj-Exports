@@ -1,11 +1,18 @@
 import { useNavigate } from '@tanstack/react-router';
 import { productCategories } from '../data/productTaxonomy';
+import PageMeta from '../components/PageMeta';
 
 export default function ProductsPage() {
   const navigate = useNavigate();
 
   return (
     <div className="home-section-intro py-32 md:py-40">
+      <PageMeta
+        title="Equestrian & Saddlery Products"
+        description="Meghraj Exports' equestrian and saddlery product range — saddles, bridles, harness, rugs, stable accessories and rider equipment, manufactured in Punjab, India alongside our core bag manufacturing business."
+        path="/products"
+      />
+
       <div className="container mx-auto px-4 lg:px-6">
         <div className="mb-20 text-center">
           <h1 className="mb-6 font-serif text-4xl md:text-5xl font-bold text-white">
@@ -29,6 +36,7 @@ export default function ProductsPage() {
                 <img
                   src={category.image}
                   alt={category.name}
+                  loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
