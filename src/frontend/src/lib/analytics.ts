@@ -19,8 +19,25 @@ declare global {
 
 let initialized = false;
 
+const GA4_ID_PATTERN = /^G-[A-Z0-9]{6,}$/;
+
 function getMeasurementId(): string {
-  return (typeof window !== 'undefined' && window.__GA_MEASUREMENT_ID__) || '';
+  const raw = (typeof window !== 'undefined' && window.__GA_MEASUREMENT_ID__) || '';
+  if (!raw) return '';
+  // Vite leaves `%VITE_GA_MEASUREMENT_ID%` in index.html verbatim when the env var is
+  // missing at build time (e.g. set in .env.local locally but never added to the Vercel
+  // project). Without this guard that literal string is truthy, gtag.js loads with a
+  // garbage ID, every hit is silently dropped, and GA4 just reports "no data received".
+  if (!GA4_ID_PATTERN.test(raw)) {
+    if (typeof console !== 'undefined') {
+      console.warn(
+        `[analytics] Ignoring invalid GA4 measurement ID ${JSON.stringify(raw)}. ` +
+          'Set VITE_GA_MEASUREMENT_ID (format G-XXXXXXXXXX) in the build environment and redeploy.'
+      );
+    }
+    return '';
+  }
+  return raw;
 }
 
 export function isAnalyticsEnabled(): boolean {
