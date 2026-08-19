@@ -52,9 +52,16 @@ export function initAnalytics(): void {
   initialized = true;
 
   window.dataLayer = window.dataLayer || [];
-  window.gtag = function gtag(...args: unknown[]) {
-    window.dataLayer!.push(args);
-  };
+  // DO NOT "modernise" this into an arrow function or rest-parameter spread.
+  // gtag.js type-checks what lands in dataLayer: it must be the native `arguments`
+  // object (Array.isArray(...) === false). Pushing a real Array — which
+  // `(...args) => dataLayer.push(args)` does — makes gtag.js treat the entry as a
+  // GTM-style queue item and silently never transmit it. Symptom: the tag loads, the
+  // container registers in window.google_tag_manager, and GA4 still reports zero data.
+  function gtagShim() {
+    window.dataLayer!.push(arguments);
+  }
+  window.gtag = gtagShim as unknown as (...args: unknown[]) => void;
 
   const script = document.createElement('script');
   script.async = true;
