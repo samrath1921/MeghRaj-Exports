@@ -1,0 +1,44 @@
+# Free Supabase projects pause after about a week with no activity. If a quiet
+# week is followed by a real enquiry, the write fails and the lead is lost —
+# which is the exact failure the database was added to prevent.
+#
+# This pings the project every Monday to keep it awake. It costs nothing and
+# runs for about two seconds.
+#
+# Required repository secrets (Settings -> Secrets and variables -> Actions):
+#   SUPABASE_URL              e.g. https://xxxxxxxx.supabase.co
+#   SUPABASE_SERVICE_ROLE_KEY the service role key (server-side only, never in client code)
+#
+# Without those secrets the job exits successfully and does nothing, so it is
+# safe to merge before Supabase is configured.
+name: Supabase keep-alive
+
+on:
+  schedule:
+    - cron: '17 4 * * 1'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    name: Ping Supabase
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Ping
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_SERVICE_ROLE_KEY" ]; then
+            echo "Supabase secrets not configured yet — nothing to keep alive. Skipping."
+            exit 0
+          fi
+          code=$(curl -sS -o /dev/null -w '%{http_code}' \
+            -H "apikey: $SUPABASE_SERVICE_ROLE_KEY" \
+            -H "Authorization: Bearer $SUPABASE_SERVICE_ROLE_KEY" \
+            "$SUPABASE_URL/rest/v1/enquiries?select=id&limit=1")
+          echo "Supabase responded with HTTP $code"
+          case "$code" in
+            200|206) echo "Project is awake."; exit 0 ;;
+            *) echo "::error::Unexpected response $code — check the project is active and the enquiries table exists."; exit 1 ;;
+          esac

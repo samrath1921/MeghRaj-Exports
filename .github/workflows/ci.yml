@@ -1,0 +1,62 @@
+# Runs on every push and pull request. Nothing here deploys — Vercel does that.
+# The job this does is simpler and more valuable: make a broken build fail here,
+# in a pull request, instead of on meghrajexports.com.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Type-check, lint and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: src/frontend
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # No version pinned on purpose: the root package.json sets
+      # "packageManager": "pnpm@10.29.3…". Specifying both makes
+      # pnpm/action-setup fail with ERR_PNPM_BAD_PM_VERSION.
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Type-check
+        run: pnpm run typescript-check
+
+      # Lint failures shouldn't block a deploy that is otherwise fine, but they
+      # should be visible. Drop `continue-on-error` once the existing warnings
+      # are cleared.
+      - name: Lint
+        run: pnpm run lint
+        continue-on-error: true
+
+      - name: Build
+        # Vercel runs exactly this command, so a green build here means a green
+        # deploy: vite build -> prerender.mjs -> generate-sitemap.mjs.
+        run: pnpm run build:skip-bindings
+        env:
+          VITE_GA_MEASUREMENT_ID: ${{ secrets.VITE_GA_MEASUREMENT_ID }}
+
+      # The whole point of the prerender step is that pages are not blank to
+      # crawlers. If that ever silently regresses, this fails the build.
+      - name: Assert pages are not blank
+        run: node scripts/assert-prerender.mjs
