@@ -44,13 +44,15 @@ interface FormData {
   samplingRequired: string;
   timeline: string;
   notes: string;
+  /** Honeypot — see the hidden input in step 1. Always empty for real people. */
+  website: string;
 }
 
 const emptyForm: FormData = {
   name: '', company: '', country: '', email: '', whatsappCode: '', whatsappNumber: '',
   category: '', subcategory: '', quantity: '', purpose: '',
   logoRequired: '', materialPref: '', colorPref: '', samplingRequired: '',
-  timeline: '', notes: '',
+  timeline: '', notes: '', website: '',
 };
 
 const stepLabels = ['Contact', 'Product', 'Customisation', 'Timeline'];
@@ -66,6 +68,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState<FormData>({ ...emptyForm, category: prefilledCategory, subcategory: prefilledSub });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [reference, setReference] = useState('');
 
   const submitInquiry = useSubmitInquiry();
   const hero = useRevealOnce();
@@ -148,7 +151,7 @@ export default function ContactPage() {
         formData.timeline && `Target timeline: ${formData.timeline}`,
       ].filter(Boolean).join('\n');
 
-      await submitInquiry.mutateAsync({
+      const result = await submitInquiry.mutateAsync({
         name: formData.name,
         company: formData.company,
         country: formData.country,
@@ -157,7 +160,9 @@ export default function ContactPage() {
         category: formData.category,
         categories: [formData.category],
         message: messageParts || '(No additional notes provided)',
+        website: formData.website,
       });
+      setReference(result?.reference ?? '');
       // generate_lead fires only here — after the API call has confirmed success —
       // never on page load or on a failed submission (see catch block below).
       trackEvent('generate_lead', { form_name: 'contact_enquiry', category: formData.category });
@@ -186,9 +191,16 @@ export default function ContactPage() {
               <p className="mb-4 text-lg leading-relaxed text-white/75">
                 Your manufacturing enquiry has been submitted. Our team will review your requirements and respond within 24 business hours with product options and pricing.
               </p>
+              {reference && (
+                <p className="mb-4 text-sm text-white/60">
+                  Your reference is{' '}
+                  <span className="font-mono tracking-wide text-yellow-400/90">{reference}</span>. We have
+                  emailed you a copy along with our MOQ, sampling and lead-time details.
+                </p>
+              )}
               <p className="mb-10 text-sm text-white/45">OEM and private label enquiries are prioritised.</p>
               <button
-                onClick={() => { setSubmitted(false); setStep(0); setFormData({ ...emptyForm }); }}
+                onClick={() => { setSubmitted(false); setStep(0); setReference(''); setFormData({ ...emptyForm }); }}
                 className="home-btn-primary"
               >
                 Start New Enquiry
@@ -300,6 +312,24 @@ export default function ContactPage() {
                       <p className="form-section-title">Your Contact Details</p>
                       <p className="form-section-hint">So we know who to respond to.</p>
                       <div className="grid gap-5 sm:grid-cols-2">
+                        {/*
+                          Honeypot. Hidden from sighted users, skipped by keyboard focus and
+                          hidden from screen readers, so no real person ever fills it. Bots that
+                          complete every input in the DOM do, and the API discards those
+                          submissions silently. Not display:none — some bots skip those.
+                        */}
+                        <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
+                          <label htmlFor="website-hp">Website</label>
+                          <input
+                            id="website-hp"
+                            name="website"
+                            type="text"
+                            tabIndex={-1}
+                            autoComplete="off"
+                            value={formData.website}
+                            onChange={(e) => set('website', e.target.value)}
+                          />
+                        </div>
                         <div>
                           <label className="form-label mb-1.5 block text-sm">Full Name *</label>
                           <input type="text" value={formData.name} onChange={(e) => set('name', e.target.value)}

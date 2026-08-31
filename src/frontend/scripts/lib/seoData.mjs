@@ -220,3 +220,129 @@ export function buildBreadcrumbs(routePath, segmentNameOverrides = {}) {
   }
   return items;
 }
+
+/* ───────────────────────────────────────────────────────────────────────────
+ * Body-content extraction (Phase 2 SEO fix).
+ *
+ * prerender.mjs originally emitted metadata only, leaving <body> as an empty
+ * <div id="root">. Anything that does not execute JavaScript — Bing, LinkedIn and
+ * WhatsApp link unfurlers, and the AI crawlers (GPTBot, ClaudeBot, PerplexityBot,
+ * Google-Extended) — therefore saw every page on the site as blank.
+ *
+ * The functions below pull the real product data out of the same source files the
+ * app renders from, so the prerendered body can never describe products we don't
+ * list. Same regex-over-import approach as getEquestrianTaxonomy() above, and for
+ * the same reason: these .ts files import images, so a plain Node script can't
+ * import them without a bundler.
+ * ─────────────────────────────────────────────────────────────────────────── */
+
+/**
+ * Full equestrian catalogue: categories → subcategories → individual product types.
+ * getEquestrianTaxonomy() above stops at subcategory level because that's all the
+ * sitemap needs; this goes one level deeper so prerendered subcategory pages can
+ * actually name the ~140 products they list.
+ */
+export function getEquestrianCatalogue() {
+  const filePath = path.join(FRONTEND_ROOT, 'src/data/productTaxonomy.ts');
+  const text = readFileSync(filePath, 'utf-8');
+
+  const categoryHeaderRe = /^ {2}\{\n {4}name: '([^']+)',\n {4}slug: '([^']+)',/gm;
+  const categoryMatches = [...text.matchAll(categoryHeaderRe)];
+
+  if (categoryMatches.length === 0) {
+    throw new Error(
+      'getEquestrianCatalogue(): found 0 categories in productTaxonomy.ts — extraction ' +
+      'regex needs updating. Refusing to prerender an empty catalogue.'
+    );
+  }
+
+  const subHeaderRe = /^ {6}\{\n {8}name: '([^']+)',/gm;
+  const productRe = /^ {10}\{ name: '([^']+)'(?:, slug: '([^']+)')? \},?$/gm;
+
+  return categoryMatches.map((m, i) => {
+    const start = m.index;
+    const end = i + 1 < categoryMatches.length ? categoryMatches[i + 1].index : text.length;
+    const categoryChunk = text.slice(start, end);
+
+    const subMatches = [...categoryChunk.matchAll(subHeaderRe)];
+    if (subMatches.length === 0) {
+      throw new Error(
+        `getEquestrianCatalogue(): category "${m[1]}" resolved 0 subcategories — ` +
+        'extraction regex needs updating.'
+      );
+    }
+
+    const subcategories = subMatches.map((sm, j) => {
+      const subStart = sm.index;
+      const subEnd = j + 1 < subMatches.length ? subMatches[j + 1].index : categoryChunk.length;
+      const subChunk = categoryChunk.slice(subStart, subEnd);
+      const productTypes = [...subChunk.matchAll(productRe)].map((pm) => ({
+        name: pm[1],
+        slug: pm[2] || toSlug(pm[1]),
+      }));
+      return { name: sm[1], productTypes };
+    });
+
+    return { name: m[1], slug: m[2], subcategories };
+  });
+}
+
+/**
+ * Bag catalogue from src/data/categories.ts — the three core bag pages and the
+ * styles inside each. Unlike the equestrian taxonomy these carry real spec data
+ * (description, use cases, materials, MOQ), which is exactly the content a sourcing
+ * buyer and a crawler both need to see in HTML rather than baked into a JPEG.
+ */
+export function getBagCategories() {
+  const filePath = path.join(FRONTEND_ROOT, 'src/data/categories.ts');
+  const text = readFileSync(filePath, 'utf-8');
+
+  const catRe = /^ {2}\{\n {4}id: '([^']+)',\n {4}name: '([^']+)',\n {4}slug: '([^']+)',\n {4}tagline: '([^']*)',\n {4}description: '((?:[^'\\]|\\.)*)',/gm;
+  const catMatches = [...text.matchAll(catRe)];
+
+  if (catMatches.length === 0) {
+    throw new Error(
+      'getBagCategories(): found 0 categories in categories.ts — extraction regex ' +
+      'needs updating. Refusing to prerender empty bag pages.'
+    );
+  }
+
+  const subRe =
+    /^ {6}\{\n {8}id: '([^']+)',\n {8}name: '([^']+)',\n {8}desc: '((?:[^'\\]|\\.)*)',\n {8}useCases: \[([^\]]*)\],\n {8}materials: '((?:[^'\\]|\\.)*)',\n {8}moq: '([^']*)',/gm;
+
+  return catMatches.map((m, i) => {
+    const start = m.index;
+    const end = i + 1 < catMatches.length ? catMatches[i + 1].index : text.length;
+    const chunk = text.slice(start, end);
+
+    const subcategories = [...chunk.matchAll(subRe)].map((sm) => ({
+      id: sm[1],
+      name: sm[2],
+      desc: unescapeTsString(sm[3]),
+      useCases: sm[4].split(',').map((u) => u.trim().replace(/^'|'$/g, '')).filter(Boolean),
+      materials: unescapeTsString(sm[5]),
+      moq: sm[6],
+    }));
+
+    if (subcategories.length === 0) {
+      throw new Error(
+        `getBagCategories(): category "${m[2]}" resolved 0 styles — extraction regex ` +
+        'needs updating.'
+      );
+    }
+
+    return {
+      id: m[1],
+      name: m[2],
+      path: m[3],
+      tagline: m[4],
+      description: unescapeTsString(m[5]),
+      subcategories,
+    };
+  });
+}
+
+/** Turns \' and \\ escapes from a single-quoted TS literal back into plain text. */
+function unescapeTsString(value) {
+  return value.replace(/\\(['\\])/g, '$1');
+}

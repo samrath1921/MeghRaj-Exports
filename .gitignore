@@ -1,6 +1,42 @@
-node_modules
-.vercel
-.env*.local
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
 dist/
+build/
+.vite/
+
+# Environment and secrets — never commit these.
+# If one was ever committed, deleting it is not enough: rotate the credential,
+# because it stays in git history and this repository has been public.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+credentials.json
+service-account*.json
+
+# Platform / tooling state
+.vercel/
+.supabase/
+.turbo/
+*.tsbuildinfo
+
+# Editors and OS
+.claude/
 .DS_Store
 **/.DS_Store
+Thumbs.db
+.idea/
+*.swp
+.vscode/*
+!.vscode/extensions.json
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-error.log*
